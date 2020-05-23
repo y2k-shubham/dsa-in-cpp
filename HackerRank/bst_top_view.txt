@@ -1,0 +1,101 @@
+/*
+struct node
+{
+    int data;
+    node* left;
+    node* right;
+};
+
+*/
+
+struct link {
+    struct node * ptr;
+    int line;
+    struct link * next;
+};
+
+#define MIN(a, b) ((a < b) ? a : b)
+#define MAX(a, b) ((a > b) ? a : b)
+
+void findExtremeDist(node * root, int * min, int * max, int crr) {
+    if (root != NULL) {
+        *min = MIN(*min, crr);
+        *max = MAX(*max, crr);
+        findExtremeDist(root -> left, min, max, (crr - 1));
+        findExtremeDist(root -> right, min, max, (crr + 1));
+    }
+}
+
+link * createNode(node * root, int line) {
+    link * newNode;
+    newNode = (link *) malloc(sizeof(link));
+    newNode -> ptr = root;
+    newNode -> line = line;
+    newNode -> next = NULL;
+    return newNode;
+}
+
+link * enqueue(link * qTail, link * newNode) {
+    if (qTail != NULL) {
+        qTail -> next = newNode;
+    }
+    qTail = newNode;
+    
+    return qTail;
+}
+
+link * dequeue(link * qHead) {
+    link * temp;
+    temp = qHead;
+    
+    if (qHead != NULL) {
+        qHead = qHead -> next;
+    }
+    
+    return temp;
+}
+
+int isEmpty(link * qHead) {
+    if (qHead == NULL) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+void top_view(node * root)
+{
+    int min, max;
+    struct link * qHead, * qTail, * newNode;
+    map<int, int> m;
+    
+    min = max = 0;
+    qHead = qTail = NULL;
+    
+    if (root != NULL) {
+        findExtremeDist(root, &min, &max, 0);
+        newNode = createNode(root, 0);
+        qHead = qTail = enqueue(qTail, newNode);
+        
+        while (!isEmpty(qHead)) {
+            newNode = dequeue(qHead);
+            
+            if (m.find(newNode -> line) != m.end()) {
+                if (newNode -> line == min) {
+                    printf("%d", newNode -> ptr -> data);
+                } else {
+                    printf(" %d", newNode -> ptr -> data);
+                }
+                m[newNode -> line] = 1;
+            }
+            
+            if (newNode -> ptr -> left != NULL) {
+                qTail = enqueue(qTail, createNode(newNode -> ptr -> left, (newNode -> line - 1)));
+            }
+            
+            if (newNode -> ptr -> right != NULL) {
+                qTail = enqueue(qTail, createNode(newNode -> ptr -> right, (newNode -> line + 1)));
+            }
+        }
+    }
+}

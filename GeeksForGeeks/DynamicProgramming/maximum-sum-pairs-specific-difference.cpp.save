@@ -1,0 +1,195 @@
+// http://www.geeksforgeeks.org/maximum-sum-pairs-specific-difference/
+
+/*
+7
+3 5 10 15 17 12 9
+4
+
+4
+5 15 10 300
+12
+*/
+
+#include <cstdio>
+#include <iostream>
+#include <cmath>
+#include <climits>
+#include <algorithm>
+
+using namespace std;
+#define MAX 100
+
+void input(int [MAX], int &, int &);
+void init(int [MAX], int, int, int [MAX][MAX]);
+void showArray(int [MAX], int, const char *);
+void showTab(int [MAX], int, int [MAX][MAX], const char *);
+void showPairs(int [MAX], int, int, int [MAX][MAX]);
+void showPairs(int [MAX], int, int, int [MAX]);
+void fillTab(int [MAX], int, int, int [MAX][MAX]);
+void fillArr(int [MAX], int, int, int [MAX]);
+
+int main() {
+	int arr[MAX], len;
+	int diffLim;
+	int maxSum[MAX], tab[MAX][MAX];
+
+	input(arr, len, diffLim);
+	showArray(arr, len, "after input, arr[]");
+
+	sort(arr, arr + len);
+	showArray(arr, len, "after sorting, arr[]");
+
+	// Table-based (redundant - operation) solution
+//	init(arr, len, diffLim, tab);
+//	showTab(arr, len, tab, "after initialization");
+//
+//	fillTab(arr, len, diffLim, tab);
+//	showTab(arr, len, tab, "after filling");
+//
+//	cout << "\nMaximum possible sum is " << tab[0][len - 1] << endl;
+//	showPairs(arr, len, diffLim, tab);
+
+	// Array based solution
+	fillArr(arr, len, diffLim, maxSum);
+	showArray(arr, len, diffLim, maxSum);
+	
+	cout << "\nMaximum possible sum is " << maxSum[len - 1] << endl;
+	showPairs(arr, len, diffLim, maxSum);
+
+	return 0;
+}
+
+void input(int arr[MAX], int &n, int &diffLim) {
+	cout << "Enter n:\t";
+	cin >> n;
+
+	printf("Enter array:-\n");
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &arr[i]);
+	}
+
+	cout << "Enter difference limit:\t";
+	cin >> diffLim;
+}
+
+void init(int arr[MAX], int len, int diffLim, int tab[MAX][MAX]) {
+	for (int i = 0; i < len; i++) {
+		for (int j = 0; j < len; j++) {
+			tab[i][j] = INT_MAX;
+		}
+	}
+
+	for (int i = 0; i < len; i++) {
+		tab[i][i] = 0;
+	}
+
+	for (int i = 0; i < len - 1; i++) {
+		if (arr[i + 1] - arr[i] < diffLim) {
+			tab[i][i + 1] = arr[i] + arr[i + 1];
+		} else {
+			tab[i][i + 1] = 0;
+		}
+	}
+}
+
+void showArray(int arr[MAX], int len, const char * msg) {
+	printf("\n%s array is:-\n", msg);
+
+	cout << "Ind:\t";
+	for (int i = 0; i < len; i++) {
+		printf("[%d]\t", i);
+	}
+	cout << endl;
+
+	cout << "Val:\t";
+	for (int i = 0; i < len; i++) {
+		printf("%d\t", arr[i]);
+	}
+	cout << endl;
+}
+
+void showTab(int arr[MAX], int len, int tab[MAX][MAX], const char * when) {
+	printf("\n%s, tab[][] is:-\n", when);
+
+	cout << "Ind:\t";
+	for (int j = 0; j < len; j++) {
+		printf("[%d]\t", j);
+	}
+	cout << endl;
+
+	for (int i = 0; i < len; i++) {
+		printf("[%d]\t", i);
+		for (int j = 0; j < len; j++) {
+			if (tab[i][j] == INT_MAX) {
+				cout << "_\t";
+			} else {
+				cout << tab[i][j] << "\t";
+			}
+		}
+		cout << endl;
+	}
+}
+
+void fillArr(int arr[MAX], int len, int diffLim, int maxSum[MAX]) {
+	maxSum[0] = 0;
+	maxSum[1] = (arr[1] - arr[0] < diffLim) ? (arr[0] + arr[1]) : 0;
+	
+	for (int i = 2; i < len; i++) {
+		if (arr[i] - arr[i - 1] < diffLim) {
+			maxSum[i] = max(maxSum[i  - 1], maxSum[i - 2] +  arr[i - 1] + arr[i]);
+		} else {
+			maxSum[i] = maxSum[i - 1];
+		}
+	}
+}
+
+void fillTab(int arr[MAX], int len, int diffLim, int tab[MAX][MAX]) {
+	for (int l = 3; l <= len; l++) {
+		int rLo = 0;
+		int cLo = l - 1;
+		int cHi = len - 1;
+
+		int i = rLo;
+		int j = cLo;
+		while (j <= cHi) {
+			if (arr[j] - arr[j - 1] < diffLim) {
+				tab[i][j] = tab[i][j - 2] + tab[j - 1][j];
+			} else {
+				tab[i][j] = tab[i][j - 1];
+			}
+
+			i++;
+			j++;
+		}
+	}
+}
+
+void showPairs(int [MAX], int len, int diffLim, int maxSum[MAX]) {
+	printf("\nDisjoint pairs having |p2 - p1| < %d that maximize the sum are:-\n", diffLim);
+	
+	for (int j = len - 1; j >= 1; ) {
+		if (maxSum[j] == maxSum[j - 1]) {
+			j--;
+		} else {
+			printf("")
+		}
+	}
+}
+
+void showPairs(int arr[MAX], int len, int diffLim, int tab[MAX][MAX]) {
+	printf("\nDisjoint pairs having |p2 - p1| < %d that maximize the sum are:-\n", diffLim);
+
+	int i = 0;
+	int j = len - 1;
+
+	while (j >= 1) {
+		if (tab[i][j] == tab[i][j - 1]) {
+			j--;
+		} else {
+			printf("(%d, %d)\t", arr[j - 1], arr[j]);
+			j -= 2;
+		}
+	}
+	cout << endl;
+}
+

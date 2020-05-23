@@ -1,0 +1,93 @@
+
+/*
+fpgpappgp
+4
+p
+*/
+
+#include <cstdio>
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+void findZ(string, int, int, char, vector <int>&, int&);
+void showVec(string, int, char, vector <int>);
+
+int main() {
+	string S;
+	int len;
+	int P;
+	char C;
+	int Z;
+
+	cout << "Enter string:\t";
+	cin >> S;
+
+	len = S.length();
+	S = '\0' + S;
+	vector <int> CFreqCum(len + 1);
+
+	cout << "Enter window size:\t";
+	cin >> P;
+
+	cout << "Enter char:\t";
+	getchar();
+	C = getc(stdin);
+
+	findZ(S, len, P, C, CFreqCum, Z);
+	showVec(S, len, C, CFreqCum);
+	printf("\nMax freq of %c in window size of %d is %d\n", C, P, Z);
+
+	return 0;
+}
+
+void findZ(string S, int len, int P, char C, vector <int>& CFreqCum, int& Z) {
+	CFreqCum[0] = 0;
+	Z = -1;
+
+	for (int i = 1; i <= len; i++) {
+		CFreqCum[i] = CFreqCum[i - 1];
+		if (S[i] == C) {
+			CFreqCum[i]++;
+
+			if (i >= P && CFreqCum[i] - CFreqCum[i - P] > Z) {
+				Z = CFreqCum[i] - CFreqCum[i - P];
+			}
+		}
+	}
+}
+
+void showVec(string S, int len, char C, vector <int> CFreqCum) {
+	printf("\nCumulative Frequency Vector is:-\n");
+
+	cout << "Ind:\t";
+	for (int i = 0; i <= len; i++) {
+		printf("[%d]\t", i);
+	}
+	cout << endl;
+
+	cout << "Str:\t";
+	for (int i = 0; i <= len; i++) {
+		printf("%c\t", S[i]);
+	}
+	cout << endl;
+
+	cout << "CFreq:\t";
+	for (int i = 0; i <= len; i++) {
+		printf("%d\t", CFreqCum[i]);
+	}
+	cout << endl;
+}
+
+void findInd(string S, int len, int P, char C, vector <int> CFreqCum, int Z) {
+	for (int i = len; i >= P; i--) {
+		if (S[i] != C && CFreqCum[i] - CFreqCum[i - P] == Z) {
+			printf()
+		}
+	}
+}
+
