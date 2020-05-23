@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# no-extension files (binaries)
+*
+!/**/
+!*.*
+
+# IntelliJ IDEA
+.idea
+*.iml
+
+# MacOS
+.DS_Store
