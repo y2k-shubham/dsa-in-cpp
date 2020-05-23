@@ -1,0 +1,114 @@
+#include <cstdio>
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void findParts( int, int&, int&, int&, int&);
+
+int main() {
+	int num;
+	int fDig, lDig;
+	int mPart, mPartLen;
+
+	cin >> num;
+	findParts(num, fDig, mPart, mPartLen, lDig);
+
+	printf("fDig  = %d\n", fDig);
+	printf("mPart = %d\tmPartLen = %d\n", mPart, mPartLen);
+	printf("lDig  = %d\n", lDig);
+
+	return 0;
+}
+
+void findParts(int num, int& fDig, int& mPart, int& mPartLen, int& lDig) {
+	if (num / 10 == 0) {
+		fDig = num % 10;
+		mPart = 0;
+		mPartLen = 0;
+		lDig = num % 10;
+	} else if (num / 100 == 0) {
+		fDig = num / 10;
+		mPart = 0;
+		mPartLen = 0;
+		lDig = num % 10;
+	} else {
+		lDig = num % 10;
+		num /= 10;
+
+		mPart = -1;
+		mPartLen = 0;
+
+		int mult = 1;
+		while (num > 0) {
+			int dig = num % 10;
+
+			mPart = (mPart < 0) ? dig : (mPart + mult * dig);
+			mult *= 10;
+			mPartLen++;
+
+			fDig = num;
+			num /= 10;
+		}
+
+		mPart -= fDig * mult / 10;
+		mPartLen--;
+	}
+}
+
+int findCount(int L, int R) {
+	int lFDig, lMPart, lMPartLen, lLDig;
+	int rFDig, rMPart, rMPartLen, rLDig;
+	int count;
+
+	findParts(L, lFDig, lMPart, lMPartLen, lLDig);
+	findParts(R, rFDig, rMPart, rMPartLen, rLDig);
+	count = 0;
+
+	if (lMPartLen > 0) {
+		if 
+		if (lFDig <= lLDig) {
+			// For L = 1567, add (1571, 1581 .. 1991) = (100 - 57)
+			count += ((int) pow(10, lMPartLen) - (lMPart + 1));
+		} else {
+			// For L = 4561, add (4004, 4014 .. 4994) = 100
+			count += (int) pow(10, lMPartLen);
+		}
+
+		if (lMPartLen < rMPartLen) {
+			// For L = 2127, R = 9445615
+
+			// Add (3xx3, 4xx4 .. 9xx9)
+			count += (9 - lFDig) * ((int) pow(10, lMPartLen));
+
+			// Add (1xxxxx1, 2xxxxx2 .. 8xxxxx8)
+			count += (rFDig - 1) * ((int) pow(10, rMPartLen));
+
+			// Add (1xxx1 .. 9xxx9, 1xxxx1 .. 9xxxx9)
+			for (int noDig = lMPartLen + 1; noDig < rMPartLen; noDig++) {
+				count += 9 * ((int) pow(10, noDig));
+			}
+		} else if (rFDig > lFDig) {
+			// For L = 1257 and R = 9291, add (2xx2, 3xx3 .. 8xx8) = 7 * 100
+			count += (rFDig - lFDig - 1) * ((int) pow(10, lMPartLen));
+		}
+
+		if (rFDig <= rRDig) {
+			// For R = 7289, add (7007, 7017 .. 7287) = 28 + 1
+			count += rMPart + 1;
+		} else {
+			// For R = 9281, add (9009, 9019 .. 9279) = 28
+			count += rMPart;
+		}
+	} else {
+		for (int i = L; i <= R; i++) {
+			int fDig, mPart, mPartLen, lDig;
+			findParts(i, fDig, mPart, mPartLen, lDig);
+
+			if (fDig == lDig) {
+				count++;
+			}
+		}
+	}
+}
+

@@ -1,0 +1,72 @@
+Original Example:
+{ "A", "C" },
+{ "B", "C" },
+{ "C", "F" },
+{ "D", "E" },
+{ "E", "F" },
+{ "F", "F" } 
+
+In this example C is manager of A, 
+C is also manager of B, F is manager 
+of C and so on.
+
+first we create a collection of lists storing employees that work under each person. the collection would look like:
+Manager		Employees under him
+C			A, B
+A
+B
+D
+E			D
+F			C, E	(no need to write F here)
+lets call this structure as emp_list.
+NOTE that C has been deliberately moved before A and B for explanation purpose, in reality, order will NOT matter
+
+suggested data structure for storing above in C++ would be:
+vector < list <int> >		(here we'll require another structure map <char, int> to map the integer values to correct employee A, B, etc.)
+map <char, list <char> >	(this will completely store the above data)
+
+next we create a map to store the count of no of employees working under each manager. in the beginning, it will be empty and will look like
+Manager		No of employees under him
+C			0
+A			0
+B			0
+D			0
+E			0
+F			0
+let's call this structure emp_count
+
+suggested data structure for storing above in C++ would be:
+map <char, int>
+
+we'll use an additional map structure to mark the status (true / false) of whether the employees working under a person have been calculated or not
+map <char, bool>
+we'll call this structure visited. obviously, initially all values will be set to false
+
+now we'll traverse through emp_list and recursively calculate no of employees under each person and store the information in emp_count
+1.	for C, visited[C] = false, so we have to calculate,
+		we find two persons A & B work under him, so we recurse for A and B
+			for A, we find no person works under him, so emp_count[A] remains 0, visited[A] = true
+			for B, we find no person works under him, so emp_count[B] remains 0, visited[B] = true
+		now emp_count[C] = (emp_count[A] + 1) + (emp_count[B] + 1) = 2, visited[C] = true
+		
+2.	for A, visited[A] = true, so we have already calculated emp_count[A]
+3.	for B, visited[B] = true, so we have already calculated emp_count[B]
+4.	for D, visited[D] = false, so we have to calculate,
+		we find no person works under D, so emp_count[D] remains 0, visited[D] = true
+		
+5.	for E, visited[E] = false, so we have to calculate,
+		we find one person D working under E, but already visited[D] = true, so we need not recurse over D again
+		now emp_count[E] = emp_count[D] + 1 = 1, visited[E] = true
+		
+6.	for F, visited[F] = false, so we have to calculate
+		we find two persons C and E work under him,	but since visited[C] and visited[E] are already true, we need not recurse over them again
+		now emp_count[F] = (emp_count[C] + 1) + (emp_count[E] + 1) = (2 + 1) + (1 + 1) = 5, visited[F] = true
+		
+therefore, final list emp_count becomes:
+Manager		No of employees under him
+C			2
+A			0
+B			0
+D			0
+E			1
+F			5
