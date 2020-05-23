@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+a.out
 
 # no-extension files (binaries)
 *
