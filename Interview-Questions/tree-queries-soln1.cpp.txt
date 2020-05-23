@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 100100;
+vector<int> v[MAXN];
+int tim, tin[MAXN], tout[MAXN], pr[MAXN][20];
+void dfs(int x, int anc) {
+    tin[x] = tim;
+    tim++;
+    pr[x][0] = anc;
+    for (int i = 1; i < 20; i++) {
+        pr[x][i] = pr[ pr[x][i - 1] ][i - 1];
+    }
+    for (int i = 0; i < v[x].size(); i++) {
+        dfs(v[x][i], x);
+    }
+    tout[x] = tim;
+    tim++;
+}
+int isAnc(int x, int y) {
+    return (tin[x] <= tin[y] && tout[y] <= tout[x]);
+}
+int lca(int x, int y) {
+    if (isAnc(x, y) ) {
+        return x;
+    }
+    if (isAnc(y, x) ) {
+        return y;
+    }
+    for (int i = 19; i >= 0; i--) {
+        if ( !isAnc(pr[x][i], y) ) {
+            x = pr[x][i];
+        }
+    }
+    return pr[x][0];
+}
+int main() {
+    int n, q;
+    scanf("%d%d", &n, &q);
+    for (int i = 2; i <= n; i++) {
+        int x;
+        scanf("%d", &x);
+        v[x].push_back(i);
+    }
+    tin[0] = -1;
+    tout[0] = 1E9;
+    dfs(1, 0);
+    for (int i = 1; i <= q; i++) {
+        int k, cur;
+        scanf("%d", &k);
+        scanf("%d", &cur);
+        for (int j = 1; j < k; j++) {
+            int x;
+            scanf("%d", &x);
+            cur = lca(cur, x);
+        }
+        printf("%d\n", cur);
+    }
+    return 0;
+}

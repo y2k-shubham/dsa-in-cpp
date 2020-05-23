@@ -1,0 +1,14 @@
+1. comparator ki requirement to nahii thi (comparator mein tumne long long int ki jagah int liyaa hai)
+2. first array (size n) ke top m (largest) elements to index ke ascending order mein sort karne se optimal solution nahii aayega
+
+suppose arrays are:-
+n = 5
+1 9 0 4 5
+
+m = 2
+2 9
+
+to greedy technique se answer aayega 9x2 + 5x9 = 49
+magar optimal answer hai 1x2 + 9x9 = 83
+
+aisa isliye ho rahaa hai kyunki humne isse calculate karne mein 2nd array (size m) ke elements ko ignore kar diyaa.

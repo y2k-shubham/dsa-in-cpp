@@ -1,0 +1,679 @@
+
+
+===
+Inside hasSubset(freq[], 1, 10, 0, 13)
+    In hasSubset(freq[], 1, 10, 0, 13)
+For i = 0
+freq[1] = 1
+Trying hasSubset(freq[], 2, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 2, 10, 0, 13)
+    In hasSubset(freq[], 2, 10, 0, 13)
+For i = 0
+freq[2] = 0
+Trying hasSubset(freq[], 3, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 3, 10, 0, 13)
+    In hasSubset(freq[], 3, 10, 0, 13)
+For i = 0
+freq[3] = 0
+Trying hasSubset(freq[], 4, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 4, 10, 0, 13)
+    In hasSubset(freq[], 4, 10, 0, 13)
+For i = 0
+freq[4] = 0
+Trying hasSubset(freq[], 5, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 5, 10, 0, 13)
+    In hasSubset(freq[], 5, 10, 0, 13)
+For i = 0
+freq[5] = 2
+Trying hasSubset(freq[], 6, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 6, 10, 0, 13)
+    In hasSubset(freq[], 6, 10, 0, 13)
+For i = 0
+freq[6] = 0
+Trying hasSubset(freq[], 7, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 7, 10, 0, 13)
+    In hasSubset(freq[], 7, 10, 0, 13)
+For i = 0
+freq[7] = 0
+Trying hasSubset(freq[], 8, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 8, 10, 0, 13)
+    In hasSubset(freq[], 8, 10, 0, 13)
+For i = 0
+freq[8] = 0
+Trying hasSubset(freq[], 9, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 9, 10, 0, 13)
+    In hasSubset(freq[], 9, 10, 0, 13)
+For i = 0
+freq[9] = 0
+Trying hasSubset(freq[], 10, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 10, 10, 0, 13)
+    In hasSubset(freq[], 10, 10, 0, 13)
+For i = 0
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 0, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 0, 13)
+    In hasSubset(freq[], 10, 10, 0, 13)
+For i = 1
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 10, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 10, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 10, 13)
+    In hasSubset(freq[], 10, 10, 0, 13)
+For i = 2
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 20, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 20, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 20, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 10, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 9, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 8, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 7, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 6, 10, 0, 13)
+    In hasSubset(freq[], 5, 10, 0, 13)
+For i = 1
+freq[5] = 2
+Trying hasSubset(freq[], 6, 10, 5, 13)
+
+
+===
+Inside hasSubset(freq[], 6, 10, 5, 13)
+    In hasSubset(freq[], 6, 10, 5, 13)
+For i = 0
+freq[6] = 0
+Trying hasSubset(freq[], 7, 10, 5, 13)
+
+
+===
+Inside hasSubset(freq[], 7, 10, 5, 13)
+    In hasSubset(freq[], 7, 10, 5, 13)
+For i = 0
+freq[7] = 0
+Trying hasSubset(freq[], 8, 10, 5, 13)
+
+
+===
+Inside hasSubset(freq[], 8, 10, 5, 13)
+    In hasSubset(freq[], 8, 10, 5, 13)
+For i = 0
+freq[8] = 0
+Trying hasSubset(freq[], 9, 10, 5, 13)
+
+
+===
+Inside hasSubset(freq[], 9, 10, 5, 13)
+    In hasSubset(freq[], 9, 10, 5, 13)
+For i = 0
+freq[9] = 0
+Trying hasSubset(freq[], 10, 10, 5, 13)
+
+
+===
+Inside hasSubset(freq[], 10, 10, 5, 13)
+    In hasSubset(freq[], 10, 10, 5, 13)
+For i = 0
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 5, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 5, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 5, 13)
+    In hasSubset(freq[], 10, 10, 5, 13)
+For i = 1
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 15, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 15, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 15, 13)
+    In hasSubset(freq[], 10, 10, 5, 13)
+For i = 2
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 25, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 25, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 25, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 10, 10, 5, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 9, 10, 5, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 8, 10, 5, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 7, 10, 5, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 6, 10, 5, 13)
+    In hasSubset(freq[], 5, 10, 0, 13)
+For i = 2
+freq[5] = 2
+Trying hasSubset(freq[], 6, 10, 10, 13)
+
+
+===
+Inside hasSubset(freq[], 6, 10, 10, 13)
+    In hasSubset(freq[], 6, 10, 10, 13)
+For i = 0
+freq[6] = 0
+Trying hasSubset(freq[], 7, 10, 10, 13)
+
+
+===
+Inside hasSubset(freq[], 7, 10, 10, 13)
+    In hasSubset(freq[], 7, 10, 10, 13)
+For i = 0
+freq[7] = 0
+Trying hasSubset(freq[], 8, 10, 10, 13)
+
+
+===
+Inside hasSubset(freq[], 8, 10, 10, 13)
+    In hasSubset(freq[], 8, 10, 10, 13)
+For i = 0
+freq[8] = 0
+Trying hasSubset(freq[], 9, 10, 10, 13)
+
+
+===
+Inside hasSubset(freq[], 9, 10, 10, 13)
+    In hasSubset(freq[], 9, 10, 10, 13)
+For i = 0
+freq[9] = 0
+Trying hasSubset(freq[], 10, 10, 10, 13)
+
+
+===
+Inside hasSubset(freq[], 10, 10, 10, 13)
+    In hasSubset(freq[], 10, 10, 10, 13)
+For i = 0
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 10, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 10, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 10, 13)
+    In hasSubset(freq[], 10, 10, 10, 13)
+For i = 1
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 20, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 20, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 20, 13)
+    In hasSubset(freq[], 10, 10, 10, 13)
+For i = 2
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 30, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 30, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 30, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 10, 10, 10, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 9, 10, 10, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 8, 10, 10, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 7, 10, 10, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 6, 10, 10, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 5, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 4, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 3, 10, 0, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 2, 10, 0, 13)
+    In hasSubset(freq[], 1, 10, 0, 13)
+For i = 1
+freq[1] = 1
+Trying hasSubset(freq[], 2, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 2, 10, 1, 13)
+    In hasSubset(freq[], 2, 10, 1, 13)
+For i = 0
+freq[2] = 0
+Trying hasSubset(freq[], 3, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 3, 10, 1, 13)
+    In hasSubset(freq[], 3, 10, 1, 13)
+For i = 0
+freq[3] = 0
+Trying hasSubset(freq[], 4, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 4, 10, 1, 13)
+    In hasSubset(freq[], 4, 10, 1, 13)
+For i = 0
+freq[4] = 0
+Trying hasSubset(freq[], 5, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 5, 10, 1, 13)
+    In hasSubset(freq[], 5, 10, 1, 13)
+For i = 0
+freq[5] = 2
+Trying hasSubset(freq[], 6, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 6, 10, 1, 13)
+    In hasSubset(freq[], 6, 10, 1, 13)
+For i = 0
+freq[6] = 0
+Trying hasSubset(freq[], 7, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 7, 10, 1, 13)
+    In hasSubset(freq[], 7, 10, 1, 13)
+For i = 0
+freq[7] = 0
+Trying hasSubset(freq[], 8, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 8, 10, 1, 13)
+    In hasSubset(freq[], 8, 10, 1, 13)
+For i = 0
+freq[8] = 0
+Trying hasSubset(freq[], 9, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 9, 10, 1, 13)
+    In hasSubset(freq[], 9, 10, 1, 13)
+For i = 0
+freq[9] = 0
+Trying hasSubset(freq[], 10, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 10, 10, 1, 13)
+    In hasSubset(freq[], 10, 10, 1, 13)
+For i = 0
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 1, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 1, 13)
+    In hasSubset(freq[], 10, 10, 1, 13)
+For i = 1
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 11, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 11, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 11, 13)
+    In hasSubset(freq[], 10, 10, 1, 13)
+For i = 2
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 21, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 21, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 21, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 10, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 9, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 8, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 7, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 6, 10, 1, 13)
+    In hasSubset(freq[], 5, 10, 1, 13)
+For i = 1
+freq[5] = 2
+Trying hasSubset(freq[], 6, 10, 6, 13)
+
+
+===
+Inside hasSubset(freq[], 6, 10, 6, 13)
+    In hasSubset(freq[], 6, 10, 6, 13)
+For i = 0
+freq[6] = 0
+Trying hasSubset(freq[], 7, 10, 6, 13)
+
+
+===
+Inside hasSubset(freq[], 7, 10, 6, 13)
+    In hasSubset(freq[], 7, 10, 6, 13)
+For i = 0
+freq[7] = 0
+Trying hasSubset(freq[], 8, 10, 6, 13)
+
+
+===
+Inside hasSubset(freq[], 8, 10, 6, 13)
+    In hasSubset(freq[], 8, 10, 6, 13)
+For i = 0
+freq[8] = 0
+Trying hasSubset(freq[], 9, 10, 6, 13)
+
+
+===
+Inside hasSubset(freq[], 9, 10, 6, 13)
+    In hasSubset(freq[], 9, 10, 6, 13)
+For i = 0
+freq[9] = 0
+Trying hasSubset(freq[], 10, 10, 6, 13)
+
+
+===
+Inside hasSubset(freq[], 10, 10, 6, 13)
+    In hasSubset(freq[], 10, 10, 6, 13)
+For i = 0
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 6, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 6, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 6, 13)
+    In hasSubset(freq[], 10, 10, 6, 13)
+For i = 1
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 16, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 16, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 16, 13)
+    In hasSubset(freq[], 10, 10, 6, 13)
+For i = 2
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 26, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 26, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 26, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 10, 10, 6, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 9, 10, 6, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 8, 10, 6, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 7, 10, 6, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 6, 10, 6, 13)
+    In hasSubset(freq[], 5, 10, 1, 13)
+For i = 2
+freq[5] = 2
+Trying hasSubset(freq[], 6, 10, 11, 13)
+
+
+===
+Inside hasSubset(freq[], 6, 10, 11, 13)
+    In hasSubset(freq[], 6, 10, 11, 13)
+For i = 0
+freq[6] = 0
+Trying hasSubset(freq[], 7, 10, 11, 13)
+
+
+===
+Inside hasSubset(freq[], 7, 10, 11, 13)
+    In hasSubset(freq[], 7, 10, 11, 13)
+For i = 0
+freq[7] = 0
+Trying hasSubset(freq[], 8, 10, 11, 13)
+
+
+===
+Inside hasSubset(freq[], 8, 10, 11, 13)
+    In hasSubset(freq[], 8, 10, 11, 13)
+For i = 0
+freq[8] = 0
+Trying hasSubset(freq[], 9, 10, 11, 13)
+
+
+===
+Inside hasSubset(freq[], 9, 10, 11, 13)
+    In hasSubset(freq[], 9, 10, 11, 13)
+For i = 0
+freq[9] = 0
+Trying hasSubset(freq[], 10, 10, 11, 13)
+
+
+===
+Inside hasSubset(freq[], 10, 10, 11, 13)
+    In hasSubset(freq[], 10, 10, 11, 13)
+For i = 0
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 11, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 11, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 11, 13)
+    In hasSubset(freq[], 10, 10, 11, 13)
+For i = 1
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 21, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 21, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 21, 13)
+    In hasSubset(freq[], 10, 10, 11, 13)
+For i = 2
+freq[10] = 2
+Trying hasSubset(freq[], 11, 10, 31, 13)
+
+
+===
+Inside hasSubset(freq[], 11, 10, 31, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 11, 10, 31, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 10, 10, 11, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 9, 10, 11, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 8, 10, 11, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 7, 10, 11, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 6, 10, 11, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 5, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 4, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 3, 10, 1, 13)
+no match found, returned false
+===
+
+Match not found for hasSubset(freq[], 2, 10, 1, 13)
+no match found, returned false
+===
+
