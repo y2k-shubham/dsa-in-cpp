@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+# IntelliJ IDEA
+.idea
+*.iml
+
+# MacOS
+.DS_Store
