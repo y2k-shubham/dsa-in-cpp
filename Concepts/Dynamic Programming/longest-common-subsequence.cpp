@@ -47,7 +47,7 @@ void findLCS(string str1, string str2, int lcs[MAX][MAX]) {
 	int len1, len2;
 	int i, j;
 
-	memset(lcs, 0, sizeof(lcs));
+	memset(lcs, 0, MAX * MAX);
 	len1 = str1.length();
 	len2 = str2.length();
 
@@ -67,10 +67,10 @@ void findLCS(string str1, string str2, int lcs[MAX][MAX]) {
 }
 
 string getLCSRec(string str1, string str2, int lcs[MAX][MAX], int row, int col) {
-	if (row < 0 || col < 0) {
+	if (row <= 0 || col <= 0) {
 		return "";
-	} else if (str1[row] == str2[col]) {
-		return getLCSRec(str1, str2, lcs, row - 1, col - 1) + str1[row];
+	} else if (str1[row - 1] == str2[col - 1]) {
+		return getLCSRec(str1, str2, lcs, row - 1, col - 1) + str1[row - 1];
 	} else if (lcs[row - 1][col] > lcs[row][col - 1]) {
 		return getLCSRec(str1, str2, lcs, row - 1, col);
 	} else {
@@ -82,12 +82,12 @@ string getLCSIter(string str1, string str2, int lcs[MAX][MAX]) {
 	int i, j;
 	string lcsStr;
 
-	i = str1.length() - 1;
-	j = str2.length() - 1;
+	i = str1.length();
+	j = str2.length();
 
-	while (i >= 0 && j >= 0) {
-		if (str1[i] == str2[j]) {
-			lcsStr = str1[i] + lcsStr;
+	while (i > 0 && j > 0) {
+		if (str1[i - 1] == str2[j - 1]) {
+			lcsStr = str1[i - 1] + lcsStr;
 			i--;
 			j--;
 		} else if (i > 0 && j > 0 && lcs[i - 1][j] > lcs[i][j - 1]) {
