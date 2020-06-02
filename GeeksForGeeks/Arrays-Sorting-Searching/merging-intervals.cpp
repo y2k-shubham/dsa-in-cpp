@@ -2,7 +2,7 @@
 // https://practice.geeksforgeeks.org/problems/overlapping-intervals/0
 
 // https://www.interviewbit.com/problems/merge-overlapping-intervals/
-// https://www.interviewbit.com/problems/merge-overlapping-intervals/
+// https://leetcode.com/problems/merge-intervals/
 
 /*
 6 8     1 9     2 4     4 7     -1 -1
