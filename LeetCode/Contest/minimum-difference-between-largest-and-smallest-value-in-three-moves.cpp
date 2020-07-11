@@ -1,4 +1,5 @@
 // https://leetcode.com/contest/biweekly-contest-30/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
+// the solution has been created for 'k' moves
 // without map empty checks (throughout the code), it was throwing "c++ AddressSanitizer:DEADLYSIGNAL address points to zero page"
 
 #include <cmath>
