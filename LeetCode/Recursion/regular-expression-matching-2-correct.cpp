@@ -39,6 +39,7 @@ int main() {
     return 0;
 }
 
+// LeetCode total runtime 1092 ms, memory 13 MB
 bool isMatchNormal(string s, string p) {
     if (p.empty()) {
         return s.empty();
@@ -74,6 +75,7 @@ bool isMatchNormal(string s, string p) {
     }
 }
 
+// LeetCode total runtime 196 ms, memory 20 MB
 bool isMatchMemoized(string s, string p, map<string, bool>& memoMap) {
     if (p.empty()) {
         return s.empty();
