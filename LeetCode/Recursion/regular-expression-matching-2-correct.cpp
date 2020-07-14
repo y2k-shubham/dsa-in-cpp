@@ -29,12 +29,19 @@ int main() {
 
     map<string, bool> memoMap;
     assert(isMatchMemoized("aa", "a", memoMap) == false);
+    memoMap.clear();
     assert(isMatchMemoized("aa", "a*", memoMap) == true);
+    memoMap.clear();
     assert(isMatchMemoized("ab", ".*", memoMap) == true);
+    memoMap.clear();
     assert(isMatchMemoized("aab", "c*a*b", memoMap) == true);
+    memoMap.clear();
     assert(isMatchMemoized("mississippi", "mis*is*p*.", memoMap) == false);
+    memoMap.clear();
     assert(isMatchMemoized("a", "ab*.", memoMap) == false);
+    memoMap.clear();
     assert(isMatchMemoized("ab", ".*c", memoMap) == false);
+    memoMap.clear();
 
     return 0;
 }
