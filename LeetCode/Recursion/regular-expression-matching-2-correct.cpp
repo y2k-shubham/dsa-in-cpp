@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/regular-expression-matching/
+// https://www.geeksforgeeks.org/wildcard-pattern-matching/
 // simplified DFS soln explained at https://coderscat.com/leetcode-regular-expression-matching
 
 /*
