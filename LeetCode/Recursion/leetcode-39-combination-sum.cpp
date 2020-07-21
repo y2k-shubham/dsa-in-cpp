@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/combination-sum/
+// LeetCode 39: https://leetcode.com/problems/combination-sum/
 
 #include <cstdio>
 #include <iostream>

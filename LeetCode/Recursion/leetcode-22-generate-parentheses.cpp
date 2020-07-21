@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/generate-parentheses/
+// LeetCode 22: https://leetcode.com/problems/generate-parentheses/
 // https://www.geeksforgeeks.org/print-all-combinations-of-balanced-parentheses/
 
 #include <cstdio>
