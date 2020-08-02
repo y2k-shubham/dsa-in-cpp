@@ -148,7 +148,10 @@ class MinHeap {
             // important to decrement size before calling minHeapify
             size--;
 
-            heapifyDown(0);
+            // this check is important
+            if (size > 0) {
+              heapifyDown(0);
+            }
 
             return topEle;
         } else {
