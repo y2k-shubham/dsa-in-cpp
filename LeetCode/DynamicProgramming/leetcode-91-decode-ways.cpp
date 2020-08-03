@@ -73,8 +73,9 @@ map<char, int> getCharNumMap() {
 }
 
 // top-down memoization, barely accepted
-// runtime: 20ms (bottom 5%)
-// memory: 16.8MB (bottom 5%)
+// LC runtime: 20ms (bottom 5%)
+// LC memory: 16.8MB (bottom 5%)
+// went OOM on InterviewBit
 int calcWays(map<int, char>& numCharMap, string s, int ind, map<int, int>& indNumWaysMap) {
     int sLen = s.size();
     if (sLen == 0 || ind > sLen) {
