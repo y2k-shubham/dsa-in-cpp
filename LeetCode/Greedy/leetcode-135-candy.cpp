@@ -354,13 +354,43 @@ vector<int> candyAssign(vector<int> ratings, bool debug) {
     return candies;
 }
 
-int candy(vector <int>& ratings) {
-  vector <int> candies = candyAssign(ratings, false);
+// LC: faster than 52%
+int candy(vector<int>& ratings) {
+    vector<int> candies = candyAssign(ratings, false);
 
-  int sum = 0;
-  for (int i = 0; i < ratings.size(); i++) {
-    sum += candies[i];
-  }
+    int sum = 0;
+    for (int i = 0; i < ratings.size(); i++) {
+        sum += candies[i];
+    }
 
-  return sum;
+    return sum;
+}
+
+// LC: faster than 87%
+int candySimpl(vector<int>& ratings) {
+    // https://www.youtube.com/watch?v=M4V-JVDkUdY
+    int len = ratings.size();
+    vector<int> candies(len, 1);
+
+    // 1st pass: left to right
+    for (int i = 1; i < len; i++) {
+        if (ratings[i - 1] < ratings[i]) {
+            candies[i] = candies[i - 1] + 1;
+        }
+    }
+
+    // 2nd pass: right to left
+    for (int i = len - 2; i >= 0; i--) {
+        if (ratings[i] > ratings[i + 1]) {
+            candies[i] = max(candies[i], candies[i + 1] + 1);
+        }
+    }
+
+    // sum up candies
+    int sum = 0;
+    for (int i = 0; i < ratings.size(); i++) {
+        sum += candies[i];
+    }
+
+    return sum;
 }
