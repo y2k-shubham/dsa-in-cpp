@@ -1,7 +1,9 @@
 // http://www.geeksforgeeks.org/connect-nodes-at-same-level-with-o1-extra-space/
 // Difficult problem, extension of:
 // http://www.geeksforgeeks.org/connect-nodes-at-same-level/
-// LeetCode 116: https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+// LeetCode 116: https://leetcode.com/problems/populating-next-right-pointers-in-each-node/ (perfect binary trees only)
+// LeetCode 117: https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/ (any binary tree)
+// https://www.interviewbit.com/problems/populate-next-right-pointers-tree/
 
 /*
 Possible Solutions
@@ -27,6 +29,9 @@ But this time we ensure that the soln works for imperfect binary trees as well
  - and similary the nextRight of current node's left can be set by either equating it to it's right
    sibling (if it exists), or else similarly finding the first node to it's right in the same level as we
 	 would've done above
+::
+3. the approach 2 above can be adapted from recursive to iterative soln
+   read the GFG post for that (i don't fucking care)
 */
 
 /*
@@ -54,171 +59,209 @@ But this time we ensure that the soln works for imperfect binary trees as well
 -1 -1
 */
 
+#include <climits>
+#include <cmath>
 #include <cstdio>
 #include <iostream>
-#include <cmath>
-#include <climits>
 
 using namespace std;
 
 struct node {
-	int val;
-	struct node * left;
-	struct node * right;
-	struct node * nextRight;
+    int val;
+    struct node *left;
+    struct node *right;
+    struct node *nextRight;
 };
 
 void inOrder(node *);
-node * createNode(int);
-node * getPath(int);
+node *createNode(int);
+node *getPath(int);
 void showList(node *, const char *);
 void showListRev(node *, const char *);
-node * insert(node *, node *, node *);
-node * getNextRight(node *);
+node *insert(node *, node *, node *);
+node *getNextRight(node *);
 void connect(node *);
 
 int main() {
-	node * root;
-	int val, pos;
+    node *root;
+    int val, pos;
 
-	printf("\nEnter (val, pos) to insert into tree:-\n(pos starts from 1)\n");
-	scanf("%d%d", &val, &pos);
+    printf("\nEnter (val, pos) to insert into tree:-\n(pos starts from 1)\n");
+    scanf("%d%d", &val, &pos);
 
-	root = NULL;
-	while (val != -1 && pos != -1) {
-		node * path = getPath(pos);
-		root = insert(root, path -> right, createNode(val));
+    root = NULL;
+    while (val != -1 && pos != -1) {
+        node *path = getPath(pos);
+        root = insert(root, path->right, createNode(val));
 
-		scanf("%d%d", &val, &pos);
-	}
+        scanf("%d%d", &val, &pos);
+    }
 
-	printf("\nThe inOrder traversal before connection is:-\n");
-	inOrder(root);
-	printf("\n");
+    printf("\nThe inOrder traversal before connection is:-\n");
+    inOrder(root);
+    printf("\n");
 
-	connect(root);
+    connect(root);
 
-	printf("\nThe inOrder traversal after connection is:-\n(number shown in bracket is nextRight node)\n");
-	inOrder(root);
-	printf("\n");
+    printf("\nThe inOrder traversal after connection is:-\n(number shown in bracket is nextRight node)\n");
+    inOrder(root);
+    printf("\n");
 
-	return 0;
+    return 0;
 }
 
-node * createNode(int val) {
-	node * newNode = new node;
+node *createNode(int val) {
+    node *newNode = new node;
 
-	newNode -> val = val;
-	newNode -> left = NULL;
-	newNode -> right = NULL;
-	newNode -> nextRight = NULL;
+    newNode->val = val;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    newNode->nextRight = NULL;
 
-	return newNode;
+    return newNode;
 }
 
-void inOrder(node * root) {
-	if (root != NULL) {
-		inOrder(root -> left);
+void inOrder(node *root) {
+    if (root != NULL) {
+        inOrder(root->left);
 
-		if (root -> nextRight == NULL) {
-			printf("%d ", root -> val);
-		} else {
-			printf("%d(%d) ", root -> val, root -> nextRight -> val);
-		}
+        if (root->nextRight == NULL) {
+            printf("%d ", root->val);
+        } else {
+            printf("%d(%d) ", root->val, root->nextRight->val);
+        }
 
-
-		inOrder(root -> right);
-	}
+        inOrder(root->right);
+    }
 }
 
-node * getPath(int val) {
-	node * head;
+node *getPath(int val) {
+    node *head;
 
-	head = createNode(val);
-	val /= 2;
+    head = createNode(val);
+    val /= 2;
 
-	while (val >= 1) {
-		node * newNode = createNode(val);
-		newNode -> right = head;
-		head = newNode;
+    while (val >= 1) {
+        node *newNode = createNode(val);
+        newNode->right = head;
+        head = newNode;
 
-		val /= 2;
-	}
+        val /= 2;
+    }
 
-	return head;
+    return head;
 }
 
-void showList(node * head, const char * msg) {
-	printf("\nThe %s is:-\n", msg);
-	for (node * list = head; list != NULL; list = list -> right) {
-		printf("%d -> ", list -> val);
-	}
-	printf("NULL\n");
+void showList(node *head, const char *msg) {
+    printf("\nThe %s is:-\n", msg);
+    for (node *list = head; list != NULL; list = list->right) {
+        printf("%d -> ", list->val);
+    }
+    printf("NULL\n");
 }
 
-void showListRev(node * head, const char * msg) {
-	printf("\nThe %s is:-\n", msg);
-	for (node * list = head; list != NULL; list = list -> left) {
-		printf("%d -> ", list -> val);
-	}
-	printf("NULL\n");
+void showListRev(node *head, const char *msg) {
+    printf("\nThe %s is:-\n", msg);
+    for (node *list = head; list != NULL; list = list->left) {
+        printf("%d -> ", list->val);
+    }
+    printf("NULL\n");
 }
 
-node * insert(node * root, node * path, node * newNode) {
-	if (path == NULL) {
-		return newNode;
-	} else {
-		if (path -> val % 2 == 1) {
-			root -> right = insert(root -> right, path -> right, newNode);
-		} else {
-			root -> left = insert(root -> left, path -> right, newNode);
-		}
+node *insert(node *root, node *path, node *newNode) {
+    if (path == NULL) {
+        return newNode;
+    } else {
+        if (path->val % 2 == 1) {
+            root->right = insert(root->right, path->right, newNode);
+        } else {
+            root->left = insert(root->left, path->right, newNode);
+        }
 
-		return root;
-	}
+        return root;
+    }
 }
 
-node * getNextRight(node * root) {
-	if (root == NULL) {
-		return NULL;
-	} else {
-		root = root -> nextRight;
+node *getNextRight(node *root) {
+    if (root == NULL) {
+        return NULL;
+    } else {
+        root = root->nextRight;
 
-		while (root != NULL) {
-			if (root -> left != NULL) {
-				return root -> left;
-			} else if (root -> right != NULL) {
-				return root -> right;
-			} else {
-				root = root -> nextRight;
-			}
-		}
+        while (root != NULL) {
+            if (root->left != NULL) {
+                return root->left;
+            } else if (root->right != NULL) {
+                return root->right;
+            } else {
+                root = root->nextRight;
+            }
+        }
 
-		return NULL;
-	}
+        return NULL;
+    }
 }
 
-void connect(node * root) {
-	if (root != NULL) {
-		connect(root -> nextRight);
+/**
+ * this solution still goes into TLE on LeetCode 117
+ * why?
+ * .
+ * because before starting processing / recursion, we aren't checking
+ * if nextRight is already populated or not
+ */
+void connect(node *root) {
+    if (root != NULL) {
+        connect(root->nextRight);
 
-		if (root -> left != NULL) {
-			if (root -> right != NULL) {
-				// ...and also not here
-				root -> left -> nextRight = root -> right;
-			} else {
-				// if it comes here... (up and down)
-				root -> left -> nextRight = getNextRight(root);
-			}
-		}
+        if (root->left != NULL) {
+            if (root->right != NULL) {
+                // ...and also not here
+                root->left->nextRight = root->right;
+            } else {
+                // if it comes here... (up and down)
+                root->left->nextRight = getNextRight(root);
+            }
+        }
 
-		if (root -> right != NULL) {
-			// ...then it wouldn't come here
-			root -> right -> nextRight = getNextRight(root);
-		}
+        if (root->right != NULL) {
+            // ...then it wouldn't come here
+            root->right->nextRight = getNextRight(root);
+        }
 
-		connect(root -> left);
-		connect(root -> right);
-	}
+        connect(root->left);
+        connect(root->right);
+    }
 }
 
+/**
+ *  - here before processing / recursing, we check if next right pointers are already populated or not
+ *  - this simple check makes such a big difference
+ *    - whereas previous solution was going TLE
+ *    .
+ *    - this one beats 99% submissions on LeetCode
+ *    - and it is also accepted on InterviewBit (where they explicitly asked for iterative soln)
+ */
+void connectRec(node *root) {
+    if (root != NULL) {
+        if (root->nextRight == nullptr) {
+            connectRec(root->nextRight);
+        }
+
+        if (root->right != NULL && root->right->nextRight == nullptr) {
+            // ...then it wouldn't come here
+            root->right->nextRight = getNextRight(root);
+            connectRec(root->right);
+        }
+
+        if (root->left != NULL && root->left->nextRight == nullptr) {
+            if (root->right != NULL) {
+                // ...and also not here
+                root->left->nextRight = root->right;
+            } else {
+                // if it comes here... (up and down)
+                root->left->nextRight = getNextRight(root);
+            }
+            connectRec(root->left);
+        }
+    }
+}
