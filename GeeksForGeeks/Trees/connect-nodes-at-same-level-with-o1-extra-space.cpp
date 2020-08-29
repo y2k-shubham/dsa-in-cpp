@@ -1,26 +1,32 @@
 // http://www.geeksforgeeks.org/connect-nodes-at-same-level-with-o1-extra-space/
 // Difficult problem, extension of:
 // http://www.geeksforgeeks.org/connect-nodes-at-same-level/
+// LeetCode 116: https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 
 /*
 Possible Solutions
-1. (Brute force) Do inorder traversal one level at a time and use a *prev pointer for last visited
-	node at the same level for making links. so at a time, only nodes of a particular level will
-	be connected and this will require the method to be called O(h) times (once for each level)
-	Time: O(nh)		Space: O(h)
-
-2. Store all nodes of a particular level in map of level to list of nodes (map <int, list <node *> >
-	and then traverse each list separately for establishing links
-	Time: O(n)		Space: O(n)
-
-3. Use level order traversal and connect each node's nextRight pointer to to node on front of que
-	(to account for level changes, use the technique for printing level order traversal in multiple
-	lines)
-	Time: O(n)		Space: O(no of nodes in widest level of tree)
-
-4. Use map for storing last visited node (*prev) for each level and then set up links while
-	traversing (this has been used in the following program)
-	Time: O(n)		Space: O(h)
+1.  Soln is based on property of tree being perfect binary tree
+(all leaf nodes are at same level)
+.
+We exploit the recursive property: performing pre-order traversal,
+ - When standing at a node, we set next ptrs of it's children
+ - by recursive property, the current nodes next ptrs were already set when we were at it's parent
+.
+Here's the logic
+ - left child's next ptr will be right child itself
+ - right child's next ptr will be the left child of current node's own next ptr
+   - here, of course, in case current node has to next ptr (is the rightmost node)
+	   then it's child (also being rightmost node) will have it's next ptr empty
+::
+2. (Implemented here) Here we again leverage the recursive property.
+But this time we ensure that the soln works for imperfect binary trees as well
+ - before setting nextRight for left or right children, we first traverse to nextRight of
+   current node itself and set it's nextRight
+ - then nextRight of current node's right can be set by finding the first node to it's right in it's own
+   level (simple iteration)
+ - and similary the nextRight of current node's left can be set by either equating it to it's right
+   sibling (if it exists), or else similarly finding the first node to it's right in the same level as we
+	 would've done above
 */
 
 /*
