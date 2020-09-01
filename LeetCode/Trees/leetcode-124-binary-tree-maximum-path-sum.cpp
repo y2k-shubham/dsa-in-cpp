@@ -1,6 +1,7 @@
 // LeetCode-124: https://leetcode.com/problems/binary-tree-maximum-path-sum/
 // https://www.interviewbit.com/problems/max-sum-path-in-binary-tree/
 // https://www.geeksforgeeks.org/find-maximum-path-sum-in-a-binary-tree/
+// condensed soln: https://www.youtube.com/watch?v=mOdetMWwtoI
 // Hard problem
 
 #include <cassert>
@@ -32,6 +33,7 @@ TreeNode* insert(TreeNode*, TreeNode*, TreeNode*);
 TreeNode* buildTree(vector<int> lvlOrder);
 void testMaxPathSumRec();
 pair <int, int> maxPathSumRec(TreeNode* root, bool debug);
+int maxPathSumRec(TreeNode* root, int* maxSum, bool debug);
 int maxPathSum(TreeNode* root);
 
 int main() {
@@ -107,8 +109,27 @@ pair <int, int> maxPathSumRec(TreeNode* root, bool debug) {
     }
 }
 
+// better performance on LC: beats 45% submissions
+// https://www.youtube.com/watch?v=mOdetMWwtoI
+int maxPathSumRec(TreeNode* root, int* maxSum, bool debug) {
+    if (root == nullptr) {
+        return 0;
+    } else {
+        int lSum = max(maxPathSumRec(root->left, maxSum, debug), 0);
+        int rSum = max(maxPathSumRec(root->right, maxSum, debug), 0);
+
+        *maxSum = max(*maxSum, (lSum + rSum + root->val));
+
+        int crrSum = max(lSum, rSum) + root->val;
+        return crrSum;
+    }
+}
+
 int maxPathSum(TreeNode* root) {
-    return maxPathSumRec(root, false).second;
+    int maxSum = INT_MIN;
+    maxPathSumRec(root, &maxSum, false);
+    return maxSum;
+    // return maxPathSumRec(root, false).second;
 }
 
 // tree construction
