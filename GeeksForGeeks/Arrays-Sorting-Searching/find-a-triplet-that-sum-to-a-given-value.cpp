@@ -2,7 +2,7 @@
 // http://www.practice.geeksforgeeks.org/problem-page.php?pid=732
 
 /*
-Time:  O(nlogn)
+Time:  O(n^2)
 Space: depends on sorting algorithm used, no extra space needed otherwise
 */
 
