@@ -1,5 +1,7 @@
 // LeetCode-99: https://leetcode.com/problems/recover-binary-search-tree/
-// https://www.youtube.com/watch?v=LR3K5XAWV5k
+// https://www.interviewbit.com/problems/recover-binary-search-tree/
+// https://www.geeksforgeeks.org/fix-two-swapped-nodes-of-bst/
+// Solution: https://www.youtube.com/watch?v=LR3K5XAWV5k
 //  - the folowing implemenation is O(n) space approach
 //  - it can be minimized to O(logn) using pointers / references to keep track of last node seen in inOrder
 //    traversal
