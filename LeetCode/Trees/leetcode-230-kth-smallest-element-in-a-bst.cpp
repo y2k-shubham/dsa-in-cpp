@@ -1,6 +1,7 @@
 // LeetCode-230: https://leetcode.com/problems/kth-smallest-element-in-a-bst/submissions/
 // https://www.interviewbit.com/problems/kth-smallest-element-in-tree/
 // https://www.geeksforgeeks.org/find-k-th-smallest-element-in-bst-order-statistics-in-bst/
+// explaination of 2nd approach: https://www.youtube.com/watch?v=KqMm81Y7j9M
 
 #include <climits>
 #include <cmath>
@@ -53,6 +54,34 @@ pair<int, int> kthSmallestRec1(TreeNode *root, int k, int pos) {
         } else {
             return crrRes;
         }
+    }
+}
+
+// LC submission: speed 50 %centile, memory: 92 %centile
+// source: https://www.youtube.com/watch?v=KqMm81Y7j9M
+int kthSmallestRec2(TreeNode *root, int &k) {
+    if (root == nullptr) {
+        return INT_MIN;
+    } else {
+        // find left result
+        int lRes = kthSmallestRec2(root->left, k);
+
+        // if left result if non INT_MIN, then that's the global result: return it
+        if (lRes != INT_MIN) {
+            return lRes;
+        }
+
+        // check if current node itself is the result and if it is, return it
+        if (k == 1) {
+            return root->val;
+        }
+        // decrement k before going into right subtree
+        // why we do this? if we came here, it means we didn't return the current node
+        // yet we 'consumed' it, so we have to keep record that we've seen one more node
+        k--;
+
+        // return right result
+        return kthSmallestRec2(root->right, k);
     }
 }
 
