@@ -1,4 +1,6 @@
 // LeetCode-230: https://leetcode.com/problems/kth-smallest-element-in-a-bst/submissions/
+// https://www.interviewbit.com/problems/kth-smallest-element-in-tree/
+// https://www.geeksforgeeks.org/find-k-th-smallest-element-in-bst-order-statistics-in-bst/
 
 #include <climits>
 #include <cmath>
