@@ -1,5 +1,7 @@
 // https://www.interviewbit.com/problems/best-time-to-buy-and-sell-stocks-ii/
 // LeetCode-122: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/submissions/
+// https://www.geeksforgeeks.org/stock-buy-sell/
+// GFG problem requires printing all buy and sell price pairs too
 
 #include <cassert>
 #include <climits>
