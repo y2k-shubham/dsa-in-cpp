@@ -2,6 +2,11 @@
 // https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-k-times/
 // https://www.youtube.com/watch?v=oDhu5uGq_ic
 
+// Leetcode-123: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+
+// LeetCode-188: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+// leetcode 188 requires memory optimized soln (just keep last row instead of entire matrix)
+
 #include <climits>
 #include <cmath>
 #include <cstdio>
