@@ -16,6 +16,8 @@ int main() {
 
 vector<vector<int> > createMat(int numTxn, int days) {
     int rows = numTxn + 1;
+    // having extra column is actually redundant because in any case we leave the cells under
+    // 1st column untouched (and initialized to 0)
     int cols = days + 1;
 
     vector<vector<int> > mat(rows);
@@ -36,6 +38,7 @@ int maxProfit(const vector<int> &A) {
         return 0;
     }
 
+    // appending vectors https://stackoverflow.com/a/2551785/3679900
     vector<int> price(1);
     price.insert(price.end(), A.begin(), A.end());
 
@@ -44,7 +47,8 @@ int maxProfit(const vector<int> &A) {
     for (int i = 1; i <= k; i++) {
         int maxDiff = INT_MIN;
 
-        // starting j from 2 is important, or we get wrong answer because of incorrect initialization of maxDiff
+        // starting j from 2 is important, or we get wrong answer because of
+        // incorrect initialization of maxDiff
         for (int j = 2; j <= days; j++) {
             maxDiff = max(maxDiff, mat[i - 1][j - 1] - price[j - 1]);
 
