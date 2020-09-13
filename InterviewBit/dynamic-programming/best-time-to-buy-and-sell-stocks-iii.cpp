@@ -30,9 +30,8 @@ vector<vector<int> > createMat(int numTxn, int days) {
     return mat;
 }
 
-int maxProfit(const vector<int> &A) {
+int maxProfit(const vector<int> &A, int k) {
     int days = A.size();
-    int k = 2;
 
     if (days < 2) {
         return 0;
