@@ -1,5 +1,7 @@
 // LeetCode-91: https://leetcode.com/problems/decode-ways/
 // https://www.interviewbit.com/problems/ways-to-decode/
+// short-expln: https://www.youtube.com/watch?v=cQX3yHS0cLo
+// long-expln: https://www.youtube.com/watch?v=o1i7JYWbwOE
 
 #include <cassert>
 #include <climits>
