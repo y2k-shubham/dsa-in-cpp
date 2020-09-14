@@ -1,4 +1,5 @@
-// https://leetcode.com/problems/decode-ways/
+// LeetCode-91: https://leetcode.com/problems/decode-ways/
+// https://www.interviewbit.com/problems/ways-to-decode/
 
 #include <cassert>
 #include <climits>
@@ -8,7 +9,19 @@
 #include <map>
 #include <vector>
 
+#define MOD 1000000007;
 using namespace std;
+
+void testGetIntVal();
+int getIntVal(string&, int, int);
+int findNumDecodings(string);
+int numDecodings(string);
+
+int main() {
+    testGetIntVal();
+
+    return 0;
+}
 
 map<int, char> getNumCharMap() {
     map<int, char> numCharMap = {
@@ -123,10 +136,133 @@ int calcWays(map<int, char>& numCharMap, string s, int ind, map<int, int>& indNu
     }
 }
 
-int numDecodings(string s) {
+int findNumDecodings1(string s) {
     map<int, char> numCharMap = getNumCharMap();
     map<char, int> charNumMap = getCharNumMap();
 
     map<int, int> indNumWaysMap;
     return calcWays(numCharMap, s, 0, indNumWaysMap);
+}
+
+void testGetIntVal() {
+    string str;
+
+    str = "0";
+    assert(getIntVal(str, 0, 0) == 0);
+
+    str = "6";
+    assert(getIntVal(str, 0, 0) == 6);
+
+    str = "61";
+    assert(getIntVal(str, 1, 1) == 1);
+
+    str = "61";
+    assert(getIntVal(str, 0, 1) == 61);
+
+    str = "143";
+    assert(getIntVal(str, 0, 2) == 143);
+
+    str = "143";
+    assert(getIntVal(str, 0, 1) == 14);
+
+    str = "143";
+    assert(getIntVal(str, 1, 2) == 43);
+}
+
+int getIntVal(string& str, int lo, int hi) {
+    int intVal = 0;
+    for (int i = lo; i <= hi; i++) {
+        int crrDig = str.at(i) - '0';
+        intVal = (intVal * 10) + crrDig;
+    }
+    return intVal;
+}
+
+void testFindNumDecodings2() {
+    string str;
+
+    str = "";
+    assert(findNumDecodings2(str, false) == 1);
+
+    str = "0";
+    assert(findNumDecodings2(str, false) == 0);
+
+    str = "01";
+    assert(findNumDecodings2(str, false) == 0);
+
+    str = "1";
+    assert(findNumDecodings2(str, false) == 1);
+
+    str = "10";
+    assert(findNumDecodings2(str, false) == 1);
+
+    str = "11";
+    assert(findNumDecodings2(str, false) == 2);
+
+    str = "110";
+    assert(findNumDecodings2(str, false) == 1);
+
+    str = "";
+    assert(findNumDecodings2(str, false) == 1);
+}
+
+// accepted on LC with 100 %centile speed;
+// InterviewBit is crooked (1) requires handling invalid input sequences, (2) requires ans modulo 10^9+7
+// (both have been handled here)
+int findNumDecodings2(string str, bool debug) {
+    int len = str.size();
+    if (len == 0) {
+        return 1;
+    }
+
+    if (getIntVal(str, 0, 0) == 0) {
+        return 0;
+    }
+
+    int prev2Ways = 1;
+    int prev1Ways = 1;
+    int crrWays = 1;
+    for (int i = 1; i < len; i++) {
+        int crr1Dig = getIntVal(str, i, i);
+        int prev1Dig = getIntVal(str, i - 1, i - 1);
+
+        if (crr1Dig == 0) {
+            // if we see a zero, we have to assert whether or not we are seeing a valid encoding
+            if (prev1Dig == 1 || prev1Dig == 2) {
+                /**
+                 * IMPORTANT: note that here we take prev2Ways instead of prev1Ways
+                 * explaination: say we have ...110
+                 *  - now when we were looking at 2nd 1, we took sum of 2 preceding values to get no of ways
+                 *    (because both 1s in isolation can be AA or two ones together can be L)
+                 *  - however interesting thing happens once we process that 0
+                 *  - now the 2nd one is necessarily consumed by 0 into a 10 -> K
+                 *  - and we can no longer take 11 -> A possibility that we took earlier
+                 */
+                crrWays = prev2Ways;
+            } else {
+                return 0;
+            }
+        } else {
+            // otherwise encoding will always be valid (since any dig from 1 to 9 represent some char)
+            crrWays = prev1Ways;
+        }
+
+        // but if last 2-digs taken together also form a valid char encoding,
+        // then add that (crr - 2) count too
+        int crr2Digs = getIntVal(str, i - 1, i);
+        if ((11 <= crr2Digs && crr2Digs <= 26) && crr2Digs != 20) {
+            crrWays += prev2Ways;
+        }
+
+        crrWays = crrWays % MOD;
+
+        prev2Ways = prev1Ways;
+        prev1Ways = crrWays;
+    }
+
+    return crrWays;
+}
+
+int numDecodings(string s) {
+    return findNumDecodings2(s, false);
 }
