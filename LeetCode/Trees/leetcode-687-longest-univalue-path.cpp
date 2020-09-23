@@ -1,5 +1,6 @@
 // LeetCode-687: https://leetcode.com/problems/longest-univalue-path/submissions/
 // https://www.geeksforgeeks.org/longest-path-values-binary-tree/
+// https://www.youtube.com/watch?v=cwYVhyl2A1s
 // this code was successfully submitted to LC, not compiling for some reason
 
 #include <cmath>
@@ -16,8 +17,15 @@ struct TreeNode {
     TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 
-pair<int, int> longestUnivaluePathRec(TreeNode* root);
-
+// beats only 98% submissions on LC
+/**
+ * the function returns 2 values
+ *  - 1st value denotes the length of longest downwards going chain containing univalue nodes starting at the node
+ *    that returned this value
+ *  - 2nd value denotes the answer => longest univalue path for the subtree rooted at the node that returned this value
+ * 
+ * also do note that this function returns the no of nodes in longest univalue path: which is 1 more than the no of edges
+ */ 
 pair<int, int> longestUnivaluePathRec(TreeNode* root) {
     if (root == nullptr) {
         return {0, 0};
@@ -57,7 +65,35 @@ pair<int, int> longestUnivaluePathRec(TreeNode* root) {
     }
 }
 
-int longestUnivaluePath(TreeNode* root) {
-    return max(0, (longestUnivaluePathRec(root).second - 1));
+// beats only 38% submissions on LC
+// https://www.youtube.com/watch?v=cwYVhyl2A1s
+int longestUnivaluePathRecGlobal(TreeNode* root, int& maxLen) {
+    if (root == nullptr) {
+        return 0;
+    } else {
+        int lRes = longestUnivaluePathRecGlobal(root->left, maxLen);
+        int rRes = longestUnivaluePathRecGlobal(root->right, maxLen);
+
+        int lPath = 0;
+        if (root->left != nullptr && root->val == root->left->val) {
+            lPath = lRes + 1;
+        }
+
+        int rPath = 0;
+        if (root->right != nullptr && root->val == root->right->val) {
+            rPath = rRes + 1;
+        }
+
+        maxLen = max(maxLen, lPath + rPath);
+
+        return max(lPath, rPath);
+    }
 }
 
+int longestUnivaluePath(TreeNode* root) {
+    int maxLen = 0;
+    longestUnivaluePathRecGlobal(root, maxLen);
+    return maxLen;
+
+    // return max(0, (longestUnivaluePathRec(root).second - 1));
+}
