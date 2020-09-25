@@ -3,6 +3,8 @@
  * @author y2k-shubham (Shubham Gupta)
  * @brief LeetCode-980: https://leetcode.com/problems/unique-paths-iii/
  *        backtracking based solution: https://www.youtube.com/watch?v=lh_EBh8FbA4
+ *        https://www.geeksforgeeks.org/unique-paths-covering-every-non-obstacle-block-exactly-once-in-a-grid/
+ *        
  * @date 2020-09-26
  */
 
