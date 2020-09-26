@@ -1,6 +1,8 @@
 // LeetCode-300: https://leetcode.com/problems/longest-increasing-subsequence/submissions/
 // TusharRoy: https://www.youtube.com/watch?v=CE2b_-XfVDk
 // IDeserve: https://www.youtube.com/watch?v=1RpMc3fv0y4&t=212s
+// HackerRank: (requires nlogn soln) https://www.hackerrank.com/challenges/longest-increasing-subsequent
+// InterviewBit: https://www.interviewbit.com/problems/longest-increasing-subsequence/
 
 /**
  * @file leetcode-300-longest-increasing-subsequence.cpp
