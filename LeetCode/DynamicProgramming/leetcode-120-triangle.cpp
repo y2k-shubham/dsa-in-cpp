@@ -1,4 +1,7 @@
 // LeetCode-120: https://leetcode.com/problems/triangle
+// https://www.interviewbit.com/problems/min-sum-path-in-triangle
+// https://www.geeksforgeeks.org/maximum-path-sum-triangle/
+// https://www.hackerrank.com/contests/projecteuler/challenges/euler018/problem this one asks for MAXIMUM sum (rather than minimum)
 
 #include <climits>
 #include <cmath>
