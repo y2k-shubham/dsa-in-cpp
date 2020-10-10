@@ -1,4 +1,5 @@
 // LeetCode-139: https://leetcode.com/problems/word-break/
+// https://www.interviewbit.com/problems/word-break/
 // TusharRoy: https://www.youtube.com/watch?v=WepWFGxiwRs
 
 /*
@@ -76,6 +77,7 @@ void showTab(string s, vector<vector<int> >& tab) {
 }
 
 // poor score on LC: speed 16%, memory 11%
+// goes OOM on InterviewBit
 void fillTab(set<string>& wordSet, string s, vector<vector<int> >& tab) {
     int len = s.size();
 
