@@ -1,4 +1,4 @@
-// LeetCode-534: https://leetcode.com/problems/diameter-of-binary-tree/
+// LeetCode-543: https://leetcode.com/problems/diameter-of-binary-tree/
 // both solns have > 95% percentile for both runtime & memory on LC
 // https://www.geeksforgeeks.org/diameter-of-a-binary-tree-in-on-a-new-method/
 
