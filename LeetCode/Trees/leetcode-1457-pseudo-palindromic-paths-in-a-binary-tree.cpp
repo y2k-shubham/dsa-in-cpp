@@ -1,4 +1,6 @@
 // LeetCode-1457: https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/
+// GFG: https://www.geeksforgeeks.org/print-palindromic-paths-of-binary-tree/
+// CodeForces: https://codeforces.com/problemset/problem/914/E
 
 #include <cmath>
 #include <cstdio>
