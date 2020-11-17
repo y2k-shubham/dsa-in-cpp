@@ -1,4 +1,6 @@
 // LeetCode-1026: https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/
+// GFG: https://www.geeksforgeeks.org/maximum-difference-between-node-and-its-ancestor-in-binary-tree/
+
 
 #include <climits>
 #include <cmath>
