@@ -1,4 +1,5 @@
 // LeetCode-198: https://leetcode.com/problems/house-robber/
+// GFG: https://www.geeksforgeeks.org/find-maximum-possible-stolen-value-houses/
 
 #include <cmath>
 #include <cstdio>
