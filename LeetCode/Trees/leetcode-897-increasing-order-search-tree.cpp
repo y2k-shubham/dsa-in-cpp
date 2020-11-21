@@ -1,4 +1,5 @@
 // LeetCode-897: https://leetcode.com/problems/increasing-order-search-tree/
+// GFG: https://www.geeksforgeeks.org/flatten-bst-to-sorted-list-increasing-order/
 
 #include <cmath>
 #include <cstdio>
