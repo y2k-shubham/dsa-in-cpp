@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// NOT dynamic-programming soln; simple linear scan soln
 // LC-submission speed: 100 %tile, memory: 63 %tile
 bool isSubsequence(string s, string t) {
     int tInd = 0;
