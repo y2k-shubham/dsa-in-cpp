@@ -11,7 +11,7 @@
 using namespace std;
 
 // LC submission => speed: 8 %tile, memory: 6 %tile
-int doesAliceWin1(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
+int doesAliceWin1a(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
     if (winsMemo.find({isAlice, N}) == winsMemo.end()) {
         int result;
 
@@ -30,7 +30,7 @@ int doesAliceWin1(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
                 for (int i = 1; i <= (N / 2); i++) {
                     if ((N % i) == 0) {
                         someMoveMade = true;
-                        result = result | doesAliceWin1(winsMemo, 0, N - i);
+                        result = result | doesAliceWin1a(winsMemo, 0, N - i);
 
                         if (result == 1) {
                             break;
@@ -44,7 +44,7 @@ int doesAliceWin1(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
                 for (int i = 1; i <= (N / 2); i++) {
                     if ((N % i) == 0) {
                         someMoveMade = true;
-                        result = result & doesAliceWin1(winsMemo, 1, N - i);
+                        result = result & doesAliceWin1a(winsMemo, 1, N - i);
 
                         if (result == 0) {
                             break;
@@ -65,26 +65,26 @@ int doesAliceWin1(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
     return winsMemo[{isAlice, N}];
 }
 
-void testDoesAliceWin1() {
+void testDoesAliceWin1a() {
     map<pair<int, int>, int> winsMemo;
     int doesAliceWinComputed;
     int N;
 
     winsMemo = {};
     N = 2;
-    doesAliceWinComputed = doesAliceWin1(winsMemo, 1, N);
+    doesAliceWinComputed = doesAliceWin1a(winsMemo, 1, N);
     // cout << doesAliceWinComputed << endl;
     assert(doesAliceWinComputed == 1);
 
     winsMemo = {};
     N = 3;
-    doesAliceWinComputed = doesAliceWin1(winsMemo, 1, N);
+    doesAliceWinComputed = doesAliceWin1a(winsMemo, 1, N);
     // cout << doesAliceWinComputed << endl;
     assert(doesAliceWinComputed == 0);
 }
 
 // only slightly condensed version of above -> logic wise identical
-int doesAliceWin2(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
+int doesAliceWin1b(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
   if (N == 1) {
     return 1 - isAlice;
   } else {
@@ -96,7 +96,7 @@ int doesAliceWin2(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
         result = 0;
         for (int i = 1; i <= (N / 2); i++) {
           if ((N % i) == 0) {
-            result = result | doesAliceWin2(winsMemo, 0, N - i);
+            result = result | doesAliceWin1b(winsMemo, 0, N - i);
 
             if (result == 1) {
               break;
@@ -107,7 +107,7 @@ int doesAliceWin2(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
         result = 1;
         for (int i = 1; i <= (N / 2); i++) {
           if ((N % i) == 0) {
-            result = result & doesAliceWin2(winsMemo, 1, N - i);
+            result = result & doesAliceWin1b(winsMemo, 1, N - i);
 
             if (result == 0) {
               break;
@@ -125,7 +125,7 @@ int doesAliceWin2(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
 }
 
 int main() {
-    testDoesAliceWin1();
+    testDoesAliceWin1a();
 
     return 0;
 }
