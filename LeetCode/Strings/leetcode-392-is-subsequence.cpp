@@ -1,4 +1,5 @@
 // LeetCode-392: https://leetcode.com/problems/is-subsequence/
+// GFG: https://www.geeksforgeeks.org/given-two-strings-find-first-string-subsequence-second/
 
 #include <cassert>
 #include <climits>
@@ -20,11 +21,11 @@ bool isSubsequenceSimple(string s, string t) {
     int tLen = t.size();
     int sLen = s.size();
 
-    if (tLen > sLen) {
+    if (sLen > tLen) {
         return false;
-    } else if (sLen == 0) {
-        return tLen == 0;
     } else if (tLen == 0) {
+        return sLen == 0;
+    } else if (sLen == 0) {
         return true;
     } else {
         int tInd = 0;
