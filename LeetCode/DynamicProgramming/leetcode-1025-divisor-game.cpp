@@ -83,6 +83,47 @@ void testDoesAliceWin1() {
     assert(doesAliceWinComputed == 0);
 }
 
+// only slightly condensed version of above -> logic wise identical
+int doesAliceWin2(map<pair<int, int>, int>& winsMemo, int isAlice, int N) {
+  if (N == 1) {
+    return 1 - isAlice;
+  } else {
+    pair <int, int> crrNodePair = {isAlice, N};
+
+    if (winsMemo.find(crrNodePair) == winsMemo.end()) {
+      int result;
+      if (isAlice == 1) {
+        result = 0;
+        for (int i = 1; i <= (N / 2); i++) {
+          if ((N % i) == 0) {
+            result = result | doesAliceWin2(winsMemo, 0, N - i);
+
+            if (result == 1) {
+              break;
+            }
+          }
+        }
+      } else {
+        result = 1;
+        for (int i = 1; i <= (N / 2); i++) {
+          if ((N % i) == 0) {
+            result = result & doesAliceWin2(winsMemo, 1, N - i);
+
+            if (result == 0) {
+              break;
+            }
+          }
+        }
+      }
+
+      winsMemo[crrNodePair] = result;
+      return result;
+    } else {
+      return winsMemo[crrNodePair];
+    }
+  }
+}
+
 int main() {
     testDoesAliceWin1();
 
