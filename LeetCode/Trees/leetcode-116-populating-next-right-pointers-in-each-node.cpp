@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 // https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
+// GFG: https://www.geeksforgeeks.org/connect-nodes-at-same-level-with-o1-extra-space/
+// InterviewBit: https://www.interviewbit.com/problems/populate-next-right-pointers-tree/
 
 /*
 			     1
