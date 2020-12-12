@@ -1,5 +1,6 @@
 // LeetCode-1010: https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/
 // Binary-Beast: https://www.youtube.com/watch?v=TzIuVm1npgw
+// GFG: https://www.geeksforgeeks.org/count-pairs-array-whose-sum-divisible-4/
 
 #include <cstdio>
 #include <iostream>
