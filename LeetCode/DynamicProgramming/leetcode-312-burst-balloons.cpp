@@ -96,22 +96,43 @@ int maxCoinsDebug(vector<int>& nums, bool debug) {
 
                 int maxCoins = INT_MIN;
                 for (int k = rBegin; k <= cEnd; k++) {
+                    if (debug) {
+                        printf("\nk = %d\n", k);
+                    }
+
                     int lMult = 1;
                     int rMult = 1;
                     if (k == rBegin) {
+                        if (debug) {
+                            printf("\nk is at begin, updating just rMult to %d\n", nums[cEnd + 1]);
+                        }
                         rMult = nums[cEnd + 1];
                     } else if (k == cEnd) {
+                        if (debug) {
+                            printf("\nk is at   end, updating just lMult to %d\n", nums[rBegin - 1]);
+                        }
                         lMult = nums[rBegin - 1];
                     } else {
+                        if (debug) {
+                            printf("\nk is in betwe, updating lMult to %d and rMult to %d\n", nums[rBegin - 1], nums[cEnd + 1]);
+                        }
                         lMult = nums[rBegin - 1];
                         rMult = nums[cEnd + 1];
                     }
                     int prod = lMult * nums[k] * rMult;
 
-                    int crrCoins = memoMat[rBegin][k - 1] + prod + memoMat[k + 1][cEnd];
+                    int lSum = 0;
+                    if (k > 0) {
+                        lSum = memoMat[rBegin][k - 1]; 
+                    }
+                    int rSum = 0;
+                    if (k == len - 1) {
+                        rSum = memoMat[k + 1][cEnd];
+                    }
+                    int crrCoins = lSum + prod + rSum;
                     maxCoins = max(maxCoins, crrCoins);
                     if (debug) {
-                        printf("\nfor k=%d, %d + (%d x %d x %d) + %d = %d\n", k, memoMat[rBegin][k - 1], lMult, nums[k], rMult, crrCoins);
+                        printf("for k=%d, %d + (%d x %d x %d) + %d = %d\n", k, lSum, lMult, nums[k], rMult, rSum, crrCoins);
                         printf("for k=%d, crrCoins=%d & maxCoins=%d\n", k, crrCoins, maxCoins);
                     }
                 }
