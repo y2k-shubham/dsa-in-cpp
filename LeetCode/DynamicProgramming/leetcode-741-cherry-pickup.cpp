@@ -1,5 +1,7 @@
 // LeetCode-741: https://leetcode.com/problems/cherry-pickup/
-// GFG: https://www.geeksforgeeks.org/maximum-points-top-left-matrix-bottom-right-return-back/
+// GFG:
+//  (1) normal: https://www.geeksforgeeks.org/maximum-points-top-left-matrix-bottom-right-return-back/
+//  (2) DP: https://www.geeksforgeeks.org/maximum-sum-path-in-a-matrix-from-top-to-bottom-and-back/?ref=rp
 // hard problem: 3-dimensional memoization table on matrix search (like DFS)
 // TechLife With Shivank: https://www.youtube.com/watch?v=q3-6jaNvj6c
 
