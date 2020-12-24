@@ -31,6 +31,7 @@ struct ListNode {
  */
 class Solution {
    public:
+    //recursive
     ListNode* swapPairsRec(ListNode* head) {
         if (head == nullptr || head->next == nullptr) {
             return head;
@@ -47,7 +48,22 @@ class Solution {
         }
     }
 
+    // caller
     ListNode* swapPairs(ListNode* head) {
         return swapPairsRec(head);
+    }
+
+    // iterative
+    ListNode* swapPairs2(ListNode* head) {
+        if (head == NULL || head->next == NULL) {
+            return head;
+        } else {
+            for (ListNode* list = head; list != NULL && list->next != NULL; list = list->next->next) {
+                int tmp = list->val;
+                list->val = list->next->val;
+                list->next->val = tmp;
+            }
+            return head;
+        }
     }
 };
