@@ -1,5 +1,6 @@
 // LeetCode-498: https://leetcode.com/problems/diagonal-traverse/
 // LeetCode Monthly Challenge: https://leetcode.com/explore/challenge/card/december-leetcoding-challenge/572/week-4-december-22nd-december-28th/3580/
+// GFG: https://www.geeksforgeeks.org/print-matrix-diagonal-pattern/
 
 #include <cassert>
 #include <cstdio>
