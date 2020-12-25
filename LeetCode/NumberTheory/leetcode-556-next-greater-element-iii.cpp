@@ -1,5 +1,12 @@
 // LeetCode-556: https://leetcode.com/problems/next-greater-element-iii/
 // LeetCode Dec-2020: https://leetcode.com/explore/challenge/card/december-leetcoding-challenge/572/week-4-december-22nd-december-28th/3578/
+/**
+ * @file leetcode-556-next-greater-element-iii.cpp
+ * @author Shubham Gupta (y2k-shubham)
+ * @brief The problematic bit in LeetCode is this line
+ * "Note that the returned integer should fit in 32-bit integer, if there is a valid answer but it does not fit in 32-bit integer, return -1."
+ * @date 2020-12-26
+ */
 
 #include <algorithm>
 #include <cassert>
@@ -50,7 +57,13 @@ class Solution {
             if (n < 0) {
                 n = 0;
             }
-            n = (n * 10) + revDigVec[i];
+            int newVal = (n * 10) + revDigVec[i];
+            if (newVal >= n) {
+                n = newVal;
+            } else {
+                // INT_MAX overflow case -> LeetCode rejects without this check
+                return -1;
+            }
 
             // printf("after processing vec[%d] = %d, n = %d\n", i, revDigVec[i], n);
         }
@@ -180,6 +193,12 @@ class TestSolution {
         nOutExpected = 718;
         nOutComputed = soln.convertRevDigVecToInt(revDigVec);
         assert(nOutExpected == nOutComputed);
+
+        revDigVec = {9, 9, 9, 9, 9, 9, 9, 9, 1, 9};
+        nOutExpected = -1;
+        nOutComputed = soln.convertRevDigVecToInt(revDigVec);
+        // cout << nOutComputed << endl;
+        assert(nOutExpected == nOutComputed);
     }
 
     void testFindNextGreaterNum() {
@@ -237,12 +256,12 @@ class TestSolution {
 
         // 1999999999
         revDifVecIn = {9, 9, 9, 9, 9, 9, 9, 9, 9, 1};
-        // 13222344
-        resOutExpected = {false, {9, 9, 9, 9, 9, 9, 9, 9, 9, 1}};
-        showVec(resOutExpected.second, "tc-8 required output");
+        // 9199999999
+        resOutExpected = {true, {9, 9, 9, 9, 9, 9, 9, 9, 1, 9}};
+        // showVec(resOutExpected.second, "tc-8 required output");
         resOutComputed = soln.findNextGreaterNum(revDifVecIn);
-        showVec(resOutComputed.second, "tc-8");
-        printf("bool = %s\n", (resOutComputed.first ? "true" : "false"));
+        // showVec(resOutComputed.second, "tc-8");
+        // printf("bool = %s\n", (resOutComputed.first ? "true" : "false"));
         assert(resOutExpected == resOutComputed);
     }
 
