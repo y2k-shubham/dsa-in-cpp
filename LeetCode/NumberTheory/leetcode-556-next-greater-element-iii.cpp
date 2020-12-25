@@ -1,5 +1,10 @@
 // LeetCode-556: https://leetcode.com/problems/next-greater-element-iii/
 // LeetCode Dec-2020: https://leetcode.com/explore/challenge/card/december-leetcoding-challenge/572/week-4-december-22nd-december-28th/3578/
+
+// almost same problems
+// GFG: https://www.geeksforgeeks.org/find-next-greater-number-set-digits/
+// InterviewBit: https://www.interviewbit.com/problems/next-permutation/
+
 /**
  * @file leetcode-556-next-greater-element-iii.cpp
  * @author Shubham Gupta (y2k-shubham)
