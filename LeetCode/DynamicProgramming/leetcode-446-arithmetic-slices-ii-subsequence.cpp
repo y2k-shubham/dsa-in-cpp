@@ -4,8 +4,9 @@
 #include <cmath>
 #include <cstdio>
 #include <iostream>
-#include <map>
 #include <sstream>
+#include <unordered_map>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -28,38 +29,77 @@ class Solution {
         cout << endl;
     }
 
-    void showMap(map<int, int> freqMap, string which) {
-        printf("\n%s map is:-\n", which.c_str());
+    void showMap(unordered_map<long long int, pair<int, int> > freqMap, string which) {
+        printf("\n%s unordered_map is:-\n", which.c_str());
 
-        for (map<int, int>::iterator it = freqMap.begin(); it != freqMap.end(); it++) {
-            printf("[%d] -> %d\n", (*it).first, (*it).second);
+        for (unordered_map<long long int, pair<int, int> >::iterator it = freqMap.begin(); it != freqMap.end(); it++) {
+            printf("[%lld] -> (len1=%d, len>1=%d)\n", (*it).first, (*it).second.first, (*it).second.second);
         }
     }
 
+    // LeetCode: TLE using unordered_map & speed = 14 %tile using unordered_map (memory = 18 %tile)
     int findNumArithmeticSubseqs(vector<int> vec, bool debug) {
         int len = vec.size();
-        vector<map<int, int> > diffSubseqsEndingMemo(len);
+        vector<unordered_map<long long int, pair<int, int> > > diffSubseqsEndingMemo(len);
 
         int numTotalArithSubseqs = 0;
         for (int i = 1; i < len; i++) {
             if (debug) {
                 printf("\n===========\n");
                 showVec(vec, "vec");
-                printf("\n---------\nat vec[i=%d] = %d\n", i, vec[i]);
+                printf("\nat vec[i=%d] = %d\n", i, vec[i]);
             }
-            map<int, int> diffSubseqsEnding;
-
+            unordered_map<long long int, pair<int, int> > diffSubseqsEnding;
             for (int j = 0; j < i; j++) {
-                int diff = vec[i] - vec[j];
-                int numSubseqsCrrDiff = 0;
+                long long int diff = vec[i] - ((long long int)vec[j]);
+                if (debug) {
+                    printf("\n- - - - - - \n");
+                    printf("with vec[j=%d] = %d, diff = %lld\n", j, vec[j], diff);
+                }
 
-                numSubseqsCrrDiff = max(1, diffSubseqsEndingMemo[j][diff]);
-                diffSubseqsEnding[diff] = diffSubseqsEnding[diff] + numSubseqsCrrDiff;
+                // length=1 diff subseqs
+                int num1LenSubseqsCrrDiff = 0;
+
+                // if (diffSubseqsEndingMemo[j].find(diff) != diffSubseqsEndingMemo[j].end()) {
+                //     // all 1-len subseqs ending at j can also become 1-len subseqs ending at i
+                //     num1LenSubseqsCrrDiff += diffSubseqsEndingMemo[j][diff].first;
+                // }
+
+                // vec[j], vec[i] will itself also be a 1-len subseq
+                num1LenSubseqsCrrDiff += 1;
+
+                diffSubseqsEnding[diff].first += num1LenSubseqsCrrDiff;
 
                 if (debug) {
-                    printf("\nwith vec[j=%d] = %d, numTotalArithSubseqs with diff = %d ending at j=%d is %d\n", j, vec[j], diff, j, diffSubseqsEndingMemo[j][diff]);
-                    printf("so numSubseqsCrrDiff with diff = %d ending at i=%d becomes %d\n", diff, i, numSubseqsCrrDiff);
-                    printf("and diffSubseqsEnding[diff=%d] for i=%d becomes %d\n", diff, i, diffSubseqsEnding[diff]);
+                    printf("num1LenSubseqsCrrDiff = %d, diffSubseqsEnding[diff=%lld].first = %d\n", num1LenSubseqsCrrDiff, diff, diffSubseqsEnding[diff].first);
+                }
+
+                // length>1 diff subseqs
+                int numLongSubseqsCrrDiff = 0;
+
+                if (diffSubseqsEndingMemo[j].find(diff) != diffSubseqsEndingMemo[j].end()) {
+                    // all 1-len subseqs ending at j can also become 2 len subseqs ending at i
+                    numLongSubseqsCrrDiff += diffSubseqsEndingMemo[j][diff].first;
+                    // all > 1-len subeqs ending at j can also become > 1-len subseqs ending at i
+                    numLongSubseqsCrrDiff += diffSubseqsEndingMemo[j][diff].second;
+
+                    if (debug) {
+                        printf("no of   1-len subseqs ending at vec[j=%d] = %d contributing = %d\n", j, vec[j], diffSubseqsEndingMemo[j][diff].first);
+                        printf("no of > 1-len subseqs ending at vec[j=%d] = %d contributing = %d\n", j, vec[j], diffSubseqsEndingMemo[j][diff].second);
+                    }
+                }
+
+                if (debug) {
+                    printf("adding numLongSubseqsCrrDiff = %d to diffSubseqsEnding[diff=%lld].second = %d to make %d\n", numLongSubseqsCrrDiff, diff, diffSubseqsEnding[diff].second, (diffSubseqsEnding[diff].second + numLongSubseqsCrrDiff));
+                }
+
+                diffSubseqsEnding[diff].second += numLongSubseqsCrrDiff;
+                // update no of 3+ len subseqs
+                numTotalArithSubseqs += numLongSubseqsCrrDiff;
+
+                if (debug) {
+                    printf("numLongSubseqsCrrDiff = %d, diffSubseqsEnding[diff=%lld].second = %d\n", numLongSubseqsCrrDiff, diff, diffSubseqsEnding[diff].second);
+                    printf("\nnumTotalArithSubseqs = %d\n", numTotalArithSubseqs);
                 }
             }
 
@@ -93,8 +133,20 @@ class TestSolution {
 
         vecIn = {2, 4, 6, 8, 10};
         outExpected = 7;
-        outComputed = soln.findNumArithmeticSubseqs(vecIn, true);
-        cout << outComputed << endl;
+        outComputed = soln.findNumArithmeticSubseqs(vecIn, false);
+        // cout << outComputed << endl;
+        assert(outExpected == outComputed);
+
+        vecIn = {0, 2000000000, -294967296};
+        outExpected = 0;
+        outComputed = soln.findNumArithmeticSubseqs(vecIn, false);
+        // cout << outComputed << endl;
+        assert(outExpected == outComputed);
+
+        vecIn = {1, 1, 1, 1};
+        outExpected = 5;
+        outComputed = soln.findNumArithmeticSubseqs(vecIn, false);
+        // cout << outComputed << endl;
         assert(outExpected == outComputed);
     }
 };
