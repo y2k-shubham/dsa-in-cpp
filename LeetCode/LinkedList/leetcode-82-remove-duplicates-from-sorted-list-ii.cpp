@@ -1,5 +1,7 @@
 // LeetCode-82: https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
 // LC Jan 2021 challenge: https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3593/
+// GFG: https://www.geeksforgeeks.org/remove-occurrences-duplicates-sorted-linked-list/
+// InterviewBit: https://www.interviewbit.com/problems/remove-duplicates-from-sorted-list-ii/
 
 // Not easy; quite a few edge cases
 
