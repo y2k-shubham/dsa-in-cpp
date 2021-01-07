@@ -1,5 +1,11 @@
 // LeetCode 3: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// LC Jan 2021 challenge: https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3595/
+// GFG: https://www.geeksforgeeks.org/length-of-the-longest-substring-without-repeating-characters/
+// InterviewBit: https://www.interviewbit.com/problems/longest-substring-without-repeat/
+
+// this 1st attempt is much much faster than the re-attempt
 // geeksforgeeksandgeeksquiz
+
 #include <cstdio>
 #include <iostream>
 #include <map>
