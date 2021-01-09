@@ -1,6 +1,9 @@
 // LeetCode-127: https://leetcode.com/problems/word-ladder/
 // smart, simple soln: https://www.youtube.com/watch?v=O3hUyXyHeBw
 
+// this (arguably) more advanced soln submitted 
+// is ~ 8x slower than simpler, more rudimentary solution submitted in next attempt
+
 #include <cassert>
 #include <cstdio>
 #include <functional>
