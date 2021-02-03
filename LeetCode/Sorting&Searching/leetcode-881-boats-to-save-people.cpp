@@ -31,12 +31,18 @@ class Solution {
                 return -1;
             }
         } else {
-            int mid = (lo + hi) / 2;
+            // this pruning also doesn't bring any visible gains
+            if (vec[lo] <= ele) {
+                int mid = (lo + hi) / 2;
 
-            if (vec[mid] <= ele) {
-                return max(mid, findFloorInd(vec, mid + 1, hi, ele));
+                // this <= condition is necessary for correctness (of this entire program)
+                if (vec[mid] <= ele) {
+                    return max(mid, findFloorInd(vec, mid + 1, hi, ele));
+                } else {
+                    return findFloorInd(vec, lo, mid - 1, ele);
+                }
             } else {
-                return findFloorInd(vec, lo, mid - 1, ele);
+                return -1;
             }
         }
     }
@@ -54,23 +60,42 @@ class Solution {
         sort(people.begin(), people.end());
 
         int len = people.size();
+        // vector to keep track if the person has already been put in a boat or not
         vector<int> occ(len, 0);
 
         int numBoats = 0;
         for (int i = len - 1; i >= 0; i--) {
+            // proceed only if person hasn't already been put up on a boat
             if (occ[i] != 1) {
+                // weight of current person
                 int m1Weight = people[i];
+                // max weight of other person to enable both of them to cross together
                 int maxM2Weight = limit - m1Weight;
 
-                int floorInd = findFloorInd(people, 0, i - 1, maxM2Weight);
-                if (floorInd >= 0) {
-                    int biggestUnoccInd = findBiggestUnoccInd(occ, floorInd);
-                    if (biggestUnoccInd >= 0) {
-                        occ[biggestUnoccInd] = 1;
+                /**
+                 * - we try pairing up another person with current (ith) person only if it is possible
+                 *   to do so (lightest person should weigh less than or equal to max admissible weight)
+                 * - although this 'pruning' doesn't bring any visible performance gain
+                 */
+                if (people[0] <= maxM2Weight) {
+                    // find index of heaviest person possible to pair up with current person
+                    int floorInd = findFloorInd(people, 0, i - 1, maxM2Weight);
+
+                    if (floorInd >= 0) {
+                        // find the index of heaviest person (still unpaired) that can be put with current one
+                        // because of this linear scan, the worst case runtime would be O(n^2)
+                        int biggestUnoccInd = findBiggestUnoccInd(occ, floorInd);
+                        if (biggestUnoccInd >= 0) {
+                            // if there is such a person, pair them up
+                            // (so now we have a lesser person to team up)
+                            occ[biggestUnoccInd] = 1;
+                        }
                     }
                 }
 
+                // mark current person as having being put on a boat
                 occ[i] = 1;
+                // increase no of boats
                 numBoats++;
             }
         }
