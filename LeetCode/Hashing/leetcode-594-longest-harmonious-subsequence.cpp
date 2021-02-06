@@ -2,9 +2,10 @@
 // Feb-2021 challenge: https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3628/
 
 /**
- * (observation without assertion)
  * this question can also be solved by simply sorting the array
  * and scanning windows (two pointer approach)
+ * 
+ * that soln has been added in 'Sorting&Searching' package (and is more performant)
  */
 
 #include <cmath>
@@ -14,6 +15,8 @@
 #include <map>
 #include <utility>
 #include <vector>
+#include <algorithm>
+#include <climits>
 
 using namespace std;
 
@@ -30,7 +33,8 @@ class Solution {
         return freqMap;
     }
 
-    int findLHSLen(map<int, int>& freqMap) {
+    // LC-submission: speed 90 %tile
+    int findLHSLen1(map<int, int>& freqMap) {
         int maxSubseqLen = 0;
 
         map<int, int>::iterator it1 = freqMap.begin();
@@ -58,17 +62,21 @@ class Solution {
         return maxSubseqLen;
     }
 
+    int findLHSLen1Caller(vector <int>& nums) {
+        map<int, int> freqMap = prepareFreqMap(nums);
+        if (freqMap.size() == 1) {
+            return 0;
+        }
+
+        return findLHSLen1(freqMap);
+    }
+
     int findLHS(vector<int>& nums) {
         int len = nums.size();
         if (len <= 1) {
             return 0;
         }
 
-        map<int, int> freqMap = prepareFreqMap(nums);
-        if (freqMap.size() == 1) {
-            return 0;
-        }
-
-        return findLHSLen(freqMap);
+        return findLHSLen1Caller(nums);
     }
 };
