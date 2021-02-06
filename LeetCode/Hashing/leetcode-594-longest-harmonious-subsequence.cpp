@@ -2,9 +2,10 @@
 // Feb-2021 challenge: https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3628/
 
 /**
- * (observation without assertion)
  * this question can also be solved by simply sorting the array
  * and scanning windows (two pointer approach)
+ * 
+ * that soln has been added in 'Sorting&Searching' package (and is more performant)
  */
 
 #include <cmath>
@@ -70,46 +71,12 @@ class Solution {
         return findLHSLen1(freqMap);
     }
 
-    // LC-submission: speed 99 %tile
-    int findLHSLen2(vector <int>& vec) {
-        int len = vec.size();
-        sort(vec.begin(), vec.end());
-
-        int maxConseqSeqLen = 0;
-
-        int prevNum = INT_MIN;
-        int prevSeqLen = -1;
-        
-        int i = 0;
-        while (i < len) {
-            int crrNum = vec[i];
-            int crrSeqLen = 0;
-            while ((i < len) && (vec[i] == crrNum)) {
-                i++;
-                crrSeqLen++;
-            }
-
-            if ((prevNum != INT_MIN) && ((prevNum + 1) == crrNum)) {
-                maxConseqSeqLen = max(maxConseqSeqLen, (prevSeqLen + crrSeqLen));
-            }
-
-            prevNum = crrNum;
-            prevSeqLen = crrSeqLen;
-        }
-
-        return maxConseqSeqLen;
-    }
-
-    int findLHSLen2Caller(vector <int>& nums) {
-        return findLHSLen2(nums);
-    }
-
     int findLHS(vector<int>& nums) {
         int len = nums.size();
         if (len <= 1) {
             return 0;
         }
 
-        return findLHSLen2Caller(nums);
+        return findLHSLen1Caller(nums);
     }
 };
