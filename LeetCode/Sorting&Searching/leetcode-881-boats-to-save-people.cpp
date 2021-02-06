@@ -56,7 +56,7 @@ class Solution {
     }
 
     // barely accepted: speed 5 %tile, memory 7 %tile
-    int numRescueBoats(vector<int>& people, int limit) {
+    int numRescueBoats1(vector<int>& people, int limit) {
         sort(people.begin(), people.end());
 
         int len = people.size();
@@ -102,4 +102,36 @@ class Solution {
 
         return numBoats;
     }
+
+    // much better: speed 52 %tile, memory 41 %tile
+    // this one is O(nlogn) -> sorting + O(n) -> simple two pointer approach
+    int numRescueBoats2(vector<int>& people, int limit) {
+        int len = people.size();
+        sort(people.begin(), people.end());
+        
+        int numBoats = 0;
+        
+        int i = 0;
+        int j = len - 1;
+        while (i <= j) {
+            if (i != j) {
+                int lightPWgt = people[i];
+                int heavyPWgt = people[j];
+
+                if ((lightPWgt + heavyPWgt) <= limit) {
+                    i++;
+                }
+            }
+            
+            j--;
+            numBoats++;
+        }
+        
+        return numBoats;
+    }
+    
+    int numRescueBoats(vector <int>& people, int limit) {
+        return numRescueBoats2(people, limit);
+    }
+
 };
