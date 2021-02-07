@@ -1,5 +1,7 @@
 // LeetCode-199: https://leetcode.com/problems/binary-tree-right-side-view/
 // LC Feb 2021 challenge: https://leetcode.com/explore/featured/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3630/
+// GFG: https://www.geeksforgeeks.org/print-right-view-binary-tree-2/
+// InterviewBit: https://www.interviewbit.com/problems/right-view-of-binary-tree/
 
 #include <climits>
 #include <cstdio>
