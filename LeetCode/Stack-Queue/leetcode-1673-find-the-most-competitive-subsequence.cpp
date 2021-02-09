@@ -1,39 +1,66 @@
 // LeetCode-1673: https://leetcode.com/problems/find-the-most-competitive-subsequence/
+// O(n) soln using 'monotonic stack': https://www.youtube.com/watch?v=Ol7yz0XKKLw
 
+#include <algorithm>
 #include <cstdio>
 #include <iostream>
-#include <map>
-#include <set>
+#include <stack>
 #include <vector>
 
 using namespace std;
 
 class Solution {
    private:
-    map<int, vector<int> > buildIndexMap(vector<int>& nums) {
-        map<int, vector<int> > indexMap;
+    stack<int> buildMonoIncStack(vector<int>& vec, int k) {
+        int len = vec.size();
 
-        for (int i = 0; i < nums.size(); i++) {
-            indexMap[nums[i]].push_back(i);
+        stack<int> stk;
+        int elesToRemove = len - k;
+
+        for (int i = 0; i < len; i++) {
+            int crrEle = vec[i];
+
+            if (stk.empty() || (stk.top() <= crrEle)) {
+                stk.push(crrEle);
+            } else {
+                while (!stk.empty() && (elesToRemove >= 1) && (stk.top() > crrEle)) {
+                    stk.pop();
+                    elesToRemove--;
+                }
+                stk.push(crrEle);
+            }
         }
 
-        return indexMap;
+        while (elesToRemove > 0) {
+            stk.pop();
+            elesToRemove--;
+        }
+
+        return stk;
     }
 
-  vector <int> buildCompSubseq(vector <int>& nums, int k, map <int, vector <int> >& indMap) {
-    vector <int> compSubseq(k);
+    vector<int> convertToVec(stack<int> stk) {
+        int len = stk.size();
+        vector<int> vec(len);
 
-    int crrLen = 0;
-    for (map <int, vector <int> >::iterator it = indMap.begin(); it != indMap.end(); it++) {
-      
+        for (int i = 0; i < len; i++) {
+            vec[i] = stk.top();
+            stk.pop();
+        }
+
+        reverse(vec.begin(), vec.end());
+
+        return vec;
     }
-  }
 
    public:
     vector<int> mostCompetitive(vector<int>& nums, int k) {
+        int len = nums.size();
+        if (len == k) {
+            return nums;
+        }
+
+        stack<int> stk = buildMonoIncStack(nums, k);
+        return convertToVec(stk);
     }
 };
-
-int main() {
-    return 0;
-}
