@@ -1,7 +1,10 @@
 // LeetCode-138: https://leetcode.com/problems/copy-list-with-random-pointer/
 // Feb 2021 challenge: https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/585/week-2-february-8th-february-14th/3635/
 
-// running into SEGFAULT (AddressSanitizer ..)
+// GFG set-1: https://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/
+// GFG set-2: https://www.geeksforgeeks.org/clone-linked-list-next-arbit-pointer-set-2/
+// GFG O(1) space: https://www.geeksforgeeks.org/clone-linked-list-next-random-pointer-o1-space/
+
 
 #include <cstdio>
 #include <iostream>
@@ -40,6 +43,14 @@ class Solution {
         }
 
         return head;
+    }
+
+    void showLinkedList(Node* head) {
+        printf("\nLinkedList is:-\n");
+        for (Node* list = head; list != nullptr; list = list->next) {
+            printf("%d -> ", list->val);
+        }
+        printf("null\n");
     }
 
     unordered_map<int, Node*> preparePosnNodeMap(Node* head) {
@@ -86,8 +97,8 @@ class Solution {
     }
 
     Node* copyListWithoutRandomPtrs(Node* orgHead) {
-        Node* copyHead;
-        Node* copyList;
+        Node* copyHead = NULL;
+        Node* copyList = NULL;
 
         for (Node* orgList = orgHead; orgList != nullptr; orgList = orgList->next) {
             if (copyHead == nullptr) {
@@ -104,9 +115,9 @@ class Solution {
 
     void copyRandomPtrs(Node* orgHead, Node* copyHead) {
         unordered_map<Node*, int> orgNodePosnMap = prepareNodePosnMap(orgHead);
-        showNodePosnMap(orgNodePosnMap);
+        // showNodePosnMap(orgNodePosnMap);
         unordered_map<int, Node*> copyPosnNodeMap = preparePosnNodeMap(copyHead);
-        showPosnNodeMap(copyPosnNodeMap);
+        // showPosnNodeMap(copyPosnNodeMap);
 
         Node* orgList = orgHead;
         Node* copyList = copyHead;
@@ -127,6 +138,7 @@ class Solution {
         }
 
         Node* copyHead = copyListWithoutRandomPtrs(orgHead);
+        // showLinkedList(copyHead);
         copyRandomPtrs(orgHead, copyHead);
 
         return copyHead;
@@ -136,8 +148,16 @@ class Solution {
 int main() {
     Solution soln = *(new Solution());
 
-    Node* head = soln.convertToLinkedList({8, 1, 3, 7});
-    soln.showPosnNodeMap(soln.preparePosnNodeMap(head));
+    Node* head = soln.convertToLinkedList({7, 13, 11, 10, 1});
+    
+    unordered_map <int, Node*> posnNodeMap = soln.preparePosnNodeMap(head);
+    soln.showPosnNodeMap(posnNodeMap);
+    posnNodeMap[2]->random = posnNodeMap[1];
+    posnNodeMap[3]->random = posnNodeMap[5];
+    posnNodeMap[4]->random = posnNodeMap[3];
+
+    soln.copyRandomList(head);
+    
     soln.showNodePosnMap(soln.prepareNodePosnMap(head));
 
     return 0;
