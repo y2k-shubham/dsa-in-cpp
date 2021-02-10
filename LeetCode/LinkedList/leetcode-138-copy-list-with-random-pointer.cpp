@@ -1,7 +1,10 @@
 // LeetCode-138: https://leetcode.com/problems/copy-list-with-random-pointer/
 // Feb 2021 challenge: https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/585/week-2-february-8th-february-14th/3635/
 
-// running into SEGFAULT (AddressSanitizer ..)
+// GFG set-1: https://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/
+// GFG set-2: https://www.geeksforgeeks.org/clone-linked-list-next-arbit-pointer-set-2/
+// GFG O(1) space: https://www.geeksforgeeks.org/clone-linked-list-next-random-pointer-o1-space/
+
 
 #include <cstdio>
 #include <iostream>
