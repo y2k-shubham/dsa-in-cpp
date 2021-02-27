@@ -28,18 +28,35 @@ class Solution {
 
         int pushIdx = 0;
         int popIdx = 0;
+        /**
+         * note that here the check is only for popIdx & not pushIdx because
+         * 'pushed' sequence will be run-through earlier than 'popped' sequence
+         * (if that doesn't happen, then it will be an invalid sequence-pair
+         * & we'll end up in last 'else' clase thereby returning false)
+         */
         while (popIdx < len) {
+            /**
+              * note that even in case of duplicates (where there is ambiguity whether
+              * to pop an item first or push an item first), this approach (of trying to pop first
+              * before trying to push) would still work since
+              * here we dont have to arrive at any specific order of pushes & pops; rather
+              * we only have to establish that there is some order that can result in given sequences
+              */
             if (!stk.empty() && (stk.top() == popped[popIdx])) {
+                //first we try to pop items from stack
                 stk.pop();
                 popIdx++;
             } else if (pushIdx < len) {
+                // if pop noo possible, then we try to push to stack
                 stk.push(pushed[pushIdx]);
                 pushIdx++;
             } else {
+                // if neither is possible, we've found an invalid pair of sequnces
                 return false;
             }
         }
 
+        // all pre-requisites should have been met
         return (stk.empty()) && (pushIdx == len) && (popIdx == len);
     }
 };
