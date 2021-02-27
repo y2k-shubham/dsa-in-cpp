@@ -1,4 +1,5 @@
 // LeetCode-1019: https://leetcode.com/problems/next-greater-node-in-linked-list/submissions/
+// GFG: https://www.geeksforgeeks.org/next-greater-element-in-the-linked-list/
 
 #include <cstdio>
 #include <iostream>
