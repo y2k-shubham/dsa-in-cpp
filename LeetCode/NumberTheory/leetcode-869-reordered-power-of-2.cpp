@@ -1,5 +1,6 @@
 // LeetCode-869: https://leetcode.com/problems/reordered-power-of-2/
 // LC Mar-2021 challenge: https://leetcode.com/explore/challenge/card/march-leetcoding-challenge-2021/590/week-3-march-15th-march-21st/3679/
+// GFG (similar not identical): https://www.geeksforgeeks.org/reorder-digits-of-a-given-number-to-make-it-a-power-of-2/
 
 #include <cstdio>
 #include <iostream>
