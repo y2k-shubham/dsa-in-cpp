@@ -1,5 +1,7 @@
 // LeetCode-329: https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
 // LC April 2021 challenge: https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/594/week-2-april-8th-april-14th/3703/
+
+// slightly simplified problems below:
 // GFG: https://www.geeksforgeeks.org/longest-increasing-path-matrix/
 // InterviewBit: https://www.interviewbit.com/problems/increasing-path-in-matrix/
 
