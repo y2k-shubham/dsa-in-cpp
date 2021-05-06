@@ -3,32 +3,32 @@
 // not very hard, but also not as straightforward as it seems
 
 #include <cassert>
+#include <climits>
+#include <cmath>
 #include <cstdio>
 #include <iostream>
 #include <vector>
-#include <cmath>
-#include <climits>
 
 using namespace std;
 
 void testCalcMinJmpSrcInd();
-vector <int> calcMinJmpSrcInd(vector <int>);
+vector<int> calcMinJmpSrcInd(vector<int>);
 void showVec(vector<int>, string);
 void testCalcMinHops();
-vector <int> calcMinHops(vector <int>);
+vector<int> calcMinHops(vector<int>);
 void testCalcMinHopsOpt();
-vector <int> calcMinHopsOpt(vector <int>);
+vector<int> calcMinHopsOpt(vector<int>);
 void testJump();
-int jump(vector <int>&);
+int jump(vector<int>&);
 
 int main() {
-  // testCalcMinJmpSrcInd();
+    // testCalcMinJmpSrcInd();
 
-  // testCalcMinHops();
-  testCalcMinHopsOpt();
-  testJump();
+    // testCalcMinHops();
+    testCalcMinHopsOpt();
+    testJump();
 
-  return 0;
+    return 0;
 }
 
 void showVec(vector<int> vec, string name) {
@@ -56,40 +56,40 @@ void showVec(vector<int> vec, string name) {
 }
 
 void testCalcMinJmpSrcInd() {
-  vector <int> outExpected;
+    vector<int> outExpected;
 
-  outExpected = {INT_MAX, 0, 0, 0, 0, 0, 0};
-  assert(calcMinJmpSrcInd({8, 1, 3, 7, 4, 2, 9}) == outExpected);
+    outExpected = {INT_MAX, 0, 0, 0, 0, 0, 0};
+    assert(calcMinJmpSrcInd({8, 1, 3, 7, 4, 2, 9}) == outExpected);
 
-  outExpected = {INT_MAX, 0, 0, 1, 1};
-  assert(calcMinJmpSrcInd({2,3,1,1,4}) == outExpected);
+    outExpected = {INT_MAX, 0, 0, 1, 1};
+    assert(calcMinJmpSrcInd({2, 3, 1, 1, 4}) == outExpected);
 
-  outExpected = {INT_MAX, 0, 0, 0, INT_MAX};
-  assert(calcMinJmpSrcInd({3,2,1,0,4}) == outExpected);
+    outExpected = {INT_MAX, 0, 0, 0, INT_MAX};
+    assert(calcMinJmpSrcInd({3, 2, 1, 0, 4}) == outExpected);
 }
 
 // not required, thought it might help, but unnecessary
-vector <int> calcMinJmpSrcInd(vector <int> jmp) {
-  vector <int> minJmpSrcInd(jmp.size(), INT_MAX);
-  for (int i = 0; i < jmp.size() - 1; i++) {
-    for (int j = 1; ((i + j) < jmp.size()) && (j <= jmp[i]); j++) {
-      minJmpSrcInd[i + j] = min(minJmpSrcInd[i + j], i);
+vector<int> calcMinJmpSrcInd(vector<int> jmp) {
+    vector<int> minJmpSrcInd(jmp.size(), INT_MAX);
+    for (int i = 0; i < jmp.size() - 1; i++) {
+        for (int j = 1; ((i + j) < jmp.size()) && (j <= jmp[i]); j++) {
+            minJmpSrcInd[i + j] = min(minJmpSrcInd[i + j], i);
+        }
     }
-  }
-  return minJmpSrcInd;
+    return minJmpSrcInd;
 }
 
 void testCalcMinHops() {
-  vector <int> outExpected;
+    vector<int> outExpected;
 
-  outExpected = {0, 1, 1, 1, 1, 1, 1};
-  assert(calcMinHops({8, 1, 3, 7, 4, 2, 9}) == outExpected);
+    outExpected = {0, 1, 1, 1, 1, 1, 1};
+    assert(calcMinHops({8, 1, 3, 7, 4, 2, 9}) == outExpected);
 
-  outExpected = {0, 1, 1, 2, 2};
-  assert(calcMinHops({2,3,1,1,4}) == outExpected);
+    outExpected = {0, 1, 1, 2, 2};
+    assert(calcMinHops({2, 3, 1, 1, 4}) == outExpected);
 
-  outExpected = {0, 1, 1, 1, INT_MAX};
-  assert(calcMinHops({3,2,1,0,4}) == outExpected);
+    outExpected = {0, 1, 1, 1, INT_MAX};
+    assert(calcMinHops({3, 2, 1, 0, 4}) == outExpected);
 }
 
 /**
@@ -110,30 +110,30 @@ void testCalcMinHops() {
  * we'll be scanning entire remaining array in each iteration,
  * resulting in O(n^2) operations
  */
-vector <int> calcMinHops(vector <int> jmp) {
-  vector <int> minHops(jmp.size(), INT_MAX);
+vector<int> calcMinHops(vector<int> jmp) {
+    vector<int> minHops(jmp.size(), INT_MAX);
 
-  minHops[0] = 0;
-  for (int i = 0; i < jmp.size() - 1; i++) {
-    for (int j = 1; ((i + j) < jmp.size()) && (j <= jmp[i]); j++) {
-      minHops[i + j] = min(minHops[i + j], minHops[i] + 1);
+    minHops[0] = 0;
+    for (int i = 0; i < jmp.size() - 1; i++) {
+        for (int j = 1; ((i + j) < jmp.size()) && (j <= jmp[i]); j++) {
+            minHops[i + j] = min(minHops[i + j], minHops[i] + 1);
+        }
     }
-  }
 
-  return minHops;
+    return minHops;
 }
 
 void testCalcMinHopsOpt() {
-  vector <int> outExpected;
+    vector<int> outExpected;
 
-  outExpected = {0, 1, 1, 1, 1, 1, 1};
-  assert(calcMinHopsOpt({8, 1, 3, 7, 4, 2, 9}) == outExpected);
+    outExpected = {0, 1, 1, 1, 1, 1, 1};
+    assert(calcMinHopsOpt({8, 1, 3, 7, 4, 2, 9}) == outExpected);
 
-  outExpected = {0, 1, 1, 2, 2};
-  assert(calcMinHopsOpt({2,3,1,1,4}) == outExpected);
+    outExpected = {0, 1, 1, 2, 2};
+    assert(calcMinHopsOpt({2, 3, 1, 1, 4}) == outExpected);
 
-  outExpected = {0, 1, 1, 1, INT_MAX};
-  assert(calcMinHopsOpt({3,2,1,0,4}) == outExpected);
+    outExpected = {0, 1, 1, 1, INT_MAX};
+    assert(calcMinHopsOpt({3, 2, 1, 0, 4}) == outExpected);
 }
 
 /**
@@ -149,47 +149,82 @@ void testCalcMinHopsOpt() {
  *    till this point, we woud naturally be unable to optimize for reaching
  *    anything closer than this
  */
-vector <int> calcMinHopsOpt(vector <int> jmp) {
-  vector <int> minHops(jmp.size(), INT_MAX);
+vector<int> calcMinHopsOpt(vector<int> jmp) {
+    vector<int> minHops(jmp.size(), INT_MAX);
 
-  minHops[0] = 0;
-  for (int i = 0; i < jmp.size() - 1; i++) {
-    int jMax = min(i + jmp[i], ((int) jmp.size() - 1));
+    minHops[0] = 0;
+    for (int i = 0; i < jmp.size() - 1; i++) {
+        int jMax = min(i + jmp[i], ((int)jmp.size() - 1));
 
-    for (int j = jMax; j >= i + 1; j--) {
-      int crrHops = minHops[i] + 1;
-      if (crrHops < minHops[j]) {
-        minHops[j] = crrHops;
-      } else {
-        // this is crucial pruning step
-        break;
-      }
+        for (int j = jMax; j >= i + 1; j--) {
+            int crrHops = minHops[i] + 1;
+            if (crrHops < minHops[j]) {
+                minHops[j] = crrHops;
+            } else {
+                // this is crucial pruning step
+                break;
+            }
+        }
     }
-  }
 
-  return minHops;
+    return minHops;
 }
 
 void testJump() {
-  vector <int> numsInp;
+    vector<int> numsInp;
 
-  numsInp = {8, 1, 3, 7, 4, 2, 9};
-  assert(jump(numsInp) == 1);
+    numsInp = {8, 1, 3, 7, 4, 2, 9};
+    assert(jump(numsInp) == 1);
 
-  numsInp = {2,3,1,1,4};
-  assert(jump(numsInp) == 2);
+    numsInp = {2, 3, 1, 1, 4};
+    assert(jump(numsInp) == 2);
 
-  numsInp = {3,2,1,0,4};
-  assert(jump(numsInp) == -1);
+    numsInp = {3, 2, 1, 0, 4};
+    assert(jump(numsInp) == -1);
+}
+
+int jumpAtmpt1(vector<int>& nums) {
+    // vector <int> minHops = calcMinHops(nums);
+    vector<int> minHops = calcMinHopsOpt(nums);
+    int len = nums.size();
+    if (minHops[len - 1] == INT_MAX) {
+        return -1;
+    } else {
+        return minHops[len - 1];
+    }
+}
+
+int jumpAtmpt2(vector<int>& nums) {
+    int len = nums.size();
+
+    vector<int> minJumpsToReach(len, INT_MAX);
+    minJumpsToReach[0] = 0;
+
+    for (int i = 0; i < len - 1; i++) {
+        int maxStepFromI = nums[i];
+        if (maxStepFromI == 0) {
+            continue;
+        }
+
+        int minJumpsToReachI = minJumpsToReach[i];
+
+        int maxDstIdx = min((i + maxStepFromI), len - 1);
+        for (int j = maxDstIdx; j > i; j--) {
+            if ((minJumpsToReachI + 1) < minJumpsToReach[j]) {
+                minJumpsToReach[j] = minJumpsToReachI + 1;
+            } else {
+                break;
+            }
+        }
+
+        if (minJumpsToReach[len - 1] != INT_MAX) {
+            return minJumpsToReach[len - 1];
+        }
+    }
+
+    return minJumpsToReach[len - 1];
 }
 
 int jump(vector<int>& nums) {
-  // vector <int> minHops = calcMinHops(nums);
-  vector <int> minHops = calcMinHopsOpt(nums);
-  int len = nums.size();
-  if (minHops[len - 1] == INT_MAX) {
-    return -1;
-  } else {
-    return minHops[len - 1];
-  }
+    return jumpAtmpt2(nums);
 }
