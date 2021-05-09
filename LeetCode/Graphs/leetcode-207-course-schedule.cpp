@@ -1,5 +1,14 @@
 // LeetCode-207: https://leetcode.com/problems/course-schedule/
-// Cycle detection in directed graph: https://www.youtube.com/watch?v=rKQaZuoUR4M&list=PLrmLmBdmIlpu2f2g8ltqaaCZiq6GJvl1j&index=11&t=369s
+// LC May 2021 challenge: https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/598/week-1-may-1st-may-7th/3729/
+
+/**
+ * @file leetcode-207-course-schedule.cpp
+ * @author Shubham Gupta (y2k-shubham)
+ * @brief Cycle detection in directed graph
+ *        YouTube: https://www.youtube.com/watch?v=rKQaZuoUR4M&list=PLrmLmBdmIlpu2f2g8ltqaaCZiq6GJvl1j&index=11&t=369s
+ *        GeeksForGeeks: (simple DFS) https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+ * @date 2021-05-10
+ */
 
 #include <cstdio>
 #include <iostream>
