@@ -1,78 +1,93 @@
 // LeetCode-207: https://leetcode.com/problems/course-schedule/
-// Cycle detection in directed graph: https://www.youtube.com/watch?v=rKQaZuoUR4M&list=PLrmLmBdmIlpu2f2g8ltqaaCZiq6GJvl1j&index=11&t=369s
+// LC May 2021 challenge: https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/598/week-1-may-1st-may-7th/3729/
+
+/**
+ * @file leetcode-207-course-schedule.cpp
+ * @author Shubham Gupta (y2k-shubham)
+ * @brief Cycle detection in directed graph
+ *        YouTube: https://www.youtube.com/watch?v=rKQaZuoUR4M&list=PLrmLmBdmIlpu2f2g8ltqaaCZiq6GJvl1j&index=11&t=369s
+ *        GeeksForGeeks: (simple DFS) https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+ * @date 2021-05-10
+ */
 
 #include <cstdio>
 #include <iostream>
-#include <unordered_map>
 #include <unordered_set>
-#include <list>
 #include <vector>
-#include <cassert>
 
 using namespace std;
 
-void testBuildGraph();
-vector <list <int> > buildGraph(int V, vector <vector <int> >& preReqs);
+class Solution {
+   private:
+    vector<unordered_set<int>> createGraph(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<unordered_set<int>> adjList(numCourses);
 
-int main() {
-  testBuildGraph();
+        for (int i = 0; i < prerequisites.size(); i++) {
+            int childCourse = prerequisites[i][0];
+            int parentCourse = prerequisites[i][1];
 
-  return 0;
-}
+            adjList[parentCourse].insert(childCourse);
+        }
 
-void testBuildGraph() {
-  int VIn;
-  vector <vector <int> > preReqsIn;
-  vector <list <int> > adjListOutExpected;
-  vector <list <int> > adjListOutComputed;
+        return adjList;
+    }
 
-  VIn = 0;
-  preReqsIn = {};
-  adjListOutExpected = {};
-  adjListOutComputed = buildGraph(VIn, preReqsIn);
-  assert(adjListOutExpected == adjListOutComputed);
+    bool hasCycleRec(vector<unordered_set<int>>& adjList, vector<int>& status, int crrVert) {
+        status[crrVert] = 1;  // currently being explored
 
-  VIn = 2;
-  preReqsIn = {{1}};
-  adjListOutExpected = {{}, {0}};
-  adjListOutComputed = buildGraph(VIn, preReqsIn);
-  assert(adjListOutExpected == adjListOutComputed);
+        unordered_set<int> children = adjList[crrVert];
+        for (unordered_set<int>::iterator it = children.begin(); it != children.end(); it++) {
+            int childVert = *it;
 
-  VIn = 0;
-  preReqsIn = {{1, 2}, {}, {1}};
-  adjListOutExpected = {{}, {0, 2}, {0}};
-  adjListOutComputed = buildGraph(VIn, preReqsIn);
-  assert(adjListOutExpected == adjListOutComputed);
+            switch (status[childVert]) {
+                case 0:
+                    if (hasCycleRec(adjList, status, childVert)) {
+                        return true;
+                    }
+                    break;
 
-  VIn = 0;
-  preReqsIn = {};
-  adjListOutExpected = {};
-  adjListOutComputed = buildGraph(VIn, preReqsIn);
-  assert(adjListOutExpected == adjListOutComputed);
+                case 1:
+                    return true;
+                    break;
 
-  VIn = 0;
-  preReqsIn = {};
-  adjListOutExpected = {};
-  adjListOutComputed = buildGraph(VIn, preReqsIn);
-  assert(adjListOutExpected == adjListOutComputed);
+                case 2:
+                    continue;
+                    break;
 
-  VIn = 0;
-  preReqsIn = {};
-  adjListOutExpected = {};
-  adjListOutComputed = buildGraph(VIn, preReqsIn);
-  assert(adjListOutExpected == adjListOutComputed);
-}
+                default:
+                    return true;
+                    break;
+            }
+        }
 
-vector <list <int> > buildGraph(int V, vector <vector <int> >& preReqs) {
-   vector <list <int> > adjList(V);
+        status[crrVert] = 2;
 
-   for (int i = 0; i < preReqs.size(); i++) {
-     vector <int> parents = preReqs[i];
-     for (int j = 0; j < parents.size(); j++) {
-       adjList[parents[j]].push_back(i);
-     }
-   }
+        return false;
+    }
 
-   return adjList;
-}
+    bool hasCycle(vector<unordered_set<int>>& adjList) {
+        int numVerts = adjList.size();
 
+        vector<int> status(numVerts, 0);
+        for (int i = 0; i < numVerts; i++) {
+            if (status[i] == 0) {
+                if (hasCycleRec(adjList, status, i)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+   public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        if (numCourses == 1) {
+            return true;
+        }
+
+        vector<unordered_set<int>> adjList = createGraph(numCourses, prerequisites);
+
+        return !hasCycle(adjList);
+    }
+};
