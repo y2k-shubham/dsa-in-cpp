@@ -1,8 +1,10 @@
 // LeetCode-1354: https://leetcode.com/problems/construct-target-array-with-multiple-sums/
 // May 2021 challenge: https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/599/week-2-may-8th-may-14th/3737/
 
-// pretty much impossible to solve
-// too many edge cases
+// pretty much impossible to solve;
+// - maths involved
+// - plus too many edge cases
+// and still barely passes; LC submission speed 6 %tile, memory 8 %tile
 
 #include <cmath>
 #include <cstdio>
@@ -51,6 +53,7 @@ class Solution {
         return sum;
     }
 
+   // still barely passes; LC submission speed 6 %tile, memory 8 %tile
     bool isReducible(vector<int>& vec) {
         int len = vec.size();
 
