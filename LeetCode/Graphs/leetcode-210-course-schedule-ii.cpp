@@ -96,7 +96,7 @@ class Solution {
         return false;
     }
 
-    void buildTopoSortStackRec(
+    void buildTopoSortStackRec1(
         vector<unordered_set<int>>& graph,
         unordered_set<int>& visitedSet,
         stack<int>& orderStack,
@@ -110,7 +110,7 @@ class Solution {
         if (!children.empty()) {
             for (unordered_set<int>::iterator it = children.begin(); it != children.end(); it++) {
                 if (visitedSet.find(*it) == visitedSet.end()) {
-                    buildTopoSortStackRec(graph, visitedSet, orderStack, *it);
+                    buildTopoSortStackRec1(graph, visitedSet, orderStack, *it);
                 }
             }
         }
@@ -119,7 +119,7 @@ class Solution {
     }
 
     // LC submission: speed 11 %tile, memory 5 %tile
-    stack<int> buildTopoSortStack(
+    stack<int> buildTopoSortStack1(
         int numCourses,
         vector<unordered_set<int>>& graph) {
         stack<int> orderStack;
@@ -127,7 +127,45 @@ class Solution {
 
         for (int i = 0; i < numCourses; i++) {
             if (visitedSet.find(i) == visitedSet.end()) {
-                buildTopoSortStackRec(graph, visitedSet, orderStack, i);
+                buildTopoSortStackRec1(graph, visitedSet, orderStack, i);
+            }
+        }
+
+        return orderStack;
+    }
+
+    void buildTopoSortStackRec2(
+        vector<unordered_set<int>>& graph,
+        vector <bool>& visitedStatus,
+        stack<int>& orderStack,
+        int crrVert) {
+        if (visitedStatus[crrVert]) {
+            return;
+        }
+        visitedStatus[crrVert] = true;
+
+        unordered_set<int> children = graph[crrVert];
+        if (!children.empty()) {
+            for (unordered_set<int>::iterator it = children.begin(); it != children.end(); it++) {
+                if (!visitedStatus[*it]) {
+                    buildTopoSortStackRec2(graph, visitedStatus, orderStack, *it);
+                }
+            }
+        }
+
+        orderStack.push(crrVert);
+    }
+
+    // LC submission: speed 15 %tile, memory 5 %tile
+    stack<int> buildTopoSortStack2(
+        int numCourses,
+        vector<unordered_set<int>>& graph) {
+        stack<int> orderStack;
+        vector <bool> visitedStatus(numCourses, false);
+
+        for (int i = 0; i < numCourses; i++) {
+            if (!visitedStatus[i]) {
+                buildTopoSortStackRec2(graph, visitedStatus, orderStack, i);
             }
         }
 
@@ -160,7 +198,7 @@ class Solution {
             return {};
         }
 
-        stack<int> topoSortStack = buildTopoSortStack(numCourses, graph);
+        stack<int> topoSortStack = buildTopoSortStack1(numCourses, graph);
         if (this->debug) {
             showStack(topoSortStack);
         }
