@@ -1,5 +1,7 @@
 // LeetCode-114: https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 // LC May 2021 challenge: https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/599/week-2-may-8th-may-14th/3742/
+// GFG: https://www.geeksforgeeks.org/flatten-a-binary-tree-into-linked-list/
+// InterviewBit: https://www.interviewbit.com/problems/flatten-binary-tree-to-linked-list/
 
 #include <cstdio>
 #include <iostream>
