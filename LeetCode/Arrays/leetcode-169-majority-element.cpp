@@ -1,5 +1,6 @@
 // LeetCode-169: https://leetcode.com/problems/majority-element/
-// Tech-Dose explanation: https://www.youtube.com/watch?v=bg6r_fgtpMQ
+// InterviewBit: https://www.interviewbit.com/problems/majority-element/
+// Tech-Dose soln: https://www.youtube.com/watch?v=bg6r_fgtpMQ
 
 #include <cstdio>
 #include <iostream>
