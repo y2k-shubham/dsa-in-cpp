@@ -3,6 +3,20 @@
 // LeetCode-1836: https://leetcode.com/problems/longest-string-chain/
 // LC May 2021 challenge: https://leetcode.com/explore/challenge/card/may-leetcoding-challenge-2021/600/week-3-may-15th-may-21st/3746/
 
+/**
+ * passing test-cases
+ * ["a","b","ba","bca","bda","bdca"]
+ * ["xbc","pcxbcf","xb","cxbc","pcxbc"]
+ * ["mcq"]
+ * ["mc", "m", "cm", "cmsju", "mcq", "cms", "cjm", "cmsj"]
+ * ["abcd","dbqca"]
+ * 
+ * failing test-cases
+ * ["cozddh","ferawpnpff","ivftewfdn","mq","zmq","nwzmbq","rcozyddh","rcozyddhm","czddh","hrcozyddhm","vftewfdn","vtefdn","rpeyrgwm","wcjaki","jiddfyh","nzmbq","xnvzrzc","zdh","utcc","peyrgwm","pergwm","vftefdn","rcozddh","h","zddh","tcc","nnwhszmbuq","utgcc","nnwszmbq","jiddfh","zmbq","ivtftewfdn","vefdn","ferawpnff","xnvzrc","nnwhszmbq","dh","nwszmbq"]
+ * expected: 10
+ * actual: 3
+ */
+
 #include <cmath>
 #include <cstdio>
 #include <iostream>
