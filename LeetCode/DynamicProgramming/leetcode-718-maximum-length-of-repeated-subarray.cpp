@@ -1,5 +1,6 @@
 // LeetCode-718: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
 // LC July 2021 challenge: https://leetcode.com/explore/challenge/card/july-leetcoding-challenge-2021/609/week-2-july-8th-july-14th/3807/
+// GFG: https://www.geeksforgeeks.org/longest-common-subarray-in-the-given-two-arrays/
 
 #include <cmath>
 #include <cstdio>
@@ -22,6 +23,7 @@ class Solution {
     }
 
     // barely accepted; speed 5 %tile, memory 11 %tile
+    // space optimization is straightforward: we only use 2 rows at a time (current & previous)
     int fillMemoMat(vector<int>& vec1, vector<int>& vec2) {
         int len1 = vec1.size();
         int len2 = vec2.size();
