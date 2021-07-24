@@ -1,4 +1,5 @@
 // LeetCode-1726: https://leetcode.com/problems/tuple-with-same-product/
+// [facepalm easy] soln by CodingInterviews: https://www.youtube.com/watch?v=xID4T_GUFeQ
 
 #include <algorithm>
 #include <cmath>
@@ -7,6 +8,7 @@
 #include <list>
 #include <unordered_set>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -156,6 +158,28 @@ class Solution {
         return numTuplesTotal;
     }
 
+    // CodingInterviews: https://www.youtube.com/watch?v=xID4T_GUFeQ
+    int findNumTuples4(vector <int>& vec) {
+        int len = vec.size();
+        
+        unordered_map <int, int> prodNumTuplesMap;
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                int crrProd = vec[i] * vec[j];
+                prodNumTuplesMap[crrProd]++;
+            }
+        }
+
+        int totalNumTuples = 0;
+        for (unordered_map <int, int>::iterator i = prodNumTuplesMap.begin(); i != prodNumTuplesMap.end(); i++) {
+            if (i->second > 1) {
+                totalNumTuples += nC2(i->second) * 8;
+            }
+        }
+
+        return totalNumTuples;
+    }
+
    public:
     int tupleSameProduct(vector<int>& nums) {
         int len = nums.size();
@@ -176,6 +200,8 @@ class Solution {
 
         // slow: it runs into TLE
         // time complexity O(n^3) [assuming searching unordered_set is amortized O(1)]
-        return findNumTuples3(nums, consideredProds);
+        // return findNumTuples3(nums, consideredProds);
+
+        return findNumTuples4(nums);
     }
 };
