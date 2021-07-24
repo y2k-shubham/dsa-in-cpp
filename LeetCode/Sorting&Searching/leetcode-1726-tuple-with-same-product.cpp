@@ -1,6 +1,7 @@
 // LeetCode-1726: https://leetcode.com/problems/tuple-with-same-product/
 
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <iostream>
 #include <list>
@@ -64,7 +65,7 @@ class Solution {
 
     // wrong : it misses out pairs
     // sample breaking case [1,2,4,8,16,32,64]
-    int findNumTuples(vector<int>& vec, unordered_set<int>& consideredProds, int left, int right) {
+    int findNumTuples1(vector<int>& vec, unordered_set<int>& consideredProds, int left, int right) {
         int remLen = right - left + 1;
         if (remLen < 4) {
             return 0;
@@ -90,16 +91,16 @@ class Solution {
         }
 
         return crrProdPermutations +
-               findNumTuples(vec, consideredProds, left, right - 1) +
-               findNumTuples(vec, consideredProds, left + 1, right);
+               findNumTuples1(vec, consideredProds, left, right - 1) +
+               findNumTuples1(vec, consideredProds, left + 1, right);
     }
 
     // slow: it runs into TLE;
     // time complexity O(n^3 * logn) [n^2 possible products, nlogn search time per product]
-    int findNumTuples(vector<int>& vec, unordered_set<int>& consideredProds) {
-      int len = vec.size();
+    int findNumTuples2(vector<int>& vec, unordered_set<int>& consideredProds) {
+        int len = vec.size();
 
-      int numTuplesTotal = 0;
+        int numTuplesTotal = 0;
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j < len; j++) {
                 int crrProd = vec[i] * vec[j];
@@ -111,6 +112,41 @@ class Solution {
 
                 list<pair<int, int> > tuplesCrrProd = findTuplesWithProd(vec, crrProd, 0, len - 1);
                 int numTuplesCrrProd = tuplesCrrProd.size();
+                if (numTuplesCrrProd > 1) {
+                    numTuplesTotal += nC2(numTuplesCrrProd) * 8;
+                }
+            }
+        }
+
+        return numTuplesTotal;
+    }
+
+    // slow: it runs into TLE
+    // time complexity O(n^3) [assuming searching unordered_set is amortized O(1)]
+    int findNumTuples3(vector<int>& vec, unordered_set<int>& consideredProds) {
+        unordered_set<int> vecSet(vec.begin(), vec.end());
+
+        int len = vec.size();
+
+        int numTuplesTotal = 0;
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                int crrProd = vec[i] * vec[j];
+
+                if (consideredProds.find(crrProd) != consideredProds.end()) {
+                    continue;
+                }
+                consideredProds.insert(crrProd);
+
+                int crrProdSqrt = (int)ceil(sqrt(crrProd));
+                int numTuplesCrrProd = 0;
+                int crrEle;
+                for (int k = 0; crrEle = vec[k], crrEle < crrProdSqrt; k++) {
+                    if (((crrProd % crrEle) == 0) && (vecSet.find(crrProd / crrEle) != vecSet.end())) {
+                        numTuplesCrrProd++;
+                    }
+                }
+
                 if (numTuplesCrrProd > 1) {
                     numTuplesTotal += nC2(numTuplesCrrProd) * 8;
                 }
@@ -132,10 +168,14 @@ class Solution {
 
         // wrong : it misses out pairs
         // sample breaking case [1,2,4,8,16,32,64]
-        // return findNumTuples(nums, consideredProds, 0, len - 1);
+        // return findNumTuples1(nums, consideredProds, 0, len - 1);
 
-        // wrong: it runs into TLE
+        // slow: it runs into TLE
         // time complexity O(n^3 * logn) [n^2 possible products, nlogn search time per product]
-        return findNumTuples(nums, consideredProds);
+        // return findNumTuples2(nums, consideredProds);
+
+        // slow: it runs into TLE
+        // time complexity O(n^3) [assuming searching unordered_set is amortized O(1)]
+        return findNumTuples3(nums, consideredProds);
     }
 };
