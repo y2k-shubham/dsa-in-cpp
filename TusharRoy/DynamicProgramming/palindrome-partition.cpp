@@ -13,6 +13,10 @@
 
 using namespace std;
 
+////////////////
+// common stuff
+////////////////
+
 vector<vector<int> > createMemoMat(int len, int defaultValue) {
     vector<vector<int> > memoMat(len);
 
@@ -23,6 +27,38 @@ vector<vector<int> > createMemoMat(int len, int defaultValue) {
 
     return memoMat;
 }
+
+void showMemoMat(vector<vector<int> >& memoMat, string str) {
+    int len = str.size();
+    
+    printf("\t");
+    for (int i = 0; i < len; i++) {
+        printf("%c\t", str.at(i));
+    }
+    cout << endl;
+
+    printf("\t");
+    for (int i = 0; i < len; i++) {
+        printf("[%d]\t", i);
+    }
+    cout << endl;
+
+    for (int i = 0; i < len; i++) {
+        printf("%c [%d]\t", str.at(i), i);
+        for (int j = 0; j < len; j++) {
+            if (j < i) {
+                printf("\t");
+            } else {
+                printf("%d\t", memoMat[i][j]);
+            }
+        }
+        cout << endl;
+    }
+}
+
+/////////////////////
+// 1st implementation
+/////////////////////
 
 bool isPalindrome(string str) {
     int len = str.size();
@@ -179,9 +215,121 @@ void testFindMinPartitions1() {
     assert(outExpected == outComputed);
 }
 
+/////////////////////
+// 2nd implementation
+/////////////////////
+
+int findMinPartitions2(string str, bool debug) {
+    int len = str.size();
+    if (len <= 1) {
+        return 0;
+    }
+    if (isPalindrome(str)) {
+        return 0;
+    }
+
+    vector<vector<int> > memoMat = createMemoMat(len, 0);
+
+    int rLo = 0;
+    int cHi = len - 1;
+
+    for (int l = 2; l <= len; l++) {
+        int i = rLo;
+        int j = l - 1;
+
+        while (j <= cHi) {
+            if ((str.at(i) == str.at(j)) && ((i + 1 == j) || (memoMat[i + 1][j - 1] == 0))) {
+                // nothing
+            } else {
+                int minCuts = INT_MAX;
+                for (int k = i; k < j; k++) {
+                    minCuts = min(minCuts, 1 + memoMat[i][k] + memoMat[k + 1][j]);
+                }
+                memoMat[i][j] = minCuts;
+            }
+
+            i++;
+            j++;
+        }
+    }
+
+    if (debug) {
+        showMemoMat(memoMat, str);
+    }
+
+    return memoMat[0][len - 1];
+}
+
+void testFindMinPartitions2() {
+    string str;
+    int outExpected;
+    int outComputed;
+
+    str = "";
+    outExpected = 0;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "d";
+    outExpected = 0;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "da";
+    outExpected = 1;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "dd";
+    outExpected = 0;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "ddy";
+    outExpected = 1;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "dyd";
+    outExpected = 0;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "common";
+    outExpected = 2;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "uncommon";
+    outExpected = 4;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "uncommonly";
+    outExpected = 6;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "ababb";
+    outExpected = 1;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "aaabba";
+    outExpected = 1;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+
+    str = "ababbbabbababa";
+    outExpected = 3;
+    outComputed = findMinPartitions2(str, false);
+    assert(outExpected == outComputed);
+}
+
 int main() {
     testIsPalindrome();
     testFindMinPartitions1();
+    testFindMinPartitions2();
 
     return 0;
 }
