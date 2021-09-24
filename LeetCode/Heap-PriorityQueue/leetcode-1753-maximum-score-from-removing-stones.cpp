@@ -8,6 +8,8 @@ using namespace std;
 
 class Solution {
    public:
+
+   // LC-submission: speed 31 %tile, memory 36 %tile
     int maximumScore(int a, int b, int c) {
         priority_queue<int> pQue;
 
