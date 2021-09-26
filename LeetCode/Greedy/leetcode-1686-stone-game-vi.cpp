@@ -1,4 +1,6 @@
 // LeetCode-1686: https://leetcode.com/problems/stone-game-vi/
+// simple but NOT easy
+
 // soln-blog: https://federico-feresini.medium.com/
 // soln-video: https://www.youtube.com/watch?v=iEf6bWgqHZo
 
@@ -20,7 +22,7 @@ class Solution {
             sumVec[i] = {aliceValues[i] + bobValues[i], aliceValues[i]};
         }
 
-        // sort in descending order
+        // sort in descending order https://stackoverflow.com/a/9025216/3679900
         // note that for two stones, if sum of values are same, then it doesn't matter which
         // one we pick (mathematically the net gain / loss will be same)
         sort(sumVec.begin(), sumVec.end(), greater<pair<int, int> >());
