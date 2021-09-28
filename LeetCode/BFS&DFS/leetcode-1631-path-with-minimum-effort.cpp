@@ -233,6 +233,7 @@ class Solution {
             pQue.pop();
             pushedMat[r][c] = false;
 
+            // note that using sortingDist in place of newDist gives wrong answer (maybe some corner cases are left-out)
             int newDist = findMinEffortToReach(heights, effortMat, r, c);
             if ((newDist < effortMat[r][c]) || (newDist == 0)) {
                 effortMat[r][c] = newDist;
