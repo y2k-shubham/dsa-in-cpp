@@ -11,6 +11,8 @@
 
 using namespace std;
 
+#define MOD 1000000007
+
 // priority que with custom comparator https://stackoverflow.com/a/35538318/3679900
 bool buyOrderPQueComparator(pair<int, int>& p1, pair<int, int>& p2) {
     if (p1.first < p2.first) {
@@ -129,25 +131,27 @@ class Solution {
     }
 
     int countPendingSellOrders() {
-        int ctr = 0;
+        long long int ctr = 0;
 
         while (!this->sellOrdersQue.empty()) {
             ctr += this->sellOrdersQue.top().second;
+            ctr %= MOD;
             this->sellOrdersQue.pop();
         }
 
-        return ctr;
+        return (int) ctr;
     }
 
     int countPendingBuyOrders() {
-        int ctr = 0;
+        long long int ctr = 0;
 
         while (!this->buyOrdersQue.empty()) {
             ctr += this->buyOrdersQue.top().second;
+            ctr %= MOD;
             this->buyOrdersQue.pop();
         }
 
-        return ctr;
+        return (int) ctr;
     }
 
    public:
@@ -174,7 +178,7 @@ class Solution {
             executeAllPossibleOrders();
         }
 
-        return countPendingBuyOrders() + countPendingSellOrders();
+        return (countPendingBuyOrders() + countPendingSellOrders()) % MOD;
     }
 };
 
