@@ -2,149 +2,168 @@
 // GFG: https://www.geeksforgeeks.org/smallest-substring-with-each-letter-occurring-both-in-uppercase-and-lowercase/
 
 #include <cassert>
+#include <cctype>
+#include <climits>
 #include <cmath>
 #include <cstdio>
 #include <iostream>
 #include <map>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 #include <utility>
 
 using namespace std;
 
-// you can use includes, for example:
-// #include <algorithm>
+void updateCharFreq(
+    unordered_map<char, pair<int, int> >& charFreqMap,
+    unordered_set<char>& imbCharSet,
+    char ch,
+    bool include) {
+    bool isLower = islower(ch);
+    char chLower = (char)tolower(ch);
 
-// you can write to stdout for debugging purposes, e.g.
-// cout << "this is a debug message" << endl;
-
-map<char, pair<int, int> > createCharCaseMap() {
-    map<char, pair<int, int> > charCaseMap;
-
-    for (char ch = 'A'; ch <= 'Z'; ch++) {
-        charCaseMap[(int)ch] = {0, 0};
-    }
-
-    return charCaseMap;
-}
-
-void showMap(map<char, pair<int, int> >& charCaseMap) {
-    for (int ch = 'A'; ch <= 'Z'; ch++) {
-        if (max(charCaseMap[ch].first, charCaseMap[ch].second) > 0) {
-            printf("%c : %c=%d, %c=%d\n", ch, (ch + 32), charCaseMap[ch].first, ch, charCaseMap[ch].second);
+    if (include) {
+        if (isLower) {
+            charFreqMap[chLower].first++;
+        } else {
+            charFreqMap[chLower].second++;
+        }
+    } else {
+        if (isLower) {
+            charFreqMap[chLower].first--;
+        } else {
+            charFreqMap[chLower].second--;
         }
     }
+
+    bool hasBothCases = (charFreqMap[chLower].first > 0) && (charFreqMap[chLower].second > 0);
+    bool hasNoCases = (charFreqMap[chLower].first == 0) && (charFreqMap[chLower].second == 0);
+
+    if (hasBothCases || hasNoCases) {
+        imbCharSet.erase(chLower);
+    } else {
+        imbCharSet.insert(chLower);
+    }
 }
 
-int solution(string& S) {
-    bool debug = true;
-    int len = S.size();
-    if (len == 1) {
+void showDebugInfo(
+    unordered_map<char, pair<int, int> >& charFreqMap,
+    unordered_set<char>& imbCharSet) {
+    printf("charFreqMap is:-\n");
+    for (unordered_map<char, pair<int, int> >::iterator it = charFreqMap.begin(); it != charFreqMap.end(); it++) {
+        printf("%c -> [%c]=%d, [%c]=%d\n", it->first, it->first, it->second.first, toupper(it->first), it->second.second);
+    }
+
+    printf("imbCharSet is:-\n");
+    for (unordered_set<char>::iterator it = imbCharSet.begin(); it != imbCharSet.end(); it++) {
+        printf("%c ", *it);
+    }
+    cout << endl;
+}
+
+int findMinWindow(string str, bool debug) {
+    int len = str.size();
+    if (len <= 1) {
         return -1;
     }
 
-    map<char, pair<int, int> > charCaseMap = createCharCaseMap();
-    int numImbalance = 0;
-    int minBalancedLen = 0;
+    unordered_map<char, pair<int, int> > charFreqMap;
+    unordered_set<char> imbCharSet;
+
+    int minWinLen = INT_MAX;
+    int minWinLo = -1;
+    int minWinHi = -1;
+    updateCharFreq(charFreqMap, imbCharSet, str.at(0), true);
 
     int iLo = 0;
     int iHi = -1;
-    while (max(iLo, iHi) < len) {
+    while ((iLo <= iHi) && (iHi < len)) {
+        bool updated = false;
+        int crrWinLen = iHi - iLo + 1;
+
         // expand window while imbalanced
-        while ((iHi < len) && ((numImbalance > 0) || (iLo >= iHi))) {
+        while ((crrWinLen <= 0) || ((iHi < len) && !imbCharSet.empty())) {
             iHi++;
 
-            char ch = S.at(iHi);
-            char chUpper = (((int)ch) <= 91) ? ch : (ch - 32);
-            bool isChUpper = ch == chUpper;
-
-            bool bothCasesPresentBefore = min(charCaseMap[chUpper].first, charCaseMap[chUpper].second) > 0;
-            bool noCasesPresentBefore = max(charCaseMap[chUpper].first, charCaseMap[chUpper].second) == 0;
-            bool isBalancedBefore = bothCasesPresentBefore || noCasesPresentBefore;
-
-            if (isChUpper) {
-                charCaseMap[chUpper].second++;
-            } else {
-                charCaseMap[chUpper].first++;
+            if (iHi >= len) {
+                iHi--;
+                break;
             }
 
-            bool bothCasesPresentAfter = min(charCaseMap[chUpper].first, charCaseMap[chUpper].second) > 0;
-            bool noCasesPresentAfter = max(charCaseMap[chUpper].first, charCaseMap[chUpper].second) == 0;
-            bool isBalancedAfter = bothCasesPresentAfter || noCasesPresentAfter;
-
-            if (!isBalancedBefore && isBalancedAfter) {
-                numImbalance--;
-            }
-            if (numImbalance == 0) {
-                int crrWinLen = iHi - iLo + 1;
-                minBalancedLen = min(minBalancedLen, crrWinLen);
-            }
+            updated = true;
+            updateCharFreq(charFreqMap, imbCharSet, str.at(iHi), true);
 
             if (debug) {
-                printf("L1: s[iLo=%d]=%c .. s[iHi=%d]=%c\n", iLo, S.at(iLo), iHi, S.at(iHi));
-                showMap(charCaseMap);
+                cout << endl;
+                printf("L1 (iLo=%d, iHi=%d)\n", iLo, iHi);
+                printf("L1 included str(iHi=%d) = %c\n", iHi, str.at(iHi));
+                showDebugInfo(charFreqMap, imbCharSet);
             }
         }
 
-        // shrink window while balanced
-        while ((iLo <= iHi) && (numImbalance > 0)) {
-            char ch = S.at(iLo);
-            char chUpper = (((int)ch) <= 91) ? ch : (ch - 32);
-            bool isChUpper = ch == chUpper;
-
-            bool bothCasesPresentBefore = min(charCaseMap[chUpper].first, charCaseMap[chUpper].second) > 0;
-            bool noCasesPresentBefore = max(charCaseMap[chUpper].first, charCaseMap[chUpper].second) == 0;
-            bool isBalancedBefore = bothCasesPresentBefore || noCasesPresentBefore;
-
-            if (isChUpper) {
-                charCaseMap[chUpper].second--;
-            } else {
-                charCaseMap[chUpper].first--;
+        if (imbCharSet.empty()) {
+            int crrWinLen = iHi - iLo + 1;
+            if (crrWinLen < minWinLen) {
+                minWinLen = crrWinLen;
+                minWinLo = iLo;
+                minWinHi = iHi;
             }
+        }
 
-            bool bothCasesPresentAfter = min(charCaseMap[chUpper].first, charCaseMap[chUpper].second) > 0;
-            bool noCasesPresentAfter = max(charCaseMap[chUpper].first, charCaseMap[chUpper].second) == 0;
-            bool isBalancedAfter = bothCasesPresentAfter || noCasesPresentAfter;
-
+        // shrink window till balanced
+        while ((iLo <= iHi) && imbCharSet.empty()) {
+            updated = true;
+            updateCharFreq(charFreqMap, imbCharSet, str.at(iLo), false);
             if (debug) {
-                printf("L2: s[iLo=%d]=%c .. s[iHi=%d]=%c\n", iLo, S.at(iLo), iHi, S.at(iHi));
-                showMap(charCaseMap);
+                cout << endl;
+                printf("L2 (iLo=%d, iHi=%d)\n", iLo, iHi);
+                printf("L2 excluded str(iLo=%d) = %c\n", iLo, str.at(iLo));
+                showDebugInfo(charFreqMap, imbCharSet);
             }
-
             iLo++;
 
-            if (isBalancedBefore && !isBalancedAfter) {
-                numImbalance++;
-            } else if (isBalancedAfter) {
+            if (imbCharSet.empty()) {
                 int crrWinLen = iHi - iLo + 1;
-                minBalancedLen = min(minBalancedLen, crrWinLen);
+                if (crrWinLen < minWinLen) {
+                    minWinLen = crrWinLen;
+                    minWinLo = iLo;
+                    minWinHi = iHi;
+                }
             }
+        }
+
+        if (!updated) {
+            if (debug) {
+                printf("breaking with iLo=%d, iHi=%d\n", iLo, iHi);
+            }
+            break;
         }
     }
 
-    if (minBalancedLen > 0) {
-        return minBalancedLen;
-    } else {
-        return -1;
+    int result = (minWinLen == INT_MAX) ? -1 : minWinLen;
+    if (debug) {
+        printf("result = %d\n", result);
     }
+    return result;
 }
 
-void solutionTest() {
+void testFindMinWindow() {
     string strIn;
-    int lenOutExpected, lenOutComputed;
+    int outExpected, outComputed;
 
-    // strIn = "a";
-    // lenOutExpected = -1;
-    // lenOutComputed = solution(strIn);
-    // assert(lenOutExpected == lenOutComputed);
+    strIn = "";
+    outExpected = -1;
+    outComputed = findMinWindow(strIn, false);
+    assert(outExpected == outComputed);
 
-    strIn = "azABaabza";
-    lenOutExpected = 5;
-    lenOutComputed = solution(strIn);
-    cout << lenOutComputed << endl;
-    assert(lenOutExpected == lenOutComputed);
+    strIn = "azABaabba";
+    outExpected = 5;
+    outComputed = findMinWindow(strIn, true);
+    assert(outExpected == outComputed);
 }
 
 int main() {
-    solutionTest();
+    testFindMinWindow();
     return 0;
 }
