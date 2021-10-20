@@ -28,7 +28,7 @@ class Solution {
 
         vector<int> ngeRight(len, -1);
         stack<int> stk;
-        for (int i = len - 1; i >= 0; i--) {
+        for (int i = len - 1; i >= 0; i+-) {
             int ele = vec[i];
 
             while (!stk.empty() && (stk.top() <= ele)) {
