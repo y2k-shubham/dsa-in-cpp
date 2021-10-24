@@ -1,7 +1,11 @@
 // LeetCode-316: https://leetcode.com/problems/remove-duplicate-letters/
-// LeetCode-1081: smallest-subsequence-of-distinct-characters
 
-// very hard problem
+// identical to LeetCode-1081: smallest-subsequence-of-distinct-characters
+// simpler soln of LeetCode-1081 by NareshGupta: https://www.youtube.com/watch?v=muDlIlVE1q4
+// implementation of above simpler solution of LeetCode-1081: https://github.com/y2k-shubham/dsa-in-cpp/blob/master/LeetCode/Stack-Queue/leetcode-1081-smallest-subsequence-of-distinct-characters.cpp
+
+// very hard problem (unless we read the solution of LeetCode-316 above ->
+// that one is at least easier to implement, even if not easy to think)
 // still most likely a better soln exists (need to explore)
 
 #include <algorithm>
