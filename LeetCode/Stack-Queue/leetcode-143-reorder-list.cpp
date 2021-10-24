@@ -19,6 +19,8 @@ struct ListNode {
 
 class Solution {
    private:
+    // helper methods
+
     ListNode* createNode(int val) {
         ListNode* newNode = new ListNode;
 
@@ -28,7 +30,9 @@ class Solution {
         return newNode;
     }
 
-    ListNode* convertToLinkedList(vector<int>& vec) {
+    // debug methods
+
+    ListNode* convertToList(vector<int>& vec) {
         ListNode* head = nullptr;
         ListNode* list = nullptr;
 
@@ -56,6 +60,22 @@ class Solution {
         return stk;
     }
 
+    stack<ListNode*> convertToStack(ListNode* head) {
+        stack<ListNode*> stk;
+
+        ListNode* nextNode;
+        for (ListNode* list = head; list != nullptr;) {
+            nextNode = list->next;
+
+            list->next = nullptr;
+            stk.push(list);
+
+            list = nextNode;
+        }
+
+        return stk;
+    }
+
     vector<int> convertToVec(ListNode* list) {
         vector<int> vec;
         while (list != nullptr) {
@@ -66,7 +86,7 @@ class Solution {
         return vec;
     }
 
-    vector<int> convertToVec(stack<ListNode*>& stk) {
+    vector<int> convertToVec(stack<ListNode*> stk) {
         int len = stk.size();
         vector<int> vec(len);
 
@@ -98,6 +118,8 @@ class Solution {
         cout << endl;
     }
 
+    // core methods
+
     stack<ListNode*> extractEvenPosNodes(ListNode* head) {
         stack<ListNode*> evenPosNodes;
 
@@ -120,6 +142,35 @@ class Solution {
         }
 
         return evenPosNodes;
+    }
+
+    int findListLen(ListNode* head) {
+        int len = 0;
+
+        for (ListNode* list = head; list != nullptr; list = list->next) {
+            len++;
+        }
+
+        return len;
+    }
+
+    stack<ListNode*> extract2ndHalfNodes(ListNode* head) {
+        int len = findListLen(head);
+        if (len == 0) {
+            stack<ListNode*> stk;
+            return stk;
+        }
+
+        ListNode* list = head;
+        int upperLimit = ((len % 2) == 0) ? ((len / 2) - 1) : (len / 2);
+        for (int i = 1; i <= upperLimit; i++) {
+            list = list->next;
+        }
+
+        stack<ListNode*> stk = convertToStack(list->next);
+        list->next = nullptr;
+
+        return stk;
     }
 
     void interleaveNodes(ListNode* head, stack<ListNode*>& stk) {
@@ -156,8 +207,12 @@ class Solution {
     friend class SolutionTest;
 
     void reorderList(ListNode* head) {
-        stack<ListNode*> evenPosNodes = extractEvenPosNodes(head);
-        interleaveNodes(head, evenPosNodes);
+        // this also works fine (had mis-understood the problem initially)
+        // stack<ListNode*> evenPosNodes = extractEvenPosNodes(head);
+        // interleaveNodes(head, evenPosNodes);
+
+        stack<ListNode*> secondHalfNodes = extract2ndHalfNodes(head);
+        interleaveNodes(head, secondHalfNodes);
     }
 };
 
@@ -175,7 +230,7 @@ class SolutionTest {
         inVec = {};
         outListVecExpected = {};
         outStackVecExpected = {};
-        inHead = soln.convertToLinkedList(inVec);
+        inHead = soln.convertToList(inVec);
         outStack = soln.extractEvenPosNodes(inHead);
         outStackVecComputed = soln.convertToVec(outStack);
         assert(outStackVecExpected == outStackVecComputed);
@@ -185,7 +240,7 @@ class SolutionTest {
         inVec = {3};
         outListVecExpected = {3};
         outStackVecExpected = {};
-        inHead = soln.convertToLinkedList(inVec);
+        inHead = soln.convertToList(inVec);
         outStack = soln.extractEvenPosNodes(inHead);
         outStackVecComputed = soln.convertToVec(outStack);
         assert(outStackVecExpected == outStackVecComputed);
@@ -195,7 +250,7 @@ class SolutionTest {
         inVec = {3, 4};
         outListVecExpected = {3};
         outStackVecExpected = {4};
-        inHead = soln.convertToLinkedList(inVec);
+        inHead = soln.convertToList(inVec);
         outStack = soln.extractEvenPosNodes(inHead);
         outStackVecComputed = soln.convertToVec(outStack);
         assert(outStackVecExpected == outStackVecComputed);
@@ -205,7 +260,7 @@ class SolutionTest {
         inVec = {9, 8, 3};
         outListVecExpected = {9, 3};
         outStackVecExpected = {8};
-        inHead = soln.convertToLinkedList(inVec);
+        inHead = soln.convertToList(inVec);
         outStack = soln.extractEvenPosNodes(inHead);
         outStackVecComputed = soln.convertToVec(outStack);
         assert(outStackVecExpected == outStackVecComputed);
@@ -215,7 +270,7 @@ class SolutionTest {
         inVec = {9, 8, 3, 5};
         outListVecExpected = {9, 3};
         outStackVecExpected = {8, 5};
-        inHead = soln.convertToLinkedList(inVec);
+        inHead = soln.convertToList(inVec);
         outStack = soln.extractEvenPosNodes(inHead);
         outStackVecComputed = soln.convertToVec(outStack);
         assert(outStackVecExpected == outStackVecComputed);
@@ -225,7 +280,7 @@ class SolutionTest {
         inVec = {9, 8, 3, 5, 6};
         outListVecExpected = {9, 3, 6};
         outStackVecExpected = {8, 5};
-        inHead = soln.convertToLinkedList(inVec);
+        inHead = soln.convertToList(inVec);
         outStack = soln.extractEvenPosNodes(inHead);
         outStackVecComputed = soln.convertToVec(outStack);
         assert(outStackVecExpected == outStackVecComputed);
@@ -235,7 +290,7 @@ class SolutionTest {
         inVec = {9, 8, 3, 5, 6, 1};
         outListVecExpected = {9, 3, 6};
         outStackVecExpected = {8, 5, 1};
-        inHead = soln.convertToLinkedList(inVec);
+        inHead = soln.convertToList(inVec);
         outStack = soln.extractEvenPosNodes(inHead);
         outStackVecComputed = soln.convertToVec(outStack);
         assert(outStackVecExpected == outStackVecComputed);
@@ -252,7 +307,7 @@ class SolutionTest {
 
         inListVec = {};
         inStackVec = {};
-        inHead = soln.convertToLinkedList(inListVec);
+        inHead = soln.convertToList(inListVec);
         inStack = soln.convertToStack(inStackVec);
         soln.interleaveNodes(inHead, inStack);
         outListVecExpected = {};
@@ -262,7 +317,7 @@ class SolutionTest {
 
         inListVec = {3};
         inStackVec = {};
-        inHead = soln.convertToLinkedList(inListVec);
+        inHead = soln.convertToList(inListVec);
         inStack = soln.convertToStack(inStackVec);
         soln.interleaveNodes(inHead, inStack);
         outListVecExpected = {3};
@@ -272,7 +327,7 @@ class SolutionTest {
 
         inListVec = {2};
         inStackVec = {1};
-        inHead = soln.convertToLinkedList(inListVec);
+        inHead = soln.convertToList(inListVec);
         inStack = soln.convertToStack(inStackVec);
         // soln.showStack(inStack);
         soln.interleaveNodes(inHead, inStack);
@@ -285,7 +340,7 @@ class SolutionTest {
 
         inListVec = {2, 3};
         inStackVec = {1, 9};
-        inHead = soln.convertToLinkedList(inListVec);
+        inHead = soln.convertToList(inListVec);
         inStack = soln.convertToStack(inStackVec);
         // soln.showStack(inStack);
         soln.interleaveNodes(inHead, inStack);
@@ -298,7 +353,7 @@ class SolutionTest {
 
         inListVec = {2, 3, 4};
         inStackVec = {1, 9};
-        inHead = soln.convertToLinkedList(inListVec);
+        inHead = soln.convertToList(inListVec);
         inStack = soln.convertToStack(inStackVec);
         // soln.showStack(inStack);
         soln.interleaveNodes(inHead, inStack);
@@ -311,7 +366,7 @@ class SolutionTest {
 
         inListVec = {2, 3, 4};
         inStackVec = {1, 9, 8};
-        inHead = soln.convertToLinkedList(inListVec);
+        inHead = soln.convertToList(inListVec);
         inStack = soln.convertToStack(inStackVec);
         // soln.showStack(inStack);
         soln.interleaveNodes(inHead, inStack);
@@ -322,6 +377,180 @@ class SolutionTest {
         assert(outListVecExpected == outListVecComputed);
         assert(inStack.empty());
     }
+
+    void testFindListLen() {
+        Solution soln = Solution();
+        vector<int> inListVec;
+        ListNode* inHead;
+        int outLenExpected, outLenComputed;
+
+        inListVec = {};
+        inHead = soln.convertToList(inListVec);
+        outLenExpected = 0;
+        outLenComputed = soln.findListLen(inHead);
+        assert(outLenExpected == outLenComputed);
+
+        inListVec = {2};
+        inHead = soln.convertToList(inListVec);
+        outLenExpected = 1;
+        outLenComputed = soln.findListLen(inHead);
+        assert(outLenExpected == outLenComputed);
+
+        inListVec = {0, 0};
+        inHead = soln.convertToList(inListVec);
+        outLenExpected = 2;
+        outLenComputed = soln.findListLen(inHead);
+        assert(outLenExpected == outLenComputed);
+
+        inListVec = {9, 8, 9};
+        inHead = soln.convertToList(inListVec);
+        outLenExpected = 3;
+        outLenComputed = soln.findListLen(inHead);
+        assert(outLenExpected == outLenComputed);
+    }
+
+    void testExtract2ndHalfNodes() {
+        Solution soln = Solution();
+        vector<int> inListVec;
+        ListNode* inHead;
+        vector<int> outListVecExpected, outStackVecExpected;
+        vector<int> outListVecComputed, outStackVecComputed;
+        stack<ListNode*> outStack;
+
+        inListVec = {};
+        outListVecExpected = {};
+        outStackVecExpected = {};
+        inHead = soln.convertToList(inListVec);
+        outStack = soln.extract2ndHalfNodes(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        outStackVecComputed = soln.convertToVec(outStack);
+        assert(outListVecExpected == outListVecComputed);
+        assert(outStackVecExpected == outStackVecComputed);
+
+        inListVec = {3};
+        outListVecExpected = {3};
+        outStackVecExpected = {};
+        inHead = soln.convertToList(inListVec);
+        outStack = soln.extract2ndHalfNodes(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        outStackVecComputed = soln.convertToVec(outStack);
+        assert(outListVecExpected == outListVecComputed);
+        assert(outStackVecExpected == outStackVecComputed);
+
+        inListVec = {4, 5};
+        outListVecExpected = {4};
+        outStackVecExpected = {5};
+        inHead = soln.convertToList(inListVec);
+        outStack = soln.extract2ndHalfNodes(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        outStackVecComputed = soln.convertToVec(outStack);
+        assert(outListVecExpected == outListVecComputed);
+        assert(outStackVecExpected == outStackVecComputed);
+
+        inListVec = {3, 4, 5};
+        outListVecExpected = {3, 4};
+        outStackVecExpected = {5};
+        inHead = soln.convertToList(inListVec);
+        outStack = soln.extract2ndHalfNodes(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        outStackVecComputed = soln.convertToVec(outStack);
+        // soln.showList(inHead);
+        // soln.showStack(outStack);
+        assert(outListVecExpected == outListVecComputed);
+        assert(outStackVecExpected == outStackVecComputed);
+
+        inListVec = {3, 4, 5, 6};
+        outListVecExpected = {3, 4};
+        outStackVecExpected = {5, 6};
+        inHead = soln.convertToList(inListVec);
+        outStack = soln.extract2ndHalfNodes(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        outStackVecComputed = soln.convertToVec(outStack);
+        // soln.showList(inHead);
+        // soln.showStack(outStack);
+        assert(outListVecExpected == outListVecComputed);
+        assert(outStackVecExpected == outStackVecComputed);
+
+        inListVec = {3, 4, 5, 6, 7};
+        outListVecExpected = {3, 4, 5};
+        outStackVecExpected = {6, 7};
+        inHead = soln.convertToList(inListVec);
+        outStack = soln.extract2ndHalfNodes(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        outStackVecComputed = soln.convertToVec(outStack);
+        // soln.showList(inHead);
+        // soln.showStack(outStack);
+        assert(outListVecExpected == outListVecComputed);
+        assert(outStackVecExpected == outStackVecComputed);
+
+        inListVec = {3, 4, 5, 6, 7, 8};
+        outListVecExpected = {3, 4, 5};
+        outStackVecExpected = {6, 7, 8};
+        inHead = soln.convertToList(inListVec);
+        outStack = soln.extract2ndHalfNodes(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        outStackVecComputed = soln.convertToVec(outStack);
+        // soln.showList(inHead);
+        // soln.showStack(outStack);
+        assert(outListVecExpected == outListVecComputed);
+        assert(outStackVecExpected == outStackVecComputed);
+    }
+
+    void testReorderList() {
+        Solution soln = Solution();
+        ListNode* inHead;
+        vector<int> inListVec;
+        vector<int> outListVecExpected, outListVecComputed;
+
+        inListVec = {};
+        outListVecExpected = {};
+        inHead = soln.convertToList(inListVec);
+        soln.reorderList(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        assert(outListVecExpected == outListVecComputed);
+
+        inListVec = {1};
+        outListVecExpected = {1};
+        inHead = soln.convertToList(inListVec);
+        soln.reorderList(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        assert(outListVecExpected == outListVecComputed);
+
+        inListVec = {1, 2};
+        outListVecExpected = {1, 2};
+        inHead = soln.convertToList(inListVec);
+        soln.reorderList(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        assert(outListVecExpected == outListVecComputed);
+
+        inListVec = {1, 2, 3};
+        outListVecExpected = {1, 3, 2};
+        inHead = soln.convertToList(inListVec);
+        soln.reorderList(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        assert(outListVecExpected == outListVecComputed);
+
+        inListVec = {1, 2, 3, 4};
+        outListVecExpected = {1, 4, 2, 3};
+        inHead = soln.convertToList(inListVec);
+        soln.reorderList(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        assert(outListVecExpected == outListVecComputed);
+
+        inListVec = {1, 2, 3, 4, 5};
+        outListVecExpected = {1, 5, 2, 4, 3};
+        inHead = soln.convertToList(inListVec);
+        soln.reorderList(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        assert(outListVecExpected == outListVecComputed);
+
+        inListVec = {1, 2, 3, 4, 5, 6};
+        outListVecExpected = {1, 6, 2, 5, 3, 4};
+        inHead = soln.convertToList(inListVec);
+        soln.reorderList(inHead);
+        outListVecComputed = soln.convertToVec(inHead);
+        assert(outListVecExpected == outListVecComputed);
+    }
 };
 
 int main() {
@@ -329,6 +558,9 @@ int main() {
 
     solnTest.testExtractEvenPosNodes();
     solnTest.testInterleaveNodes();
+    solnTest.testFindListLen();
+    solnTest.testExtract2ndHalfNodes();
+    solnTest.testReorderList();
 
     return 0;
 }
