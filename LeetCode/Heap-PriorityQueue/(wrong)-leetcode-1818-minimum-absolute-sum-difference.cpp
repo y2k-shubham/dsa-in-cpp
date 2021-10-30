@@ -115,7 +115,7 @@ class Solution {
             }
 
             // find element smaller than val2
-            it--;g
+            it--;
             int diffLo = abs(val2 - *it);
             if (diffLo < diffOrg) {
                 dipRepl = *it;
