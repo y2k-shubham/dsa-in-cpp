@@ -1,11 +1,8 @@
 // LeetCode-1818: https://leetcode.com/problems/minimum-absolute-sum-difference/
 /**
- * wrong solution
- * despite passing many test cases, it fails for a vary big test case
- * nums1: [38,48,73,55,25,47,45,62,15,34,51,20,76,78,38,91,69,69,73,38,74,75,86,63,73,12,100,59,29,28,94,43,100,2,53,31,73,82,70,94,2,38,50,67,8,40,88,87,62,90,86,33,86,26,84,52,63,80,56,56,56,47,12,50,12,59,52,7,40,16,53,61,76,22,87,75,14,63,96,56,65,16,70,83,51,44,13,14,80,28,82,2,5,57,77,64,58,85,33,24]
- * nums2: [90,62,8,56,33,22,9,58,29,88,10,66,48,79,44,50,71,2,3,100,88,16,24,28,50,41,65,59,83,79,80,91,1,62,13,37,86,53,43,49,17,82,27,17,10,89,40,82,41,2,48,98,16,43,62,33,72,35,10,24,80,29,49,5,14,38,30,48,93,86,62,23,17,39,40,96,10,75,6,38,1,5,54,91,29,36,62,73,51,92,89,88,74,91,87,34,49,56,33,67]
- * expectedOutput: 3285
- * computedOutput: 3294
+ * approach is correct as explained by Cherry Coding: https://www.youtube.com/watch?v=cMWnXLnY93c
+ * - but somehow iterators of (ordered) set are messing up things
+ * - so will have to implement binary-search for 'closest element in arr' manually
  */
 
 #include <cassert>
@@ -13,6 +10,7 @@
 #include <cmath>
 #include <cstdio>
 #include <iostream>
+#include <iterator>
 #include <queue>
 #include <set>
 #include <unordered_set>
@@ -68,10 +66,17 @@ class Solution {
         }
 
         int dipMax = INT_MIN;
+        int dipMaxIdx = -1;
+        int dipMaxRepl = -1;
+        int iter = 0;
         while (!diffHeap.empty() && ((dipMax == INT_MIN) || (diffHeap.top().first > dipMax))) {
             int diffOrg = diffHeap.top().first;
             int idx = diffHeap.top().second;
             diffHeap.pop();
+
+            if (debug) {
+                printf("iter=%d, idx=%d, nums1[idx]=%d, nums2[idx]=%d, diff=%d\n", iter, idx, nums1[idx], nums2[idx], diffOrg);
+            }
 
             int val1 = nums1[idx];
             int val2 = nums2[idx];
@@ -86,28 +91,56 @@ class Solution {
             // find the element(s) closest to val2 that are present in nums1
             set<int>::iterator it = mOrderedSet.lower_bound(val2);
             int gain = INT_MIN;
+            int dipRepl = -1;
 
-            // find element smaller than val2
-            it--;
-            int diffLo = abs(val2 - *it);
-            if (diffLo < diffOrg) {
-                gain = max(gain, diffOrg - diffLo);
+            if (debug) {
+                printf("here1\n");
             }
 
             // find element greater than val2
-            it++;
             if (it != mOrderedSet.end()) {
+                dipRepl = *it;
                 int diffHi = abs(val2 - *it);
                 if (diffHi < diffOrg) {
                     gain = max(gain, diffOrg - diffHi);
+                    if (debug) {
+                        printf("idx=%d, nums1[idx]=%d, nums2[idx]=%d, diffOrg=%d, diffHi=%d, gain=%d\n", idx, nums1[idx], nums2[idx], diffOrg, diffHi, gain);
+                    }
                 }
+            }
+
+            if (debug) {
+                printf("here2 it=%d\n", *it);
+                printf("here2 itPos=%d it=%d\n", (int)distance(mOrderedSet.begin(), it), *it);
+            }
+
+            // find element smaller than val2
+            it--;g
+            int diffLo = abs(val2 - *it);
+            if (diffLo < diffOrg) {
+                dipRepl = *it;
+                gain = max(gain, diffOrg - diffLo);
+                if (debug) {
+                    printf("idx=%d, nums1[idx]=%d, nums2[idx]=%d, diffOrg=%d, diffLo=%d, gain=%d\n", idx, nums1[idx], nums2[idx], diffOrg, diffLo, gain);
+                }
+            }
+
+            if (debug) {
+                printf("here3\n");
             }
 
             if ((gain != INT_MIN) && (gain > dipMax)) {
                 dipMax = gain;
+                dipMaxIdx = idx;
+                dipMaxRepl = dipRepl;
             }
+
+            iter++;
         }
 
+        if (debug) {
+            printf("replacement idx=%d, nums1[idx]=%d, nums2[idx]=%d, repl=%d\n", dipMaxIdx, nums1[dipMaxIdx], nums2[dipMaxIdx], dipMaxRepl);
+        }
         return max(dipMax, 0);
     }
 
@@ -192,6 +225,17 @@ class SolutionTest {
         outComputed = soln.findMaxGain(nums1, nums2, mUnorderedSet, mOrderedSet, diffHeap);
         assert(outExpected == outComputed);
 
+        soln.debug = true;
+        nums1 = {150, 100};
+        nums2 = {90, 10};
+        mUnorderedSet = soln.createUnorderedSet(nums1);
+        mOrderedSet = soln.createOrderedSet(nums1);
+        diffHeap = soln.createDiffHeap(nums1, nums2).second;
+        outExpected = 50;
+        outComputed = soln.findMaxGain(nums1, nums2, mUnorderedSet, mOrderedSet, diffHeap);
+        assert(outExpected == outComputed);
+        soln.debug = false;
+
         nums1 = {2, 0};
         nums2 = {2, 3};
         mUnorderedSet = soln.createUnorderedSet(nums1);
@@ -246,6 +290,12 @@ class SolutionTest {
         outComputed = soln.minAbsoluteSumDiff(nums1, nums2);
         assert(outExpected == outComputed);
 
+        nums1 = {150, 100};
+        nums2 = {90, 10};
+        outExpected = 100;
+        outComputed = soln.minAbsoluteSumDiff(nums1, nums2);
+        assert(outExpected == outComputed);
+
         nums1 = {1, 7, 5};
         nums2 = {2, 3, 5};
         outExpected = 3;
@@ -263,6 +313,14 @@ class SolutionTest {
         outExpected = 20;
         outComputed = soln.minAbsoluteSumDiff(nums1, nums2);
         assert(outExpected == outComputed);
+
+        // soln.debug = true;
+        nums1 = {38, 48, 73, 55, 25, 47, 45, 62, 15, 34, 51, 20, 76, 78, 38, 91, 69, 69, 73, 38, 74, 75, 86, 63, 73, 12, 100, 59, 29, 28, 94, 43, 100, 2, 53, 31, 73, 82, 70, 94, 2, 38, 50, 67, 8, 40, 88, 87, 62, 90, 86, 33, 86, 26, 84, 52, 63, 80, 56, 56, 56, 47, 12, 50, 12, 59, 52, 7, 40, 16, 53, 61, 76, 22, 87, 75, 14, 63, 96, 56, 65, 16, 70, 83, 51, 44, 13, 14, 80, 28, 82, 2, 5, 57, 77, 64, 58, 85, 33, 24};
+        nums2 = {90, 62, 8, 56, 33, 22, 9, 58, 29, 88, 10, 66, 48, 79, 44, 50, 71, 2, 3, 100, 88, 16, 24, 28, 50, 41, 65, 59, 83, 79, 80, 91, 1, 62, 13, 37, 86, 53, 43, 49, 17, 82, 27, 17, 10, 89, 40, 82, 41, 2, 48, 98, 16, 43, 62, 33, 72, 35, 10, 24, 80, 29, 49, 5, 14, 38, 30, 48, 93, 86, 62, 23, 17, 39, 40, 96, 10, 75, 6, 38, 1, 5, 54, 91, 29, 36, 62, 73, 51, 92, 89, 88, 74, 91, 87, 34, 49, 56, 33, 67};
+        outExpected = 3285;
+        outComputed = soln.minAbsoluteSumDiff(nums1, nums2);
+        assert(outExpected == outComputed);
+        // soln.debug = false;
     }
 };
 
