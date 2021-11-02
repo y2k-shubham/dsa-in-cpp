@@ -1,8 +1,4 @@
 // LeetCode-341: https://leetcode.com/problems/flatten-nested-list-iterator/
-/**
- * - passing sample test cases
- * - but otherwise running into segfault
- */
 
 #include <climits>
 #include <cstdio>
@@ -46,7 +42,6 @@ class NestedIterator {
         int idx = top.second;
 
         if (idx >= len) {
-            this->stk.pop();
             return this->next();
         }
 
@@ -64,7 +59,43 @@ class NestedIterator {
     }
 
     bool hasNext() {
-        return !this->stk.empty();
+        // check if stack empty
+        if (this->stk.empty()) {
+            return false;
+        }
+
+        // retrieve stack top
+        pair<vector<NestedInteger>, int> top = this->stk.top();
+        this->stk.pop();
+
+        vector<NestedInteger> list = top.first;
+        int len = list.size();
+        int idx = top.second;
+
+        // check if list in stack top empty
+        if ((len == 0) || (idx >= len)) {
+            // if yes, then recurse (check next item in stack)
+            return this->hasNext();
+        }
+
+        // retrieve first item from list retrieved from stack
+        NestedInteger nextItem = list[idx++];
+        if (idx < len) {
+            // push back list into stack
+            this->stk.push({list, idx});
+        }
+
+        if (nextItem.isInteger()) {
+            // if it is single integer
+            // (1) push it back into stack (2) return true
+            this->stk.push({{nextItem}, 0});
+            return true;
+        } else {
+            // if it is yet another nested list
+            // (1) push it back into stack (2) recurse
+            this->stk.push({nextItem.getList(), 0});
+            return this->hasNext();
+        }
     }
 };
 
