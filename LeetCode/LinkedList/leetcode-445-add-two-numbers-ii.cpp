@@ -1,5 +1,6 @@
 // LeetCode-445: https://leetcode.com/problems/add-two-numbers-ii/
-// done using stack -> unnecessarily complex / bulky
+// done using stack -> unnecessarily complex / bulky & also takes more memory (stack)
+// LC-submission: speed 56% tile
 
 #include <cstdio>
 #include <iostream>
