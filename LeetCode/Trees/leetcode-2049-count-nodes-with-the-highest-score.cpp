@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <numeric>
 #include <queue>
 #include <utility>
 #include <vector>
