@@ -1,11 +1,13 @@
 // LeetCode-424: https://leetcode.com/problems/longest-repeating-character-replacement/
 // wrong soln; anyways not easy to think and also quite a feq edge cases
 
+#include <cassert>
 #include <cmath>
 #include <cstdio>
 #include <iostream>
 #include <map>
 #include <set>
+#include <unordered_map>
 
 using namespace std;
 
@@ -116,3 +118,107 @@ class Solution {
         return maxSubstringLen;
     }
 };
+
+class SolutionTest {
+   private:
+    pair<int, int> findMaxSingleCharFreqWindow(string str, int winLen) {
+        unordered_map<char, int> freqMap;
+
+        int len = str.size();
+        int maxFreq = 1;
+        int maxFreqStart = -1;
+        int maxFreqEnd = -1;
+        int i = 0;
+        while (i < len) {
+            char chIn = str.at(i);
+            int crrFreq = freqMap[chIn];
+            int newFreq = crrFreq + 1;
+            freqMap[chIn] = newFreq;
+
+            if (i >= winLen) {
+                char chOut = str.at(i - winLen);
+                freqMap[chOut]--;
+            }
+
+            if (newFreq > maxFreq) {
+                maxFreq = newFreq;
+                maxFreqStart = i - len;
+                maxFreqEnd = i;
+            }
+        }
+
+        return {maxFreqStart, maxFreqEnd};
+    }
+
+   public:
+    void testCharacterReplacement() {
+        Solution soln = Solution();
+        string str;
+        int k;
+        int outExpected, outComputed;
+
+        str = "ABAB";
+        k = 2;
+        outExpected = 4;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "AABABBA";
+        k = 1;
+        outExpected = 4;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "F";
+        k = 1;
+        outExpected = 1;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "AFQ";
+        k = 2;
+        outExpected = 3;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "AFQ";
+        k = 1;
+        outExpected = 2;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "AFQ";
+        k = 0;
+        outExpected = 1;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "ABAA";
+        k = 0;
+        outExpected = 2;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "BAAAB";
+        k = 2;
+        outExpected = 5;
+        outComputed = soln.characterReplacement(str, k);
+        assert(outExpected == outComputed);
+
+        str = "IMNJJTRMJEGMSOLSCCQICIHLQIOGBJAEHQOCRAJQMBIBATGLJDTBNCPIFRDLRIJHRABBJGQAOLIKRLHDRIGERENNMJSDSSMESSTR";
+        k = 2;
+        outExpected = 6;
+        outComputed = soln.characterReplacement(str, k);
+        pair<int, int> winIdx = findMaxSingleCharFreqWindow(str, 6);
+        printf("%d, %d\n", winIdx.first, winIdx.second);
+        assert(outExpected == outComputed);
+    }
+};
+
+int main() {
+    SolutionTest solnTest = SolutionTest();
+
+    solnTest.testCharacterReplacement();
+
+    return 0;
+}
