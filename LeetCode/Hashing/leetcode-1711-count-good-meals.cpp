@@ -1,8 +1,9 @@
 // LeetCode-1711: https://leetcode.com/problems/count-good-meals/
 /**
- * not very easy (has some edge cases)
- * involves a bit of combinatorics nCr
- * (can also be classified as NumberTheory problem)
+ * not very easy
+ *  - has some edge cases
+ *  - involves a bit of combinatorics nCr (can also be classified as NumberTheory problem)
+ *  - plus overflow (modulo result) is also a nuisance
  *
  * note that following 2 things require special handling (other things are intuitive)
  * 1. same no adding to pow of 2, like 4 + 4 = 8; so if we have n 4s, there will be nC2 ways of picking a pair of 4s from them
