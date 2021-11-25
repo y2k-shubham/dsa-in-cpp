@@ -4,6 +4,21 @@
  * (a) one interval closing & other opening
  * (b) both intervals opening
  * (c) both intervals closing
+ * 
+ * [[0,2],[5,10],[13,23],[24,25]]
+ * [[1,5],[8,12],[15,24],[25,26]]
+ * 
+ * [[1,3],[5,9]]
+ * []
+ * 
+ * []
+ * [[4,8],[10,12]]
+ * 
+ * [[1,7]]
+ * [[3,10]]
+ * 
+ * [[3,10]]
+ * [[5,10]]
  */
 
 #include <cstdio>
