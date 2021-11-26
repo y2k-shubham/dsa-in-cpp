@@ -24,7 +24,12 @@ struct Node {
     Node* prev;
 };
 
-// stellar performance (98 %tile), even though it is the straightforward DLL + map approach
+/**
+ * stellar performance (98 %tile), even though
+ * 1. it is the straightforward DLL + map approach
+ * 2. we are not even manipulating links b/w nodes, rather we are copying & moving (short) strings data.
+ *    plus in every swap we are also re-assigning map KVs
+ */
 class AllOne {
    private:
     Node* head;
