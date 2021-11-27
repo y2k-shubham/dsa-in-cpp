@@ -36,6 +36,8 @@ class Solution {
         int len = vec.size();
         vector<int> exceptItselfProd(len, 1);
 
+        // technically we could've just built suffix prod array
+        // and used a prod variable for holding prefix prod on the fly
         vector<int> prefixProd = buildPrefixProd(vec);
         vector<int> suffixProd = buildSuffixProd(vec);
 
@@ -48,8 +50,23 @@ class Solution {
         return exceptItselfProd;
     }
 
+    vector<int> buildExceptItselfProd2(vector<int>& vec) {
+        int len = vec.size();
+
+        vector<int> exceptItselfProd = buildSuffixProd(vec);
+        int prefixProd = 1;
+
+        for (int i = 0; i < len; i++) {
+            prefixProd *= (i == 0) ? 1 : vec[i - 1];
+            int suffixProd = (i == (len - 1)) ? 1 : exceptItselfProd[i + 1];
+            exceptItselfProd[i] = prefixProd * suffixProd;
+        }
+
+        return exceptItselfProd;
+    }
+
    public:
     vector<int> productExceptSelf(vector<int>& nums) {
-        return buildExceptItselfProd1(nums);
+        return buildExceptItselfProd2(nums);
     }
 };
