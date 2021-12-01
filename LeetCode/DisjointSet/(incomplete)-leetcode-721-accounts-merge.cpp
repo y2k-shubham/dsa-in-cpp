@@ -68,7 +68,7 @@ class Solution {
                 string email = accounts[i][j];
 
                 if (emailParentMap.find(email) == emailParentMap.end()) {
-                    emagstilParentMap[email] = findParent(parentsVec, i);
+                    emailParentMap[email] = findParent(parentsVec, i);
                     parentEmailsMap[i].push_back(email);
                 } else {
                     // found common email across two persons
