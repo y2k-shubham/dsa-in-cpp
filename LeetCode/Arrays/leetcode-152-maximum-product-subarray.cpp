@@ -38,38 +38,46 @@ class Solution {
         int maxProd = INT_MIN;
         int maxEle = INT_MIN;
 
-        int numNegs = 0;
-        int crrProdTillFirstNeg = 1;
-        int crrProd = 1;
-        int crrProdFromLastNeg = 1;
-        int crrWinStartIdx = 0;
+        // current window will always include all nums since last zero
+        int numNegs = 0;              // no of neg nos in current window
+        int crrProdTillFirstNeg = 1;  // (in current window) prod of all numbers till (and including) first neg no
+        int crrProd = 1;              // (in current window) prod of all numbers
+        int crrProdFromLastNeg = 1;   // (in current window) prod of all numbers from (and including) last neg no
+        int crrWinStartIdx = 0;       // starting index of current window (equals 1 + index of last zero)
         for (int i = 0; i < len; i++) {
             int crrEle = nums[i];
             maxEle = max(maxEle, crrEle);
 
             if (crrEle == 0) {
+                // when zero is encountered, we reset all running metrics that we are keeping track of
                 numNegs = 0;
                 crrProdTillFirstNeg = 1;
                 crrProd = 1;
                 crrProdFromLastNeg = 1;
                 crrWinStartIdx = i + 1;
             } else {
-                crrProd *= crrEle;
-                int crrWinLen = i - crrWinStartIdx + 1;
+                crrProd *= crrEle;                       // update current window running product
+                int crrWinLen = i - crrWinStartIdx + 1;  // determine current window length
 
                 if (crrEle < 0) {
+                    // increment neg numbers counter
                     numNegs++;
                     if (numNegs == 1) {
+                        // if this was first neg no seen, capture the value (done only once in every window)
                         crrProdTillFirstNeg = crrProd;
                     }
+                    // 'reset' product from last negative (will be done every time a new negative no is seen)
                     crrProdFromLastNeg = crrEle;
                 } else {
                     if (numNegs >= 1) {
+                        // update product from last negative
                         crrProdFromLastNeg *= crrEle;
                     }
                 }
 
                 if ((numNegs % 2) == 0) {
+                    // if we have even no of negative nos in current window, then product will be positive;
+                    // so simply update the maxProd
                     maxProd = max(maxProd, crrProd);
                 } else {
                     if (crrWinLen == 1) {
@@ -78,8 +86,9 @@ class Solution {
                         maxProd = max(
                             maxProd,
                             max(
-                                (crrProd / crrProdTillFirstNeg),
-                                (crrProd / crrProdFromLastNeg)));
+                                (crrProd / crrProdTillFirstNeg),  // product of nums after first neg until this point
+                                (crrProd / crrProdFromLastNeg)    // product of nums from beginning of window till last neg
+                                ));
                     }
                 }
             }
