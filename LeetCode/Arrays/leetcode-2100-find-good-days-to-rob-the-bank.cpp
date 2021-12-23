@@ -1,6 +1,10 @@
 // LeetCode-2100: https://leetcode.com/problems/find-good-days-to-rob-the-bank/
 
 /**
+ * dont ready this solution; instead watch the following video
+ * that explains much easier thought process solution
+ * CodingDecoded: https://www.youtube.com/watch?v=cHfwQyZohoY
+ *
  * self-thought approach
  * (very difficult to come up with)
  *
@@ -345,6 +349,7 @@ class SolutionTest {
         assert(outVecExpected == outVecComputed);
         // soln.debug = false;
     }
+
 };
 
 int main() {
