@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/largest-rectangle-in-histogram/
+// an application of this problem is leetcode-1793: https://leetcode.com/problems/maximum-score-of-a-good-subarray/
 
 #include <cassert>
 #include <climits>
