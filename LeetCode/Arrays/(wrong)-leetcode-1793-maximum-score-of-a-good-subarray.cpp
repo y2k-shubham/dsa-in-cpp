@@ -1,5 +1,9 @@
 // LeetCode-1793: https://leetcode.com/problems/maximum-score-of-a-good-subarray/
-// incomplete
+
+// wrong soln
+// - maybe it can be made to work; but why invest effort when a much easier soln already exists?
+// - CherryCoding: https://www.youtube.com/watch?v=P0SA8NCKY3w
+// - easy implementation is based on (almost identical to) 'largest rectangle in a histogram' leetcode-84: https://leetcode.com/problems/largest-rectangle-in-histogram/
 
 /**
  * input
