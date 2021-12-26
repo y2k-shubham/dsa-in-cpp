@@ -1,5 +1,5 @@
 // LeetCode-1137: https://leetcode.com/problems/n-th-tribonacci-number/
-// pretty dumb proble; look away
+// pretty dumb problem; look away
 
 #include <vector>
 
