@@ -1,7 +1,5 @@
-// LeetCode-876: https://leetcode.com/problems/middle-of-the-linked-list/
-// elementary (dumb) problen; dont even bother to check
-
-// an extension of this problem is leetcode-2095: https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/
+// LeetCode-2095: https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/
+// extension of leetcode-976: https://leetcode.com/problems/middle-of-the-linked-list/
 
 /**
  * [6]
@@ -29,17 +27,22 @@ struct ListNode {
 class Solution {
    public:
     ListNode* middleNode(ListNode* head) {
-        if (head == nullptr) {
+        if ((head == nullptr) || (head->next == nullptr)) {
             return nullptr;
         }
-
+        
+        ListNode* prevSlowPtr = nullptr;
         ListNode* slowPtr = head;
         ListNode* fastPtr = head;
         while ((fastPtr != nullptr) && (fastPtr->next != nullptr)) {
+            prevSlowPtr = slowPtr;
             slowPtr = slowPtr->next;
             fastPtr = fastPtr->next->next;
         }
-
-        return slowPtr;
+        
+        prevSlowPtr->next = slowPtr->next;
+        
+        return head;
     }
 };
+
