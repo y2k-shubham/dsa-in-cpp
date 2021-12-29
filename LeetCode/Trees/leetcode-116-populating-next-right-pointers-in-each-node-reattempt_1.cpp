@@ -20,7 +20,8 @@ class Node {
 };
 
 class Solution {
-   public:
+   private:
+    // LC-submission: speed: 75 %tile
     void inOrderConnect(Node* root, map<int, Node*>& lvlNodeMap, int lvl) {
         if (root != nullptr) {
             inOrderConnect(root->left, lvlNodeMap, lvl + 1);
@@ -36,6 +37,7 @@ class Solution {
         }
     }
 
+   public:
     Node* connect(Node* root) {
         map<int, Node*> lvlNodeMap;
         inOrderConnect(root, lvlNodeMap, 0);
