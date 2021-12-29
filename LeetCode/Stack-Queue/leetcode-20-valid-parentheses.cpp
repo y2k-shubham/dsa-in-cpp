@@ -1,5 +1,5 @@
-// https://leetcode.com/problems/valid-parentheses/
-// https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/
+// LeetCode-20: https://leetcode.com/problems/valid-parentheses/
+// GFG: https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/
 
 #include <cassert>
 #include <cstdio>
