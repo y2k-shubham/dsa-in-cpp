@@ -192,6 +192,7 @@ class Solution {
         sort(nums.begin(), nums.end());
         unordered_map<int, list<int>> eleIndsMap = buildEleIndsMap(nums);
 
+        // this soln is correct, but goes TLE when possible range of k values is big
         // int kMin = max((nums[1] - nums[0]) / 2, 1);
         // int kMax = (nums[len / 2] - nums[0]) / 2;
         // for (int k = kMin; k <= kMax; k++) {
