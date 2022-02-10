@@ -1,3 +1,5 @@
+// LeetCode-1402: https://leetcode.com/problems/reducing-dishes/
+
 // not the conventional dynamic programming question
 // (since it is solved in linear time)
 
