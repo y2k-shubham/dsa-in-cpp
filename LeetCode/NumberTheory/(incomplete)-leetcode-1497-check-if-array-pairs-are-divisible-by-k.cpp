@@ -1,4 +1,5 @@
 // LeetCode-1497: https://leetcode.com/problems/check-if-array-pairs-are-divisible-by-k/description/
+// incomplete
 
 #include <cassert>
 #include <cstdio>
