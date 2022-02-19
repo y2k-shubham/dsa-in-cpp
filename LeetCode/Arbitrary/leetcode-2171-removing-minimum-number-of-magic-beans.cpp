@@ -1,4 +1,5 @@
 // LeetCode-2171: https://leetcode.com/problems/removing-minimum-number-of-magic-beans/description/
+// Time: O(n) , space: O(n)
 
 /**
  * input
@@ -103,13 +104,19 @@ class Solution {
         long long minRemovals = LLONG_MAX;
         int minRemovalsEqBeans = -1;
 
+        // one by one, we try every possible bag-size (numEqBeans) to be the final no of equivalent beans that we want to have
         for (int numEqBeans = 1; numEqBeans <= maxEleSize; numEqBeans++) {
             if (freqVec[numEqBeans] == 0) {
+                // if there's no such bag having numEqBeans no of beans, we skip
                 continue;
             }
 
+            // calculate total no of beans to be removed from all bags having smaller no of beans than numEqBeans (essentially those bags will be completely removed)
             long long numRemovalsSmallerBags = freqProdPrefixSumVec[numEqBeans - 1];
+            // calculate total no of beans to be removed from all bags having greater no of beans than numEqBeans
+            // (we'll have to remove K - numEqBeans from each one of those bags, where K = no of beans in that bag)
             long long numRemovalsBiggerBags = (freqProdPrefixSumVec[maxEleSize] - freqProdPrefixSumVec[numEqBeans]) - ((freqPrefixSumVec[maxEleSize] - freqPrefixSumVec[numEqBeans]) * ((long long)numEqBeans));
+            // add up the above to determine the total no of beans to be removed
             long long numRemovalsTotal = numRemovalsSmallerBags + numRemovalsBiggerBags;
 
             if (debug) {
@@ -117,6 +124,7 @@ class Solution {
                 // printf("(%lld - %lld) - ((%d - %d) * %d) = %d\n", freqProdPrefixSumVec[maxEleSize], freqProdPrefixSumVec[numEqBeans], );
             }
 
+            // update minRemovals value (and also persist the final no of equivalent beans that we're gonna have with that)
             if (numRemovalsTotal < minRemovals) {
                 minRemovals = numRemovalsTotal;
                 minRemovalsEqBeans = numEqBeans;
@@ -130,12 +138,16 @@ class Solution {
     friend class SolutionTest;
 
     long long minimumRemoval(vector<int>& beans, int maxEle) {
+        // prepare frequency vector
         vector<int> freqVec = buildFreqVec(beans, maxEle);
+        // prepare prefix sum of frequency vector
         vector<int> freqPrefixSumVec = buildPrefixSumVec(freqVec);
+        // prepare index-weighted prefix sum (prod prefix sum) of frqeuency vector (before adding, every value is multiplied by it's index)
+        // freqProdPrefixSumVec[i] then denotes the total no of beans contained in all bags having [0 ... i] beans (by factoring in their frequency also)
         vector<long long> freqProdPrefixSumVec = buildProdPrefixSumVec(freqVec);
 
-        vector<int> presenceFlagVec = buildPresenceFlagVec(beans, maxEle);
-        vector<int> presenceFlagPrefixSumVec = buildPrefixSumVec(presenceFlagVec);
+        // vector<int> presenceFlagVec = buildPresenceFlagVec(beans, maxEle);
+        // vector<int> presenceFlagPrefixSumVec = buildPrefixSumVec(presenceFlagVec);
 
         return findMinRemovals(freqVec, freqProdPrefixSumVec, freqPrefixSumVec, maxEle);
     }
