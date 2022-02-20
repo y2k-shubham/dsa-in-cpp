@@ -12,6 +12,8 @@ using namespace std;
 
 class Solution {
    private:
+    bool debug = false;
+
     void showMap(unordered_map<int, unordered_set<int> >& modMap) {
         printf("modMap is:-\n");
 
@@ -92,9 +94,9 @@ class Solution {
 
         int complement = k - mod;
         unordered_set<int> complementSet = modMap[complement];
-        int totalCountcomplement = findTotalCount(modMap, freqMap, complement);
+        int totalCountComplement = findTotalCount(modMap, freqMap, complement);
 
-        if (totalCountMod == totalCountcomplement) {
+        if (totalCountMod == totalCountComplement) {
             eraseEles(freqMap, modSet);
             eraseEles(freqMap, complementSet);
             return true;
@@ -112,6 +114,10 @@ class Solution {
 
         for (unordered_set<int>::iterator it = modSet.begin(); it != modSet.end(); it++) {
             int crrMod = *it;
+            if (crrMod == 0) {
+                consumedMods.insert(0);
+                continue;
+            }
             if (consumedMods.find(crrMod) != consumedMods.end()) {
                 continue;
             }
@@ -126,6 +132,9 @@ class Solution {
                     eraseEles(freqMap, mSet);
                     modMap.erase(crrMod);
                 } else {
+                    if (debug) {
+                        printf("returning false on half crrMod=%d with freq=%d\n", crrMod, freq);
+                    }
                     return false;
                 }
             } else {
@@ -133,6 +142,11 @@ class Solution {
                     modMap.erase(crrMod);
                     modMap.erase(k - crrMod);
                 } else {
+                    if (debug) {
+                        printf(
+                            "returning false on crrMod=%d with crrModFreq=%d and compl=%d and compFreq=%d\n",
+                            crrMod, findTotalCount(modMap, freqMap, crrMod), (k - crrMod), findTotalCount(modMap, freqMap, k - crrMod));
+                    }
                     return false;
                 }
             }
@@ -247,6 +261,72 @@ class SolutionTest {
         // soln.showMap(modMapInterim);
         assert(countOutExpected == countOutComputed);
     }
+
+    void testCanArrange() {
+        Solution soln = Solution();
+        vector<int> vecIn;
+        int kIn;
+        bool outExpected;
+        bool outComputed;
+
+        // soln.debug = true;
+        vecIn = {1, 2, 3, 4, 5, 10, 6, 7, 8, 9};
+        kIn = 5;
+        outExpected = true;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+        // soln.debug = false;
+
+        vecIn = {1, 2, 3, 4, 5, 6};
+        kIn = 7;
+        outExpected = true;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+
+        vecIn = {1, 2, 3, 4, 5, 6};
+        kIn = 10;
+        outExpected = false;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+
+        vecIn = {0, 6, 0, 12, 24, 18};
+        kIn = 6;
+        outExpected = true;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+
+        vecIn = {0, 17, 6, 15, 0, 12, 18, 24, 5, 9};
+        kIn = 6;
+        outExpected = false;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+
+        soln.debug = true;
+        vecIn = {-1, -2, -3, -4, -5, -10, -6, -7, -8, -9};
+        kIn = 7;
+        outExpected = true;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+        soln.debug = false;
+
+        vecIn = {-1, -2, -3, -4, -5, -6};
+        kIn = 10;
+        outExpected = false;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+
+        vecIn = {0, -6, 0, -12, -24, -18};
+        kIn = 6;
+        outExpected = true;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+
+        vecIn = {-0, -17, -6, -15, -0, -12, -18, -24, -5, -94};
+        kIn = 6;
+        outExpected = false;
+        outComputed = soln.canArrange(vecIn, kIn);
+        assert(outExpected == outComputed);
+    }
 };
 
 int main() {
@@ -254,6 +334,7 @@ int main() {
 
     solnTest.testCreateModMap();
     solnTest.testFindTotalCount();
+    solnTest.testCanArrange();
 
     return 0;
 }
