@@ -37,9 +37,12 @@ a.out
 !/**/
 !*.*
 
-# IntelliJ IDEA
+# IntelliJ IDEA / CLion
 .idea
 *.iml
 
 # MacOS
 .DS_Store
+
+# CMake (used by CLion)
+cmake-build-debug/
