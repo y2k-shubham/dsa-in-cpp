@@ -968,4 +968,4 @@ add_executable(dsa_in_cpp
         TusharRoy/Strings/rabin-karp-algorithm.cpp
         TusharRoy/Tree/binary-tree-spiral-order-traversal.cpp
         TusharRoy/Tree/fenwick-tree.cpp
-        TusharRoy/Tree/lowest-common-ancestor-binary-tree.cpp "LeetCode/NumberTheory/(wrong)-leetcode-799-champagne-tower.cpp" LeetCode/Sorting&Searching/leetcode-704-binary-search.cpp)
+        TusharRoy/Tree/lowest-common-ancestor-binary-tree.cpp "LeetCode/NumberTheory/(wrong)-leetcode-799-champagne-tower.cpp" LeetCode/Sorting&Searching/leetcode-704-binary-search.cpp LeetCode/Hashing/leetcode-1282-group-the-people-given-the-group-size-they-belong-to.cpp)
