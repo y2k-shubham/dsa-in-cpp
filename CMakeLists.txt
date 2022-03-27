@@ -575,7 +575,7 @@ add_executable(dsa_in_cpp
         LeetCode/Bitwise/leetcode-461-hamming-distance.cpp
         LeetCode/Bitwise/leetcode-477-total-hamming-distance.cpp
         LeetCode/Bitwise/leetcode-67-add-binary.cpp
-        LeetCode/Contest/[simulation]-leetcode-1599-maximum-profit-of-operating-a-centennial-wheel.cpp
+        LeetCode/Contest/[simulation]-1599-maximum-profit-of-operating-a-centennial-wheel.cpp
         LeetCode/Contest/[arrays]-maximum-absolute-sum-of-any-subarray.cpp
         LeetCode/Contest/[dll]-1600-throne-inheritance.cpp
         LeetCode/Contest/[stack]-1598-crawler-log-folder.cpp
