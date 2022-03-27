@@ -575,15 +575,15 @@ add_executable(dsa_in_cpp
         LeetCode/Bitwise/leetcode-461-hamming-distance.cpp
         LeetCode/Bitwise/leetcode-477-total-hamming-distance.cpp
         LeetCode/Bitwise/leetcode-67-add-binary.cpp
-        LeetCode/Contest/1599-maximum-profit-of-operating-a-centennial-wheel.cpp
+        LeetCode/Contest/[simulation]-leetcode-1599-maximum-profit-of-operating-a-centennial-wheel.cpp
         LeetCode/Contest/[arrays]-maximum-absolute-sum-of-any-subarray.cpp
         LeetCode/Contest/[dll]-1600-throne-inheritance.cpp
         LeetCode/Contest/[stack]-1598-crawler-log-folder.cpp
         LeetCode/Contest/[strings]-minimum-length-of-string-after-deleting-similar-ends.cpp
-        LeetCode/Contest/construct-the-lexicographically-largest-valid-sequence.cpp
+        LeetCode/Contest/[backtracking]-construct-the-lexicographically-largest-valid-sequence.cpp
         LeetCode/Contest/find-two-non-overlapping-sub-arrays-each-with-target-sum.cpp
         LeetCode/Contest/minimum-difference-between-largest-and-smallest-value-in-three-moves.cpp
-        LeetCode/Contest/minimum-number-of-days-to-make-m-bouquets.cpp
+        "LeetCode/Contest/(incomplete)-[dp]-minimum-number-of-days-to-make-m-bouquets.cpp"
         LeetCode/Contest/minimum-possible-integer-after-at-most-k-adjacent-swaps-on-digits.cpp
         "LeetCode/Design/(tle)-leetcode-2080-range-frequency-queries.cpp"
         LeetCode/Design/leetcode-1352-product-of-the-last-k-numbers.cpp
@@ -968,4 +968,4 @@ add_executable(dsa_in_cpp
         TusharRoy/Strings/rabin-karp-algorithm.cpp
         TusharRoy/Tree/binary-tree-spiral-order-traversal.cpp
         TusharRoy/Tree/fenwick-tree.cpp
-        TusharRoy/Tree/lowest-common-ancestor-binary-tree.cpp "LeetCode/NumberTheory/(wrong)-leetcode-799-champagne-tower.cpp" LeetCode/Sorting&Searching/leetcode-704-binary-search.cpp LeetCode/Hashing/leetcode-1282-group-the-people-given-the-group-size-they-belong-to.cpp LeetCode/Arbitrary/leetcode-554-brick-wall.cpp "LeetCode/Contest/(incomplete)-maximum-value-of-k-coins-from-piles.cpp" LeetCode/Contest/minimum-deletions-to-make-array-beautiful.cpp)
+        TusharRoy/Tree/lowest-common-ancestor-binary-tree.cpp "LeetCode/NumberTheory/(wrong)-leetcode-799-champagne-tower.cpp" LeetCode/Sorting&Searching/leetcode-704-binary-search.cpp LeetCode/Hashing/leetcode-1282-group-the-people-given-the-group-size-they-belong-to.cpp LeetCode/Arbitrary/leetcode-554-brick-wall.cpp "LeetCode/Contest/(incomplete)-[dp]-maximum-value-of-k-coins-from-piles.cpp" LeetCode/Contest/[arrays]-minimum-deletions-to-make-array-beautiful.cpp)

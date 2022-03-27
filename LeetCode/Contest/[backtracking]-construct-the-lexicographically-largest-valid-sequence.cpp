@@ -1,5 +1,5 @@
 // https://leetcode.com/contest/biweekly-contest-43/problems/construct-the-lexicographically-largest-valid-sequence/
-// medium; baclktracking / pure brute-force
+// medium; back-tracking / pure brute-force
 
 #include <cstdio>
 #include <iostream>
