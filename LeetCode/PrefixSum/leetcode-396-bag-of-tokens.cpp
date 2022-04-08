@@ -1,5 +1,5 @@
 // LeetCode-396: https://leetcode.com/problems/rotate-function/
-// incomplete: getting wrong answer right now (approach is likely correct)
+// not a medium problem; clever maths involved
 
 #include <vector>
 #include <cassert>
@@ -72,24 +72,42 @@ public:
         vector<int> suffSum = buildSuffSum(nums);
 
         long long maxSum = progPrefSum[len - 1];
-        long long crrSum = maxSum;
         for (int i = 1; i < len; i++) {
-            //crrSum = progPrefSum[i - 1] + (prefSum[i - 1] * (len - i));
-            //crrSum += (prefSum[i - 1] * (len - i));
-            crrSum += prefSum[i - 1] * (len - i);
+            /**
+             * the way to think: instead of shifting (rotating) numbers, let's think like we're
+             * rotating their multipliers instead
+             *
+             * after 1 rotation
+             * 0*a[0] + 1*a[1] + 2*a[2] ... n*a[n]
+             * will become
+             * n*a[0] + 0*a[1] + 1*a[2] ... (n-1)*a[n-1]
+             *
+             * in general, consider we want to evaluate this sum (i=k)
+             * (n-k+0)*a[0] + (n-k+1)*a[1] + (n-k+2)*a[2] ... n*a[k-1] ... (n-k-1)*a[n]
+             * ^---------left-part--------------------------^  ^------right-part-----^
+             *
+             * this can be calculated by applying some clever maths using
+             * prefixSum, progPrefixSum & suffixSum
+             *
+             * progPrefixSum (progressive prefix sum) is just the vector storing this sum (with multipliers) at every posn
+             * 0*a[0] + 1*a[1] + 2*a[2] ... n*a[n]
+             */
 
-            //crrSum -= nums[i];
-            //crrSum -= (i < (len - 1)) ? suffSum[i + 1] : 0;
-            crrSum -= suffSum[i];
-            if (debug) {
-                printf("at i=%d\n", i);
-                printf("added prefSum[%d]=%d * %d = %d\n", (i - 1), prefSum[i - 1], (len - i), (prefSum[i - 1] * (len - i)));
-                printf("subtracted suffSum[%d] = %d\n", i, suffSum[i]);
-                printf("crrSum = %lld\n", crrSum);
-                printf("---------\n");
-            }
+            // sum of left part
+            long long baseLSum = progPrefSum[i - 1];
+            long long addendLSum = prefSum[i - 1] * (len - i);
+            long long totalLSum = baseLSum + addendLSum;
 
-            maxSum = max(maxSum, crrSum);
+            // sum of right part
+            long long baseRSum = (progPrefSum[len - 1] - progPrefSum[i - 1]);
+            long long subtractendRSum = suffSum[i] * i;
+            long long totalRSum = baseRSum - subtractendRSum;
+
+            // total sum
+            baseLSum = totalLSum + totalRSum;
+
+            // take maximum
+            maxSum = max(maxSum, baseLSum);
         }
 
         return maxSum;
@@ -100,9 +118,9 @@ class SolutionTest {
 public:
     void testBuildProgPrefSum() {
         Solution soln = Solution();
-        vector <int> vecIn;
-        vector <long long> progPrefSumOutExpected;
-        vector <long long> progPrefSumOutComputed;
+        vector<int> vecIn;
+        vector<long long> progPrefSumOutExpected;
+        vector<long long> progPrefSumOutComputed;
 
         vecIn = {};
         progPrefSumOutExpected = {};
@@ -122,7 +140,7 @@ public:
 
     void testMaxRotateFunction() {
         Solution soln = Solution();
-        vector <int> vecIn;
+        vector<int> vecIn;
         int outExpected, outComputed;
 
         vecIn = {};
@@ -138,6 +156,19 @@ public:
         soln.debug = true;
         vecIn = {4, 3, 2, 6};
         outExpected = 26;
+        outComputed = soln.maxRotateFunction(vecIn);
+        assert(outExpected == outComputed);
+        soln.debug = false;
+
+        vecIn = {100};
+        outExpected = 0;
+        outComputed = soln.maxRotateFunction(vecIn);
+        assert(outExpected == outComputed);
+
+        // [1,2,3,4,5,6,7,8,9,10]
+        soln.debug = true;
+        vecIn = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        outExpected = 330;
         outComputed = soln.maxRotateFunction(vecIn);
         assert(outExpected == outComputed);
         soln.debug = false;
