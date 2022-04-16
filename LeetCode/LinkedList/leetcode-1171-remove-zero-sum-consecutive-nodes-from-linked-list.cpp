@@ -1,10 +1,6 @@
 // LeetCode-1171: https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
 // tricky problem: more difficult than it seems (obvious approach doesn't work)
 
-// wrong solution (this approach wont work)
-// e.g. test case [1 3 2 -3 -2 5 5 -5 1]
-// expected output, [1, 5, 1]; computed output [1, 5, 5, -5, 1]
-
 #include <cstdio>
 #include <iostream>
 #include <unordered_map>
@@ -12,6 +8,9 @@
 #include <list>
 #include <cassert>
 #include <string>
+#include <stack>
+#include <utility>
+#include <unordered_map>
 
 using namespace std;
 
@@ -75,16 +74,26 @@ private:
         cout << endl;
     }
 
+    void decrFreq(unordered_map<int, int>& freqMap, int val) {
+        freqMap[val]--;
+        if (freqMap[val] == 0) {
+            freqMap.erase(val);
+        }
+    }
+
 public:
     friend class SolutionTest;
 
     ListNode *removeZeroSumSublists(ListNode *head) {
-        unordered_map<int, pair<ListNode *, ListNode *> > prefSumNodeMap;
-        prefSumNodeMap[0] = {nullptr, nullptr};
+        ListNode *newHead = head;
+
+        stack<pair<ListNode *, int> > stk;
+        stk.push({nullptr, 0});
+
+        unordered_map<int, int> sumFreqMap;
+        sumFreqMap[0] = 1;
 
         int sum = 0;
-        ListNode *newHead = head;
-        ListNode *prev = nullptr;
         for (ListNode *list = head; list != nullptr; list = list->next) {
             sum += list->val;
             if (debug) {
@@ -92,44 +101,41 @@ public:
                 printf("at node=%d, sum=%d\n", list->val, sum);
             }
 
-            if (prefSumNodeMap.find(sum) != prefSumNodeMap.end()) {
-                // found a zero-sum sequence
+            if (sumFreqMap.find(sum) != sumFreqMap.end()) {
+                if (debug) {
+                    printf("sum=%d is repeated\n", sum);
+                    printf(". . . . .\n");
+                }
 
-                ListNode *node = prefSumNodeMap[sum].first;
-
-                if (node == nullptr) {
+                while (stk.top().second != sum) {
                     if (debug) {
-                        printf("at node=%d, found sum=%d repeated; prevNode=null\n", list->val, sum);
+                        if (stk.top().first == nullptr) {
+                            printf("popped node=null, sum=%d\n", stk.top().second);
+                        } else {
+                            printf("popped node=%d, sum=%d\n", stk.top().first->val, stk.top().second);
+                        }
+                    }
+
+                    decrFreq(sumFreqMap, stk.top().second);
+                    stk.pop();
+                }
+
+                if (stk.top().first == nullptr) {
+                    // can only happen when sum is 0
+                    if (sum != 0) {
+                        printf("we are dead\n");
+                        return nullptr;
                     }
                     newHead = list->next;
                 } else {
-                    if (debug) {
-                        printf("at node=%d, found sum=%d repeated; prevNode=%d\n", list->val, sum, node->val);
-                    }
-                    node->next = list->next;
+                    stk.top().first->next = list->next;
                 }
-
-//                ListNode *parent = prefSumNodeMap[sum].second;
-//                if (parent != nullptr) {
-//                    parent->next = list->next;
-//                } else {
-//                    newHead = list->next;
-//                    if (debug) {
-//                        printf("updated newHead=%s at node=%d; sum=%d\n", ((newHead == nullptr) ? "null" : to_string(newHead->val).c_str()), list->val, sum);
-//                    }
-//                }
-
-//                prefSumNodeMap.erase(sum);
             } else {
-                prefSumNodeMap[sum] = {list, prev};
+                sumFreqMap[sum]++;
+                stk.push({list, sum});
             }
-
-            prev = list;
         }
 
-        if (sum == 0) {
-            return nullptr;
-        }
         return newHead;
     }
 };
@@ -224,15 +230,16 @@ public:
         listOutExpected = {8, 1};
         assert(listOutExpected == listOutComputed);
 
-//        soln.debug = true;
+        soln.debug = false;
         listIn = {8, 1, 0, -1};
+//        soln.showStdList(listIn);
         headIn = soln.createLinkedList(listIn);
         headOutComputed = soln.removeZeroSumSublists(headIn);
         listOutComputed = soln.createStdList(headOutComputed);
         listOutExpected = {8};
 //        soln.showStdList(listOutComputed);
         assert(listOutExpected == listOutComputed);
-//        soln.debug = false;
+        soln.debug = false;
 
         listIn = {1, 2, -3, 3, 1};
         headIn = soln.createLinkedList(listIn);
@@ -262,16 +269,16 @@ public:
         listOutExpected = {};
         assert(listOutExpected == listOutComputed);
 
-        soln.debug = true;
+//        soln.debug = true;
         listIn = {1, 3, 2, -3, -2, 5, 5, -5, 1};
-        soln.showStdList(listIn);
+//        soln.showStdList(listIn);
         headIn = soln.createLinkedList(listIn);
         headOutComputed = soln.removeZeroSumSublists(headIn);
         listOutComputed = soln.createStdList(headOutComputed);
         listOutExpected = {1, 5, 1};
-        soln.showStdList(listOutComputed);
+//        soln.showStdList(listOutComputed);
         assert(listOutExpected == listOutComputed);
-        soln.debug = false;
+//        soln.debug = false;
     }
 };
 
@@ -284,3 +291,4 @@ int main() {
 
     return 0;
 }
+
