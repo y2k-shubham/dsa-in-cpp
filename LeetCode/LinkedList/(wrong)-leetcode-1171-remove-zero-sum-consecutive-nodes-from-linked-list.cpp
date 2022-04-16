@@ -1,4 +1,7 @@
 // LeetCode-1171: https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
+// wrong solution (this approach wont work)
+// e.g. test case [1 3 2 -3 -2 5 5 -5 1]
+// expected output, [1, 5, 1]; computed output [1, 5, 5, -5, 1]
 
 #include <cstdio>
 #include <iostream>
@@ -82,14 +85,25 @@ public:
         ListNode *prev = nullptr;
         for (ListNode *list = head; list != nullptr; list = list->next) {
             sum += list->val;
+            if (debug) {
+                printf("\n----\n");
+                printf("at node=%d, sum=%d\n", list->val, sum);
+            }
 
             if (prefSumNodeMap.find(sum) != prefSumNodeMap.end()) {
                 // found a zero-sum sequence
 
                 ListNode *node = prefSumNodeMap[sum].first;
+
                 if (node == nullptr) {
+                    if (debug) {
+                        printf("at node=%d, found sum=%d repeated; prevNode=null\n", list->val, sum);
+                    }
                     newHead = list->next;
                 } else {
+                    if (debug) {
+                        printf("at node=%d, found sum=%d repeated; prevNode=%d\n", list->val, sum, node->val);
+                    }
                     node->next = list->next;
                 }
 
@@ -103,7 +117,7 @@ public:
 //                    }
 //                }
 
-                prefSumNodeMap.erase(sum);
+//                prefSumNodeMap.erase(sum);
             } else {
                 prefSumNodeMap[sum] = {list, prev};
             }
@@ -247,11 +261,13 @@ public:
         assert(listOutExpected == listOutComputed);
 
         soln.debug = true;
-        listIn = {1,3,2,-3,-2,5,5,-5,1};
+        listIn = {1, 3, 2, -3, -2, 5, 5, -5, 1};
+        soln.showStdList(listIn);
         headIn = soln.createLinkedList(listIn);
         headOutComputed = soln.removeZeroSumSublists(headIn);
         listOutComputed = soln.createStdList(headOutComputed);
         listOutExpected = {1, 5, 1};
+        soln.showStdList(listOutComputed);
         assert(listOutExpected == listOutComputed);
         soln.debug = false;
     }
