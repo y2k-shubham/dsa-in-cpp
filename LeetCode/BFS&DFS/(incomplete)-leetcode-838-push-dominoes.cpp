@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// unordered_set of pairs: https://stackoverflow.com/a/15161034/3679900
 struct pair_hash {
     inline std::size_t operator()(const std::pair<int, char>& v) const {
         return v.first * 31 + v.second;
