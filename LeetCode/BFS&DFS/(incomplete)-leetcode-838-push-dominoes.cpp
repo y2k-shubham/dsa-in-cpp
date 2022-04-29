@@ -20,6 +20,8 @@ struct pair_hash {
 
 class Solution {
 private:
+    bool debug = false;
+
     set<pair<int, char> > convertToOrderedSet(unordered_set<pair<int, char>, pair_hash>& unorderedSet) {
         set<pair<int, char> > orderedSet(unorderedSet.begin(), unorderedSet.end());
         return orderedSet;
@@ -93,6 +95,9 @@ private:
 
         for (auto it = fallSet.begin(); it != fallSet.end(); it++) {
             pair<int, char> domino = *it;
+            if (debug) {
+                printf("processing domino (%d, %c) from fallSet\n", domino.first, domino.second);
+            }
 
             // update dominos state
             vec[domino.first] = domino.second;
@@ -104,18 +109,28 @@ private:
             bool nextDominoNotAlreadyFallen = nextDominoExists && (vec[nextDominoIdx] == '.');
             if (!nextDominoNotAlreadyFallen) {
                 // if next domino already fallen, the domino-effect of current domino ends here
+                if (debug) {
+                    printf("ending domino effect of domino (%d, %c)\n", domino.first, domino.second);
+                }
                 continue;
             }
 
             // determine opposite fall direction of next domino
-            char nextDominoOppFall = (domino.second == 'L') ? 'R' : 'L';
-            if (updatedFallSet.find({nextDominoIdx, nextDominoOppFall}) != updatedFallSet.end()) {
+            char nextDominoFall = domino.second;
+            char nextDominoOppFall = (nextDominoFall == 'L') ? 'R' : 'L';
+            bool nextDominoIncludedInOriginalSet = fallSet.find({nextDominoIdx, nextDominoOppFall}) != fallSet.end();
+            bool nextDominoIncludedInUpdatedSet =
+                    updatedFallSet.find({nextDominoIdx, nextDominoOppFall}) != updatedFallSet.end();
+            if (nextDominoIncludedInOriginalSet || nextDominoIncludedInUpdatedSet) {
                 // if already added, (meaning that next domino
                 // got fallen-upon from both sides) then remove it
+                if (debug) {
+                    printf("removing domino %d from fallSet as opposite falls detected\n", nextDominoIdx);
+                }
                 updatedFallSet.erase({nextDominoIdx, nextDominoOppFall});
             } else {
                 // otherwise add next domino to updatedFallSet
-                updatedFallSet.erase({nextDominoIdx, domino.second});
+                updatedFallSet.insert({nextDominoIdx, nextDominoFall});
             }
         }
 
@@ -190,6 +205,18 @@ public:
                               {3, 'L'}};
         fallSetOutComputed = soln.buildFallSet(vecInExpected);
         assert(fallSetOutExpected == fallSetOutComputed);
+
+        strIn = ".L.R...LR..L..";
+        vecInExpected = {'.', 'L', '.', 'R', '.', '.', '.', 'L', 'R', '.', '.', 'L', '.', '.'};
+        vecInComputed = soln.convertToVec(strIn);
+        assert(vecInExpected == vecInComputed);
+        fallSetOutExpected = {{1,  'L'},
+                              {3,  'R'},
+                              {7,  'L'},
+                              {8,  'R'},
+                              {11, 'L'}};
+        fallSetOutComputed = soln.buildFallSet(vecInExpected);
+        assert(fallSetOutExpected == fallSetOutComputed);
     }
 
     void testMoveDominos() {
@@ -255,8 +282,15 @@ public:
                      {14, 'L'},
                      {15, 'R'},
                      {16, 'L'}};
-        fallSetOutExpected = {};
+        fallSetOutExpected = {
+                {7,  'R'},
+                {10, 'R'},
+                {11, 'L'},
+                {13, 'L'}
+        };
         fallSetOutComputed = soln.moveDominos(vecIn, fallSetIn);
+//        printf("fallSetExpected=%s\n", soln.fallSetStringRepr(fallSetOutExpected, strIn.size()).c_str());
+//        printf("fallSetComputed=%s\n", soln.fallSetStringRepr(fallSetOutComputed, strIn.size()).c_str());
         assert(fallSetOutExpected == fallSetOutComputed);
         vecOutExpected = {'R', 'R', '.', 'L', '.', '.', 'R', '.', '.', 'R', '.', '.', 'L', '.', 'L', 'R', 'L'};
 //        printf("outExpected=%s, outComputed=%s\n", soln.vecStringRepr(vecOutExpected).c_str(), soln.vecStringRepr(vecIn).c_str());
@@ -265,20 +299,115 @@ public:
         strOutComputed = soln.convertToStr(vecIn);
         assert(strOutExpected == strOutComputed);
 
-        strIn = "RR.L..R..R..L.LRL";
+        strIn = "RR.L..RR.RRLLLLRL";
         vecIn = soln.convertToVec(strIn);
         fallSetIn = {{7,  'R'},
                      {10, 'R'},
                      {11, 'L'},
                      {13, 'L'}};
-        fallSetOutExpected = {};
+        fallSetOutExpected = {{8, 'R'}};
         fallSetOutComputed = soln.moveDominos(vecIn, fallSetIn);
+//        printf("fallSetExpected=%s\n", soln.fallSetStringRepr(fallSetOutExpected, strIn.size()).c_str());
+//        printf("fallSetComputed=%s\n", soln.fallSetStringRepr(fallSetOutComputed, strIn.size()).c_str());
         assert(fallSetOutExpected == fallSetOutComputed);
         vecOutExpected = {'R', 'R', '.', 'L', '.', '.', 'R', 'R', '.', 'R', 'R', 'L', 'L', 'L', 'L', 'R', 'L'};
 //        printf("outExpected=%s, outComputed=%s\n", soln.vecStringRepr(vecOutExpected).c_str(), soln.vecStringRepr(vecIn).c_str());
         assert(vecOutExpected == vecIn);
         strOutExpected = "RR.L..RR.RRLLLLRL";
         strOutComputed = soln.convertToStr(vecIn);
+        assert(strOutExpected == strOutComputed);
+
+//        soln.debug = true;
+        strIn = ".L.R...LR..L..";
+        vecIn = soln.convertToVec(strIn);
+        fallSetIn = {{1,  'L'},
+                     {3,  'R'},
+                     {7,  'L'},
+                     {8,  'R'},
+                     {11, 'L'}};
+        fallSetOutExpected = {{0,  'L'},
+                              {4,  'R'},
+                              {6,  'L'},
+                              {9,  'R'},
+                              {10, 'L'}};
+        fallSetOutComputed = soln.moveDominos(vecIn, fallSetIn);
+//        printf("fallSetExpected=%s\n", soln.fallSetStringRepr(fallSetOutExpected, strIn.size()).c_str());
+//        printf("fallSetComputed=%s\n", soln.fallSetStringRepr(fallSetOutComputed, strIn.size()).c_str());
+        assert(fallSetOutExpected == fallSetOutComputed);
+        vecOutExpected = {'.', 'L', '.', 'R', '.', '.', '.', 'L', 'R', '.', '.', 'L', '.', '.'};
+//        printf("outExpected=%s, outComputed=%s\n", soln.vecStringRepr(vecOutExpected).c_str(), soln.vecStringRepr(vecIn).c_str());
+        assert(vecOutExpected == vecIn);
+        strOutExpected = ".L.R...LR..L..";
+        strOutComputed = soln.convertToStr(vecIn);
+        assert(strOutExpected == strOutComputed);
+//        soln.debug = false;
+
+//        soln.debug = true;
+        strIn = ".L.R...LR..L..";
+        vecIn = soln.convertToVec(strIn);
+        fallSetIn = {{0,  'L'},
+                     {4,  'R'},
+                     {6,  'L'},
+                     {9,  'R'},
+                     {10, 'L'}};
+        fallSetOutExpected = {};
+        fallSetOutComputed = soln.moveDominos(vecIn, fallSetIn);
+//        printf("fallSetExpected=%s\n", soln.fallSetStringRepr(fallSetOutExpected, strIn.size()).c_str());
+//        printf("fallSetComputed=%s\n", soln.fallSetStringRepr(fallSetOutComputed, strIn.size()).c_str());
+        assert(fallSetOutExpected == fallSetOutComputed);
+        vecOutExpected = {'L', 'L', '.', 'R', 'R', '.', 'L', 'L', 'R', 'R', 'L', 'L', '.', '.'};
+//        printf("outExpected=%s, outComputed=%s\n", soln.vecStringRepr(vecOutExpected).c_str(), soln.vecStringRepr(vecIn).c_str());
+        assert(vecOutExpected == vecIn);
+        strOutExpected = "LL.RR.LLRRLL..";
+        strOutComputed = soln.convertToStr(vecIn);
+        assert(strOutExpected == strOutComputed);
+//        soln.debug = false;
+
+        strIn = "LL.RR.LLRRLL..";
+        vecIn = soln.convertToVec(strIn);
+        fallSetIn = {{0,  'L'},
+                     {4,  'R'},
+                     {6,  'L'},
+                     {9,  'R'},
+                     {10, 'L'}};
+        fallSetOutExpected = {};
+        fallSetOutComputed = soln.moveDominos(vecIn, fallSetIn);
+        assert(fallSetOutExpected == fallSetOutComputed);
+        vecOutExpected = {'L', 'L', '.', 'R', 'R', '.', 'L', 'L', 'R', 'R', 'L', 'L', '.', '.'};
+//        printf("outExpected=%s, outComputed=%s\n", soln.vecStringRepr(vecOutExpected).c_str(), soln.vecStringRepr(vecIn).c_str());
+        assert(vecOutExpected == vecIn);
+        strOutExpected = "LL.RR.LLRRLL..";
+        strOutComputed = soln.convertToStr(vecIn);
+        assert(strOutExpected == strOutComputed);
+    }
+
+    void testPushDominoes() {
+        Solution soln = Solution();
+        string strIn;
+        string strOutExpected, strOutComputed;
+
+        strIn = "";
+        strOutExpected = "";
+        strOutComputed = soln.pushDominoes(strIn);
+        assert(strOutExpected == strOutComputed);
+
+        strIn = "RR.L";
+        strOutExpected = "RR.L";
+        strOutComputed = soln.pushDominoes(strIn);
+        assert(strOutExpected == strOutComputed);
+
+        strIn = "RR.L..R..R..L.LRL";
+        strOutExpected = "RR.L..RRRRRLLLLRL";
+        strOutComputed = soln.pushDominoes(strIn);
+//        printf("strOutExpected = %s\n", strOutExpected.c_str());
+//        printf("strOutComputed = %s\n", strOutComputed.c_str());
+        assert(strOutExpected == strOutComputed);
+
+        strIn = ".L.R...LR..L..";
+        strOutExpected = "LL.RR.LLRRLL..";
+        strOutComputed = soln.pushDominoes(strIn);
+//        printf("strOutExpected = %s\n", strOutExpected.c_str());
+//        printf("strOutComputed = %s\n", strOutComputed.c_str());
         assert(strOutExpected == strOutComputed);
     }
 };
@@ -288,6 +417,7 @@ int main() {
 
     solnTest.testBuildFallSet();
     solnTest.testMoveDominos();
+    solnTest.testPushDominoes();
 
     return 0;
 }
