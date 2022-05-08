@@ -1,5 +1,7 @@
 // LeetCode-795: https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/
 
+// incomplete: not accepted
+
 // approach seems to be correct and optimal
 // unable to understand the last test case (check test-cases) which is failing
 
