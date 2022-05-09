@@ -1,15 +1,10 @@
 // LeetCode-524: https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/
 // optimal queries-based subsequence matching approach taken from LeetCode-792: https://github.com/y2k-shubham/dsa-in-cpp/blob/585eaccf6a367ae618cfc96d90375a432acc4dd6/LeetCode/Strings/leetcode-792-number-of-matching-subsequences.cpp
 
-// LeetCode-792: https://leetcode.com/problems/number-of-matching-subsequences/
-
 // clever pre-computation approach;
 // each subseq match with str
 //  - takes O(len(subseq)) time
 //  - [and is independent of len(str)]
-
-// still LeetCode submission was abysmal
-// speed 12 %tile, memory 16 %tile
 
 #include <cassert>
 #include <cstdio>
