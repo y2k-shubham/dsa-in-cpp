@@ -2,6 +2,8 @@
 // Time  Complexity: O(3n) = O(n)
 // Space Complexity: O(n)
 
+// not sure if this approach is correct; but definitely it is novel thinking
+
 /*
 Explaination:
 Take an auxillary integer array initialized with zero.
