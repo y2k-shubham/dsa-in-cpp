@@ -1,4 +1,5 @@
-// LeetCode-938: https://leetcode.com/problems/minimum-cost-for-tickets/
+// LeetCode-983: https://leetcode.com/problems/minimum-cost-for-tickets/
+// NeetCode: https://www.youtube.com/watch?v=4pY1bsBpIY4
 
 #include <cassert>
 #include <climits>
