@@ -2,7 +2,7 @@
 /**
  * not very easy
  *  - has some edge cases
- *  - involves a bit of combinatorics nCr (can also be classified as NumberTheory problem)
+ *  - involves a bit of combinatorics nCr (can also be classified as Maths problem)
  *  - plus overflow (modulo result) is also a nuisance
  *
  * note that following 2 things require special handling (other things are intuitive)
