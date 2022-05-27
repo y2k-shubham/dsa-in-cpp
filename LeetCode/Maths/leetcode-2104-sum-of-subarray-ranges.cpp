@@ -3,7 +3,7 @@
 /**
  * elegant problem
  * - extension of LeetCode-907: https://leetcode.com/problems/sum-of-subarray-minimums/
- * - read explanation of LC-907 solution to understand solution of this problem (LC-2104): https://github.com/y2k-shubham/dsa-in-cpp/blob/master/LeetCode/NumberTheory/leetcode-907-sum-of-subarray-minimums.cpp
+ * - read explanation of LC-907 solution to understand solution of this problem (LC-2104): https://github.com/y2k-shubham/dsa-in-cpp/blob/master/LeetCode/Maths/leetcode-907-sum-of-subarray-minimums.cpp
  */
 
 /**
