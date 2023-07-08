@@ -9,7 +9,17 @@ using namespace std;
 
 class Solution {
 private:
-    vector<int> buildPrefixSumVec(string &str, char ch) {
+    string str;
+    int len;
+    int k;
+    int totalFs;
+    int totalTs;
+    vector <int>& consecPrefSumF;
+    vector <int>& consecSuffSumF;
+    vector <int>& consecPrefSumT;
+    vector <int>& consecSuffSumT;
+
+    vector<int> buildConsecPrefixSumVec(string &str, char ch) {
         int len = str.size();
 
         vector<int> prefSum(len, 0);
@@ -27,7 +37,7 @@ private:
         return prefSum;
     }
 
-    vector<int> buildSuffixSumVec(string &str, char ch) {
+    vector<int> buildConsecSuffixSumVec(string &str, char ch) {
         int len = str.size();
 
         vector<int> suffSum(len, 0);
@@ -45,9 +55,29 @@ private:
         return suffSum;
     }
 
+    int countTotalChars(string& str, char ch) {
+        int sum = 0;
+
+        for (auto it = str.begin(); it != str.end(); it++) {
+            if (*it == ch) {
+                sum++;
+            }
+        }
+
+        return sum;
+    }
+
+    int advanceWindow() {
+        char reqChar,
+        vector<int>& crrCharPrefSum,
+        vector<int>& crrCharSuffSum,
+        int idxBegin,
+        int idxEnd
+    } {
+        int crrOtherChars = 0;
+    }
+    
     int findMaxConsec(
-            string& str,
-            int k,
             char reqChar,
             vector<int>& crrCharPrefSum,
             vector<int>& crrCharSuffSum
@@ -85,14 +115,28 @@ private:
 public:
     friend class SolutionTest;
 
-    int maxConsecutiveAnswers(string answerKey, int k) {
+    Solution() {
 
+    }
+
+    int maxConsecutiveAnswers(string answerKey, int k) {
+        this->str = answerKey;
+        this->len = str.size();
+        this->k = k;
+
+        this->consecPrefSumF = buildConsecPrefixSumVec(str, 'F');
+        this->consecSuffSumF = buildConsecSuffixSumVec(str, 'F');
+        this->consecPrefSumT = buildConsecPrefixSumVec(str, 'T');
+        this->consecSuffSumT = buildConsecSuffixSumVec(str, 'T');
+
+        this->totalFs = countTotalChars(str, 'F');
+        this->totalTs = countTotalChars(str, 'T');
     }
 };
 
 class SolutionTest {
 public:
-    void testBuildPrefixSumVec() {
+    void testbuildConsecPrefixSumVec() {
         Solution soln = Solution();
         string strIn;
         char chIn;
@@ -102,35 +146,35 @@ public:
         strIn = "";
         chIn = '\0';
         prefSumOutExpected = {};
-        prefSumOutComputed = soln.buildPrefixSumVec(strIn, chIn);
+        prefSumOutComputed = soln.buildConsecPrefixSumVec(strIn, chIn);
         assert(prefSumOutExpected == prefSumOutComputed);
 
         strIn = "F";
         chIn = 'F';
         prefSumOutExpected = {1};
-        prefSumOutComputed = soln.buildPrefixSumVec(strIn, chIn);
+        prefSumOutComputed = soln.buildConsecPrefixSumVec(strIn, chIn);
         assert(prefSumOutExpected == prefSumOutComputed);
 
         strIn = "F";
         chIn = 'T';
         prefSumOutExpected = {0};
-        prefSumOutComputed = soln.buildPrefixSumVec(strIn, chIn);
+        prefSumOutComputed = soln.buildConsecPrefixSumVec(strIn, chIn);
         assert(prefSumOutExpected == prefSumOutComputed);
 
         strIn = "TFTT";
         chIn = 'T';
         prefSumOutExpected = {1, 0, 1, 2};
-        prefSumOutComputed = soln.buildPrefixSumVec(strIn, chIn);
+        prefSumOutComputed = soln.buildConsecPrefixSumVec(strIn, chIn);
         assert(prefSumOutExpected == prefSumOutComputed);
 
         strIn = "TFTFFTF";
         chIn = 'F';
         prefSumOutExpected = {0, 1, 0, 1, 2, 0, 1};
-        prefSumOutComputed = soln.buildPrefixSumVec(strIn, chIn);
+        prefSumOutComputed = soln.buildConsecPrefixSumVec(strIn, chIn);
         assert(prefSumOutExpected == prefSumOutComputed);
     }
 
-    void testBuildSuffixSumVec() {
+    void testbuildConsecSuffixSumVec() {
         Solution soln = Solution();
         string strIn;
         char chIn;
@@ -140,31 +184,31 @@ public:
         strIn = "";
         chIn = '\0';
         suffSumOutExpected = {};
-        suffSumOutComputed = soln.buildSuffixSumVec(strIn, chIn);
+        suffSumOutComputed = soln.buildConsecSuffixSumVec(strIn, chIn);
         assert(suffSumOutExpected == suffSumOutComputed);
 
         strIn = "F";
         chIn = 'F';
         suffSumOutExpected = {1};
-        suffSumOutComputed = soln.buildSuffixSumVec(strIn, chIn);
+        suffSumOutComputed = soln.buildConsecSuffixSumVec(strIn, chIn);
         assert(suffSumOutExpected == suffSumOutComputed);
 
         strIn = "F";
         chIn = 'T';
         suffSumOutExpected = {0};
-        suffSumOutComputed = soln.buildSuffixSumVec(strIn, chIn);
+        suffSumOutComputed = soln.buildConsecSuffixSumVec(strIn, chIn);
         assert(suffSumOutExpected == suffSumOutComputed);
 
         strIn = "TFTT";
         chIn = 'T';
         suffSumOutExpected = {1, 0, 2, 1};
-        suffSumOutComputed = soln.buildSuffixSumVec(strIn, chIn);
+        suffSumOutComputed = soln.buildConsecSuffixSumVec(strIn, chIn);
         assert(suffSumOutExpected == suffSumOutComputed);
 
         strIn = "TFTFFTF";
         chIn = 'F';
         suffSumOutExpected = {0, 1, 0, 2, 1, 0, 1};
-        suffSumOutComputed = soln.buildSuffixSumVec(strIn, chIn);
+        suffSumOutComputed = soln.buildConsecSuffixSumVec(strIn, chIn);
         assert(suffSumOutExpected == suffSumOutComputed);
     }
 };
@@ -172,8 +216,8 @@ public:
 int main() {
     SolutionTest solnTest = SolutionTest();
 
-    solnTest.testBuildPrefixSumVec();
-    solnTest.testBuildSuffixSumVec();
+    solnTest.testbuildConsecPrefixSumVec();
+    solnTest.testbuildConsecSuffixSumVec();
 
     return 0;
 }
