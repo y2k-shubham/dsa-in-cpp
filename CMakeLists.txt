@@ -973,4 +973,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-129-sum-root-to-leaf-numbers_reattempt-1.cpp
         LeetCode/Strings/leetcode-557-reverse-words-in-a-string-iii.cpp
         LeetCode/BinarySearch/leetcode-456-132-pattern-reattempt_1.cpp
-        GeeksForGeeks/Trees/inorder-successor-node-binary-tree.cpp)
+        GeeksForGeeks/Trees/inorder-successor-node-binary-tree.cpp
+        GeeksForGeeks/Trees/inorder-successor-in-binary-search-tree.cpp)
