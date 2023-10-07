@@ -977,4 +977,5 @@ add_executable(dsa_in_cpp
         GeeksForGeeks/Trees/inorder-successor-in-binary-search-tree.cpp
         LeetCode/Arrays/leetcode-2038-remove-colored-pieces-if-both-neighbors-are-the-same-color.cpp
         LeetCode/Arrays/leetcode-1512-number-of-good-pairs.cpp
-        LeetCode/Trees/leetcode-236-lowest-common-ancestor-of-a-binary-tree_reattempt-1.cpp)
+        LeetCode/Trees/leetcode-236-lowest-common-ancestor-of-a-binary-tree_reattempt-1.cpp
+        LeetCode/Hashing/leetcode-1048-longest-string-chain_reattempt-1.cpp)
