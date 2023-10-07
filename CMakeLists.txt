@@ -975,4 +975,5 @@ add_executable(dsa_in_cpp
         LeetCode/BinarySearch/leetcode-456-132-pattern-reattempt_1.cpp
         GeeksForGeeks/Trees/inorder-successor-node-binary-tree.cpp
         GeeksForGeeks/Trees/inorder-successor-in-binary-search-tree.cpp
-        LeetCode/Arrays/leetcode-2038-remove-colored-pieces-if-both-neighbors-are-the-same-color.cpp)
+        LeetCode/Arrays/leetcode-2038-remove-colored-pieces-if-both-neighbors-are-the-same-color.cpp
+        LeetCode/Arrays/leetcode-1512-number-of-good-pairs.cpp)
