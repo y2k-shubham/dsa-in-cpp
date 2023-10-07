@@ -974,4 +974,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-557-reverse-words-in-a-string-iii.cpp
         LeetCode/BinarySearch/leetcode-456-132-pattern-reattempt_1.cpp
         GeeksForGeeks/Trees/inorder-successor-node-binary-tree.cpp
-        GeeksForGeeks/Trees/inorder-successor-in-binary-search-tree.cpp)
+        GeeksForGeeks/Trees/inorder-successor-in-binary-search-tree.cpp
+        LeetCode/Arrays/leetcode-2038-remove-colored-pieces-if-both-neighbors-are-the-same-color.cpp)
