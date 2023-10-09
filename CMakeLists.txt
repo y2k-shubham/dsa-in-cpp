@@ -978,4 +978,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-2038-remove-colored-pieces-if-both-neighbors-are-the-same-color.cpp
         LeetCode/Arrays/leetcode-1512-number-of-good-pairs.cpp
         LeetCode/Trees/leetcode-236-lowest-common-ancestor-of-a-binary-tree_reattempt-1.cpp
-        LeetCode/Hashing/leetcode-1048-longest-string-chain_reattempt-1.cpp)
+        LeetCode/Hashing/leetcode-1048-longest-string-chain_reattempt-1.cpp
+        LeetCode/BinarySearch/leetcode-34-find-first-and-last-position-of-element-in-sorted-array_reattempt-1.cpp)
