@@ -981,4 +981,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-1048-longest-string-chain_reattempt-1.cpp
         LeetCode/BinarySearch/leetcode-34-find-first-and-last-position-of-element-in-sorted-array_reattempt-1.cpp
         LeetCode/Strings/leetcode-389-find-the-difference_reattempt-1.cpp
-        LeetCode/Trees/leetcode-112-path-sum_reattempt-1.cpp)
+        LeetCode/Trees/leetcode-112-path-sum_reattempt-1.cpp
+        LeetCode/Arrays/leetcode-905-sort-array-by-parity.cpp)
