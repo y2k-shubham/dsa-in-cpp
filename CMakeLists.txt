@@ -598,7 +598,7 @@ add_executable(dsa_in_cpp
         "LeetCode/DynamicProgramming/(incomplete)-leetcode-1976-number-of-ways-to-arrive-at-destination.cpp"
         "LeetCode/DynamicProgramming/(incomplete)-leetcode-377-combination-sum-iv.cpp"
         "LeetCode/DynamicProgramming/(incomplete)-leetcode-518-coin-change-2.cpp"
-        "LeetCode/DynamicProgramming/(incomplete)-leetcode-894-all-possible-full-binary-trees.cpp"
+        "LeetCode/DynamicProgramming/leetcode-894-all-possible-full-binary-trees.cpp"
         LeetCode/DynamicProgramming/leetcode-10-regular-expression-matching.cpp
         LeetCode/DynamicProgramming/leetcode-1025-divisor-game.cpp
         LeetCode/DynamicProgramming/leetcode-1043-partition-array-for-maximum-sum.cpp
