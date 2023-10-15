@@ -982,4 +982,5 @@ add_executable(dsa_in_cpp
         LeetCode/BinarySearch/leetcode-34-find-first-and-last-position-of-element-in-sorted-array_reattempt-1.cpp
         LeetCode/Strings/leetcode-389-find-the-difference_reattempt-1.cpp
         LeetCode/Trees/leetcode-112-path-sum_reattempt-1.cpp
-        LeetCode/Arrays/leetcode-905-sort-array-by-parity.cpp)
+        LeetCode/Arrays/leetcode-905-sort-array-by-parity.cpp
+        LeetCode/DynamicProgramming/leetcode-1884-egg-drop-with-2-eggs-and-n-floors.cpp)
