@@ -983,4 +983,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-389-find-the-difference_reattempt-1.cpp
         LeetCode/Trees/leetcode-112-path-sum_reattempt-1.cpp
         LeetCode/Arrays/leetcode-905-sort-array-by-parity.cpp
-        LeetCode/DynamicProgramming/leetcode-1884-egg-drop-with-2-eggs-and-n-floors.cpp)
+        LeetCode/DynamicProgramming/leetcode-1884-egg-drop-with-2-eggs-and-n-floors.cpp
+        LeetCode/Arrays/leetcode-119-pascals-triangle-ii.cpp)
