@@ -985,4 +985,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-905-sort-array-by-parity.cpp
         LeetCode/DynamicProgramming/leetcode-1884-egg-drop-with-2-eggs-and-n-floors.cpp
         LeetCode/Arrays/leetcode-119-pascals-triangle-ii.cpp
-        LeetCode/Trees/leetcode-559-maximum-depth-of-n-ary-tree.cpp)
+        LeetCode/Trees/leetcode-559-maximum-depth-of-n-ary-tree.cpp
+        LeetCode/DynamicProgramming/leetcode-746-min-cost-climbing-stairs_reattempt-1.cpp)
