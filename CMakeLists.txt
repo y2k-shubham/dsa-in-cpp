@@ -990,4 +990,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-1441-build-an-array-with-stack-operations.cpp
         LeetCode/Trees/leetcode-2265-count-nodes-equal-to-average-of-subtree_reattempt-1.cpp
         LeetCode/Trees/leetcode-501-find-mode-in-binary-search-tree_reattempt-1.cpp
-        LeetCode/Bitwise/leetcode-2433-find-the-original-array-of-prefix-xor.cpp)
+        LeetCode/Bitwise/leetcode-2433-find-the-original-array-of-prefix-xor.cpp
+        LeetCode/Bitwise/leetcode-1442-count-triplets-that-can-form-two-arrays-of-equal-xor.cpp)
