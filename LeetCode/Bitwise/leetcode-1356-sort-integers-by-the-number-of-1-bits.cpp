@@ -8,7 +8,14 @@ using namespace std;
 
 class Solution {
 private:
-    int countSetBits(int n) {
+    /**
+     * Note that inline keyword here drops LC
+     * runtime from 10ms to 3ms
+     * @param n integer
+     * @return no of set (1) bits
+     *         in binary representation of n
+     */
+    inline int countSetBits(int n) {
         int count = 0;
         for (int i = 0; i < 14; i++) {
             if ((n & (1 << i)) != 0) {
