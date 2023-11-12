@@ -992,4 +992,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-501-find-mode-in-binary-search-tree_reattempt-1.cpp
         LeetCode/Bitwise/leetcode-2433-find-the-original-array-of-prefix-xor.cpp
         LeetCode/Bitwise/leetcode-1442-count-triplets-that-can-form-two-arrays-of-equal-xor.cpp
-        LeetCode/Grids/leetcode-2849-determine-if-a-cell-is-reachable-at-a-given-time.cpp)
+        LeetCode/Grids/leetcode-2849-determine-if-a-cell-is-reachable-at-a-given-time.cpp
+        LeetCode/Bitwise/leetcode-1356-sort-integers-by-the-number-of-1-bits.cpp)
