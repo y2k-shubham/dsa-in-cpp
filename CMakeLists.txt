@@ -997,4 +997,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-2099-find-subsequence-of-length-k-with-the-largest-sum.cpp
         LeetCode/Arbitrary/leetcode-1743-restore-the-array-from-adjacent-pairs.cpp
         LeetCode/Sorting&Searching/leetcode-1005-maximize-sum-of-array-after-k-negations.cpp
-        LeetCode/Maths/leetcode-728-self-dividing-numbers.cpp)
+        LeetCode/Maths/leetcode-728-self-dividing-numbers.cpp
+        "LeetCode/Arbitrary/(incomplete)-leetcode-1921-eliminate-maximum-number-of-monsters.cpp")
