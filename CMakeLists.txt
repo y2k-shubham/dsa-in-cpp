@@ -996,4 +996,5 @@ add_executable(dsa_in_cpp
         LeetCode/Bitwise/leetcode-1356-sort-integers-by-the-number-of-1-bits.cpp
         LeetCode/Sorting&Searching/leetcode-2099-find-subsequence-of-length-k-with-the-largest-sum.cpp
         LeetCode/Arbitrary/leetcode-1743-restore-the-array-from-adjacent-pairs.cpp
-        LeetCode/Sorting&Searching/leetcode-1005-maximize-sum-of-array-after-k-negations.cpp)
+        LeetCode/Sorting&Searching/leetcode-1005-maximize-sum-of-array-after-k-negations.cpp
+        LeetCode/Maths/leetcode-728-self-dividing-numbers.cpp)
