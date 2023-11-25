@@ -84,7 +84,6 @@ add_executable(dsa_in_cpp
         Concepts/C&C++/recursion-static-method.cpp
         Concepts/C&C++/string-out-of-bounds.cpp
         Concepts/C&C++/stringstream.cpp
-        "Concepts/C&C++/tuple (Shubham Gupta's conflicted copy 2017-05-07).cpp"
         Concepts/C&C++/tuple.cpp
         Concepts/C&C++/union.cpp
         Concepts/disjoint-sets/disjoint-sets-fast-union-quick-find.cpp
