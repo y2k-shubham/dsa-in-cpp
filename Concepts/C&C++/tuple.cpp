@@ -3,7 +3,9 @@
  * Enable support in CodeBlocks from Settings > Compiler > check 'Have g++ follow the C++11 ISO C++ language standard'
  */
 
-#include<bits/stdc++.h>
+#include <tuple>
+#include <iostream>
+
 using namespace std;
 
 // A Method that returns multiple values using
