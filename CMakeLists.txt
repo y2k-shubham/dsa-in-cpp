@@ -998,4 +998,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arbitrary/leetcode-1743-restore-the-array-from-adjacent-pairs.cpp
         LeetCode/Sorting&Searching/leetcode-1005-maximize-sum-of-array-after-k-negations.cpp
         LeetCode/Maths/leetcode-728-self-dividing-numbers.cpp
-        "LeetCode/Arbitrary/(incomplete)-leetcode-1921-eliminate-maximum-number-of-monsters.cpp")
+        "LeetCode/Arbitrary/(incomplete)-leetcode-1921-eliminate-maximum-number-of-monsters.cpp"
+        "LeetCode/SlidingWindow/(incomplete)-leetcode-1838-frequency-of-the-most-frequent-element_reattempt-1.cpp")
