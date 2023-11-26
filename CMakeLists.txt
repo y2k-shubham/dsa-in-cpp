@@ -1000,4 +1000,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Arbitrary/(incomplete)-leetcode-1921-eliminate-maximum-number-of-monsters.cpp"
         "LeetCode/SlidingWindow/(incomplete)-leetcode-1838-frequency-of-the-most-frequent-element_reattempt-1.cpp"
         LeetCode/BrainTeasers/leetcode-1033-moving-stones-until-consecutive.cpp
-        LeetCode/BrainTeasers/leetcode-2745-construct-the-longest-new-string.cpp)
+        LeetCode/BrainTeasers/leetcode-2745-construct-the-longest-new-string.cpp
+        LeetCode/Bitwise/leetcode-2568-minimum-impossible-or.cpp)
