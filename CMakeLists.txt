@@ -1005,4 +1005,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-1662-check-if-two-string-arrays-are-equivalent.cpp
         "LeetCode/BFS&DFS/(wrong)-leetcode-1654-minimum-jumps-to-reach-home.cpp"
         LeetCode/Hashing/leetcode-1160-find-words-that-can-be-formed-by-characters.cpp
-        LeetCode/Hashing/leetcode-2287-rearrange-characters-to-make-target-string.cpp)
+        LeetCode/Hashing/leetcode-2287-rearrange-characters-to-make-target-string.cpp
+        LeetCode/Geometry/leetcode-1266-minimum-time-visiting-all-points.cpp)
