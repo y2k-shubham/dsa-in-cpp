@@ -1008,4 +1008,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-2287-rearrange-characters-to-make-target-string.cpp
         LeetCode/Geometry/leetcode-1266-minimum-time-visiting-all-points.cpp
         LeetCode/Bitwise/leetcode-2425-bitwise-xor-of-all-pairings.cpp
-        LeetCode/Strings/leetcode-2264-largest-3-same-digit-number-in-string.cpp)
+        LeetCode/Strings/leetcode-2264-largest-3-same-digit-number-in-string.cpp
+        LeetCode/Recursion/leetcode-1688-count-of-matches-in-tournament.cpp)
