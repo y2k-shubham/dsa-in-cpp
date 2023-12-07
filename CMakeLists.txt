@@ -1010,4 +1010,5 @@ add_executable(dsa_in_cpp
         LeetCode/Bitwise/leetcode-2425-bitwise-xor-of-all-pairings.cpp
         LeetCode/Strings/leetcode-2264-largest-3-same-digit-number-in-string.cpp
         LeetCode/Recursion/leetcode-1688-count-of-matches-in-tournament.cpp
-        LeetCode/Maths/leetcode-1716-calculate-money-in-leetcode-bank.cpp)
+        LeetCode/Maths/leetcode-1716-calculate-money-in-leetcode-bank.cpp
+        LeetCode/Strings/leetcode-1903-largest-odd-number-in-string.cpp)
