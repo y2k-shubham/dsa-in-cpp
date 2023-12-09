@@ -1012,4 +1012,5 @@ add_executable(dsa_in_cpp
         LeetCode/Recursion/leetcode-1688-count-of-matches-in-tournament.cpp
         LeetCode/Maths/leetcode-1716-calculate-money-in-leetcode-bank.cpp
         LeetCode/Strings/leetcode-1903-largest-odd-number-in-string.cpp
-        LeetCode/Trees/leetcode-606-construct-string-from-binary-tree_reattempt-1.cpp)
+        LeetCode/Trees/leetcode-606-construct-string-from-binary-tree_reattempt-1.cpp
+        LeetCode/Trees/leetcode-94-binary-tree-inorder-traversal.cpp)
