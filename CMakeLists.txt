@@ -1014,4 +1014,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-1903-largest-odd-number-in-string.cpp
         LeetCode/Trees/leetcode-606-construct-string-from-binary-tree_reattempt-1.cpp
         LeetCode/Trees/leetcode-94-binary-tree-inorder-traversal.cpp
-        LeetCode/Maths/leetcode-2396-strictly-palindromic-number.cpp)
+        LeetCode/Maths/leetcode-2396-strictly-palindromic-number.cpp
+        LeetCode/Hashing/leetcode-242-valid-anagram.cpp)
