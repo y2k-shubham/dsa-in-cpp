@@ -1015,4 +1015,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-606-construct-string-from-binary-tree_reattempt-1.cpp
         LeetCode/Trees/leetcode-94-binary-tree-inorder-traversal.cpp
         LeetCode/Maths/leetcode-2396-strictly-palindromic-number.cpp
-        LeetCode/Hashing/leetcode-242-valid-anagram.cpp)
+        LeetCode/Hashing/leetcode-242-valid-anagram.cpp
+        LeetCode/BrainTeasers/leetcode-1503-last-moment-before-all-ants-fall-out-of-a-plank.cpp)
