@@ -1019,4 +1019,5 @@ add_executable(dsa_in_cpp
         LeetCode/BrainTeasers/leetcode-1503-last-moment-before-all-ants-fall-out-of-a-plank.cpp
         LeetCode/SlidingWindow/leetcode-1287-element-appearing-more-than-25-in-sorted-array.cpp
         LeetCode/Matrices/leetcode-1582-special-positions-in-a-binary-matrix.cpp
-        LeetCode/Matrices/leetcode-2482-difference-between-ones-and-zeros-in-row-and-column.cpp)
+        LeetCode/Matrices/leetcode-2482-difference-between-ones-and-zeros-in-row-and-column.cpp
+        LeetCode/Hashing/leetcode-1436-destination-city.cpp)
