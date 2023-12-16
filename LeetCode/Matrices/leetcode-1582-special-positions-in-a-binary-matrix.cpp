@@ -17,7 +17,7 @@ private:
         return mat;
     }
 
-    int count1sInRow(vector<vector<int> >& mat, int row) {
+    inline int count1sInRow(vector<vector<int> >& mat, int row) {
         int numCols = mat[0].size();
         int count = 0;
         for (int j = 0; j < numCols; j++) {
@@ -29,7 +29,7 @@ private:
         return count;
     }
 
-    int count1sInCol(vector<vector<int> >& mat, int col) {
+    inline int count1sInCol(vector<vector<int> >& mat, int col) {
         int numRows = mat.size();
         int count = 0;
         for (int i = 0; i < numRows; i++) {
@@ -47,14 +47,7 @@ private:
 
         vector<int> freqVec(numRows, 0);
         for (int i = 0; i < numRows; i++) {
-            int num1s = 0;
-            for (int j = 0; j < numCols; j++) {
-                if (mat[i][j] == 1) {
-                    num1s++;
-                }
-            }
-
-            freqVec[i] = num1s;
+            freqVec[i] = count1sInRow(mat, i);
         }
 
         return freqVec;
@@ -66,14 +59,7 @@ private:
 
         vector<int> freqVec(numCols, 0);
         for (int j = 0; j < numCols; j++) {
-            int num1s = 0;
-            for (int i = 0; i < numRows; i++) {
-                if (mat[i][j] == 1) {
-                    num1s++;
-                }
-            }
-
-            freqVec[j] = num1s;
+            freqVec[j] = count1sInCol(mat, j);
         }
 
         return freqVec;
