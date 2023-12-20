@@ -1023,4 +1023,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-1436-destination-city.cpp
         LeetCode/Design/leetcode-2353-design-a-food-rating-system.cpp
         LeetCode/Arrays/leetcode-1913-maximum-product-difference-between-two-pairs.cpp
-        LeetCode/Matrices/leetcode-661-image-smoother.cpp)
+        LeetCode/Matrices/leetcode-661-image-smoother.cpp
+        LeetCode/Dumb/leetcode-2706-buy-two-chocolates.cpp)
