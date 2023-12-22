@@ -1025,4 +1025,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-1913-maximum-product-difference-between-two-pairs.cpp
         LeetCode/Matrices/leetcode-661-image-smoother.cpp
         LeetCode/Dumb/leetcode-2706-buy-two-chocolates.cpp
-        LeetCode/Sorting&Searching/leetcode-1637-widest-vertical-area-between-two-points-containing-no-points.cpp)
+        LeetCode/Sorting&Searching/leetcode-1637-widest-vertical-area-between-two-points-containing-no-points.cpp
+        LeetCode/PrefixSum/leetcode-1422-maximum-score-after-splitting-a-string.cpp)
