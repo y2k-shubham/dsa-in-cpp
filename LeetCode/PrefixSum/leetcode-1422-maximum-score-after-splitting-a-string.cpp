@@ -1,4 +1,5 @@
 // LeetCode-1422: https://leetcode.com/problems/maximum-score-after-splitting-a-string
+// follow-up: do we really need extra space?
 
 #include <string>
 #include <vector>
