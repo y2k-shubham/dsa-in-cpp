@@ -1027,4 +1027,5 @@ add_executable(dsa_in_cpp
         LeetCode/Dumb/leetcode-2706-buy-two-chocolates.cpp
         LeetCode/Sorting&Searching/leetcode-1637-widest-vertical-area-between-two-points-containing-no-points.cpp
         LeetCode/PrefixSum/leetcode-1422-maximum-score-after-splitting-a-string.cpp
-        LeetCode/Bitwise/leetcode-2419-longest-subarray-with-maximum-bitwise-and.cpp)
+        LeetCode/Bitwise/leetcode-2419-longest-subarray-with-maximum-bitwise-and.cpp
+        LeetCode/Logic/leetcode-1758-minimum-changes-to-make-alternating-binary-string.cpp)
