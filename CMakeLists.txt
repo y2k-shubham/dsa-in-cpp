@@ -1029,4 +1029,5 @@ add_executable(dsa_in_cpp
         LeetCode/PrefixSum/leetcode-1422-maximum-score-after-splitting-a-string.cpp
         LeetCode/Bitwise/leetcode-2419-longest-subarray-with-maximum-bitwise-and.cpp
         LeetCode/Logic/leetcode-1758-minimum-changes-to-make-alternating-binary-string.cpp
-        LeetCode/DynamicProgramming/leetcode-91-decode-ways_reattempt-2.cpp)
+        LeetCode/DynamicProgramming/leetcode-91-decode-ways_reattempt-2.cpp
+        LeetCode/Hashing/leetcode-1624-largest-substring-between-two-equal-characters.cpp)
