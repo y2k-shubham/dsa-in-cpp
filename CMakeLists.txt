@@ -642,7 +642,7 @@ add_executable(dsa_in_cpp
         LeetCode/DynamicProgramming/leetcode-764-largest-plus-sign.cpp
         LeetCode/DynamicProgramming/leetcode-877-stone-game.cpp
         LeetCode/DynamicProgramming/leetcode-91-decode-ways.cpp
-        LeetCode/DynamicProgramming/leetcode-91-decode-ways_reattempt_1.cpp
+        LeetCode/DynamicProgramming/leetcode-91-decode-ways_reattempt-1.cpp
         LeetCode/DynamicProgramming/leetcode-983-minimum-cost-for-tickets.cpp
         LeetCode/DynamicProgramming/maximum-number-of-events-that-can-be-attended-ii.cpp
         LeetCode/Geometry/leetcode-1041-robot-bounded-in-circle.cpp
@@ -1028,4 +1028,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-1637-widest-vertical-area-between-two-points-containing-no-points.cpp
         LeetCode/PrefixSum/leetcode-1422-maximum-score-after-splitting-a-string.cpp
         LeetCode/Bitwise/leetcode-2419-longest-subarray-with-maximum-bitwise-and.cpp
-        LeetCode/Logic/leetcode-1758-minimum-changes-to-make-alternating-binary-string.cpp)
+        LeetCode/Logic/leetcode-1758-minimum-changes-to-make-alternating-binary-string.cpp
+        LeetCode/DynamicProgramming/leetcode-91-decode-ways_reattempt-2.cpp)
