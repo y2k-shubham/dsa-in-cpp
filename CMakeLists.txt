@@ -1031,4 +1031,5 @@ add_executable(dsa_in_cpp
         LeetCode/Logic/leetcode-1758-minimum-changes-to-make-alternating-binary-string.cpp
         LeetCode/DynamicProgramming/leetcode-91-decode-ways_reattempt-2.cpp
         LeetCode/Hashing/leetcode-1624-largest-substring-between-two-equal-characters.cpp
-        LeetCode/Maths/leetcode-2870-minimum-number-of-operations-to-make-array-empty.cpp)
+        LeetCode/Maths/leetcode-2870-minimum-number-of-operations-to-make-array-empty.cpp
+        LeetCode/Arbitrary/leetcode-2125-number-of-laser-beams-in-a-bank.cpp)
