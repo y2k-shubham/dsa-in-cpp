@@ -14,6 +14,7 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+// LC runtime: 216 ms
 int rangeSumBST(TreeNode* root, int L, int R) {
         if (root == nullptr) {
             return 0;
