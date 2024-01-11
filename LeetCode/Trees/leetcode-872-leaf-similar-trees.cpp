@@ -18,6 +18,7 @@ struct TreeNode {
     TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 
+// LC runtime: 4 ms
 void storeLeaves(TreeNode* root, vector<int>& leaves) {
     if (root != nullptr) {
         if (root->left == nullptr && root->right == nullptr) {
