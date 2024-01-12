@@ -1,8 +1,9 @@
 // LeetCode-2385: https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected
 // decent question
-// basic approach is same as LeetCode-863: https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+// basic approach is same as LeetCode-2385: https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected
 
 #include <list>
+#include <vector>
 
 using namespace std;
 
@@ -20,12 +21,12 @@ struct TreeNode {
 
 class Solution {
 private:
-    bool buildPathToTargetNode(TreeNode* root, int target, list<char>& path) {
+    bool buildPathToTargetNode(TreeNode* root, TreeNode* target, list<char>& path) {
         if (root == nullptr) {
             return false;
         }
 
-        if (root->val == target) {
+        if (root == target) {
             return true;
         }
 
@@ -65,54 +66,55 @@ private:
         printf("[%d]\n", node->val);
     }
 
-    // LC runtime 258ms, 86%tile
-    int findMaxDistanceFromTarget(TreeNode* root, list<char>& path, bool isInPath, int crrDist) {
+    // LC runtime: 0ms, 100%tile
+    void findNodesAtKDistanceFromTarget(TreeNode* root, int k, list<char>& path, bool isInPath, int crrDist, vector <int>& nodesAtKDist) {
         if (root == nullptr) {
-            return 0;
+            return;
         }
 
-        int lMaxDist;
-        int rMaxDist;
+        if (crrDist == k) {
+            nodesAtKDist.push_back(root->val);
+        }
 
         if (isInPath) {
             // so far we've been following and therefore 'consuming' path
 
             if (path.empty()) {
                 // we are at the target node, crrDist must be zero
-                lMaxDist = findMaxDistanceFromTarget(root->left, path, false, 1);
-                rMaxDist = findMaxDistanceFromTarget(root->right, path, false, 1);
+                findNodesAtKDistanceFromTarget(root->left, k, path, false, 1, nodesAtKDist);
+                findNodesAtKDistanceFromTarget(root->right, k, path, false, 1, nodesAtKDist);
             } else if (path.front() == 'L') {
                 // target node lies in left and we're going left: that is we're still 'consuming' path
                 path.pop_front();
-                lMaxDist = findMaxDistanceFromTarget(root->left, path, true, crrDist - 1);
+                findNodesAtKDistanceFromTarget(root->left, k, path, true, crrDist - 1, nodesAtKDist);
                 path.push_front('L');
 
                 // target node lies in left and we're going right: that is we're now treading away from path
-                rMaxDist = findMaxDistanceFromTarget(root->right, path, false, crrDist + 1);
+                findNodesAtKDistanceFromTarget(root->right, k, path, false, crrDist + 1, nodesAtKDist);
             } else {
                 // target node lies in right and we're going left: that is we're now treading away from path
-                lMaxDist = findMaxDistanceFromTarget(root->left, path, false, crrDist + 1);
+                findNodesAtKDistanceFromTarget(root->left, k, path, false, crrDist + 1, nodesAtKDist);
 
                 // target node lies in right and we're going right: that is we're still 'consuming' path
                 path.pop_front();
-                rMaxDist = findMaxDistanceFromTarget(root->right, path, true, crrDist - 1);
+                findNodesAtKDistanceFromTarget(root->right, k, path, true, crrDist - 1, nodesAtKDist);
                 path.push_front('R');
             }
         } else {
             // we're already treading away from path
-            lMaxDist = findMaxDistanceFromTarget(root->left, path, false, crrDist + 1);
-            rMaxDist = findMaxDistanceFromTarget(root->right, path, false, crrDist + 1);
+            findNodesAtKDistanceFromTarget(root->left, k, path, false, crrDist + 1, nodesAtKDist);
+            findNodesAtKDistanceFromTarget(root->right, k, path, false, crrDist + 1, nodesAtKDist);
         }
-
-        return max(crrDist, max(lMaxDist, rMaxDist));
     }
 
 public:
-    int amountOfTime(TreeNode* root, int start) {
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         list<char> path;
-        buildPathToTargetNode(root, start, path);
-        //showPath(root, path);
+        buildPathToTargetNode(root, target, path);
 
-        return findMaxDistanceFromTarget(root, path, true, path.size());
+        vector <int> nodesAtKDist;
+        findNodesAtKDistanceFromTarget(root, k, path, true, path.size(), nodesAtKDist);
+
+        return nodesAtKDist;
     }
 };
