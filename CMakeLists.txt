@@ -1041,4 +1041,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-863-all-nodes-distance-k-in-binary-tree.cpp
         LeetCode/Hashing/leetcode-1347-minimum-number-of-steps-to-make-two-strings-anagram_reattempt-1.cpp
         LeetCode/Strings/leetcode-859-buddy-strings.cpp
-        LeetCode/Hashing/leetcode-1207-unique-number-of-occurrences.cpp)
+        LeetCode/Hashing/leetcode-1207-unique-number-of-occurrences.cpp
+        LeetCode/Design/leetcode-380-insert-delete-getrandom-o1.cpp)
