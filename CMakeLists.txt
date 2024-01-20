@@ -1040,4 +1040,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-2385-amount-of-time-for-binary-tree-to-be-infected.cpp
         LeetCode/Trees/leetcode-863-all-nodes-distance-k-in-binary-tree.cpp
         LeetCode/Hashing/leetcode-1347-minimum-number-of-steps-to-make-two-strings-anagram_reattempt-1.cpp
-        LeetCode/Strings/leetcode-859-buddy-strings.cpp)
+        LeetCode/Strings/leetcode-859-buddy-strings.cpp
+        LeetCode/Hashing/leetcode-1207-unique-number-of-occurrences.cpp)
