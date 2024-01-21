@@ -1043,4 +1043,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-859-buddy-strings.cpp
         LeetCode/Hashing/leetcode-1207-unique-number-of-occurrences.cpp
         LeetCode/Design/leetcode-380-insert-delete-getrandom-o1.cpp
-        "LeetCode/LinkedList/(wrong)-leetcode-1669-merge-in-between-linked-lists.cpp")
+        "LeetCode/LinkedList/(wrong)-leetcode-1669-merge-in-between-linked-lists.cpp"
+        "LeetCode/LinkedList/(wrong)-leetcode-2074-reverse-nodes-in-even-length-groups.cpp")
