@@ -1042,4 +1042,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-1347-minimum-number-of-steps-to-make-two-strings-anagram_reattempt-1.cpp
         LeetCode/Strings/leetcode-859-buddy-strings.cpp
         LeetCode/Hashing/leetcode-1207-unique-number-of-occurrences.cpp
-        LeetCode/Design/leetcode-380-insert-delete-getrandom-o1.cpp)
+        LeetCode/Design/leetcode-380-insert-delete-getrandom-o1.cpp
+        "LeetCode/LinkedList/(wrong)-leetcode-1669-merge-in-between-linked-lists.cpp")
