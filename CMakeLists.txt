@@ -1045,4 +1045,5 @@ add_executable(dsa_in_cpp
         LeetCode/Design/leetcode-380-insert-delete-getrandom-o1.cpp
         "LeetCode/LinkedList/(wrong)-leetcode-1669-merge-in-between-linked-lists.cpp"
         "LeetCode/LinkedList/(wrong)-leetcode-2074-reverse-nodes-in-even-length-groups.cpp"
-        LeetCode/Bitwise/leetcode-1239-maximum-length-of-a-concatenated-string-with-unique-characters_reattempt-1.cpp)
+        LeetCode/Bitwise/leetcode-1239-maximum-length-of-a-concatenated-string-with-unique-characters_reattempt-1.cpp
+        LeetCode/BFS&DFS/leetcode-690-employee-importance.cpp)
