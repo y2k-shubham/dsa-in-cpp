@@ -1047,4 +1047,5 @@ add_executable(dsa_in_cpp
         "LeetCode/LinkedList/(wrong)-leetcode-2074-reverse-nodes-in-even-length-groups.cpp"
         LeetCode/Bitwise/leetcode-1239-maximum-length-of-a-concatenated-string-with-unique-characters_reattempt-1.cpp
         LeetCode/BFS&DFS/leetcode-690-employee-importance.cpp
-        LeetCode/Matrices/leetcode-463-island-perimeter.cpp)
+        LeetCode/Matrices/leetcode-463-island-perimeter.cpp
+        "LeetCode/BFS&DFS/(wrong-answer)-leetcode-994-rotting-oranges.cpp")
