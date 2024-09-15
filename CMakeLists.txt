@@ -1052,4 +1052,5 @@ add_executable(dsa_in_cpp
         LeetCode/BFS&DFS/leetcode-399-evaluate-division.cpp
         "LeetCode/Graphs/(tle)-leetcode-1971-find-if-path-exists-in-graph.cpp"
         "LeetCode/Graphs/(incomplete)-leetcode-1971-find-if-path-exists-in-graph_reattempt-1.cpp"
-        LeetCode/Bitwise/leetcode-1310-xor-queries-of-a-subarray.cpp)
+        LeetCode/Bitwise/leetcode-1310-xor-queries-of-a-subarray.cpp
+        LeetCode/PrefixSum/leetcode-845-longest-mountain-in-array.cpp)
