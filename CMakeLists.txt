@@ -1055,4 +1055,5 @@ add_executable(dsa_in_cpp
         LeetCode/Bitwise/leetcode-1310-xor-queries-of-a-subarray.cpp
         LeetCode/PrefixSum/leetcode-845-longest-mountain-in-array.cpp
         LeetCode/Arrays/leetcode-3011-find-if-array-can-be-sorted.cpp
-        "LeetCode/Arrays/(wrong)-leetcode-1813-sentence-similarity-iii.cpp")
+        "LeetCode/Arrays/(wrong)-leetcode-1813-sentence-similarity-iii.cpp"
+        LeetCode/Arrays/leetcode-1813-sentence-similarity-iii.cpp)
