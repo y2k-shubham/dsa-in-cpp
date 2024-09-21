@@ -1,15 +1,11 @@
 // LeetCode-1813: https://leetcode.com/problems/sentence-similarity-iii
-// wrong: appear to have misunderstood the problem
-
-/**
- * we have implemented the solution such that one sentence can be subsequence of other sentence
- * (that is any no of word insertions allowed at any position)
- */
+// not as easy as it appears to be
 
 #include <vector>
 #include <string>
 #include <cassert>
 #include <sstream>
+#include <utility>
 
 using namespace std;
 
@@ -25,27 +21,58 @@ public:
         vector<string> sentenceVec1 = tokenizeSentence(sentence1);
         vector<string> sentenceVec2 = tokenizeSentence(sentence2);
 
+
         vector<string> sentenceVecLong = (sentenceVec1.size() >= sentenceVec2.size()) ? sentenceVec1 : sentenceVec2;
         vector<string> sentenceVecShort = (sentenceVec1.size() < sentenceVec2.size()) ? sentenceVec1 : sentenceVec2;
 
-        int idx = 0;
-        for (string word: sentenceVecShort) {
-            idx = swallowTillWord(sentenceVecLong, word, idx);
-            if (idx >= sentenceVecLong.size()) {
-                return false;
-            }
+        int lenShort = sentenceVecShort.size();
+        int lenLong = sentenceVecLong.size();
+
+        int lIdx = swallowFromLeftTillMatching(sentenceVecShort, sentenceVecLong);
+        if (lIdx == lenShort) {
+            return true;
         }
 
-        return true;
+        pair<int, int> rIdxes = swallowFromRightTillMatching(sentenceVecShort, sentenceVecLong);
+        int rIdxShort = rIdxes.first;
+        int rIdxLong = rIdxes.second;
+        if (rIdxShort < lIdx) {
+            return true;
+        }
+
+//        printf("lIdx=%d, rIdxes=(%d, %d)\n", lIdx, rIdxShort, rIdxLong);
+        return (lIdx + (lenLong - rIdxLong - 1)) == lenShort;
     }
 
 private:
-    int swallowTillWord(vector<string>& sentenceVec, string word, int startIdx) {
-        int idx = startIdx;
-        while (idx < sentenceVec.size() && sentenceVec[idx] != word) {
-            idx++;
+    int swallowFromLeftTillMatching(vector<string>& vec1, vector<string>& vec2) {
+        int len1 = vec1.size();
+        int len2 = vec2.size();
+
+        int i;
+        for (i = 0; i < min(len1, len2); i++) {
+            if (vec1[i] != vec2[i]) {
+                return i;
+            }
         }
-        return idx;
+
+        return i;
+    }
+
+    pair<int, int> swallowFromRightTillMatching(vector<string>& vec1, vector<string>& vec2) {
+        int len1 = vec1.size();
+        int len2 = vec2.size();
+
+        int i1 = len1 - 1;
+        int i2 = len2 - 1;
+
+        for (; i1 >= 0 && i2 >= 0; i1--, i2--) {
+            if (vec1[i1] != vec2[i2]) {
+                return {i1, i2};
+            }
+        }
+
+        return {i1, i2};
     }
 
     // function taken from GeeksForGeeks: https://www.geeksforgeeks.org/split-a-sentence-into-sentenceVec-in-cpp/
@@ -83,13 +110,13 @@ public:
 
         sentence1 = "of";
         sentence2 = "A lot of words";
-        expected = true;
+        expected = false;
         actual = soln.areSentencesSimilar(sentence1, sentence2);
         assert(expected == actual);
 
         sentence1 = "of";
         sentence2 = "A lot of things";
-        expected = true;
+        expected = false;
         actual = soln.areSentencesSimilar(sentence1, sentence2);
         assert(expected == actual);
 
@@ -101,11 +128,29 @@ public:
 
         sentence1 = "A of";
         sentence2 = "A lot of things";
-        expected = true;
+        expected = false;
         actual = soln.areSentencesSimilar(sentence1, sentence2);
         assert(expected == actual);
 
         sentence1 = "lot of";
+        sentence2 = "A lot of things";
+        expected = false;
+        actual = soln.areSentencesSimilar(sentence1, sentence2);
+        assert(expected == actual);
+
+        sentence1 = "lot of things";
+        sentence2 = "A lot of things";
+        expected = true;
+        actual = soln.areSentencesSimilar(sentence1, sentence2);
+        assert(expected == actual);
+
+        sentence1 = "of things";
+        sentence2 = "A lot of things";
+        expected = true;
+        actual = soln.areSentencesSimilar(sentence1, sentence2);
+        assert(expected == actual);
+
+        sentence1 = "A lot of";
         sentence2 = "A lot of things";
         expected = true;
         actual = soln.areSentencesSimilar(sentence1, sentence2);
@@ -171,50 +216,89 @@ public:
         actual = soln.areSentencesSimilar(sentence1, sentence2);
         assert(expected == actual);
 
+        sentence1 = "A B B";
+        sentence2 = "A B C D B B";
+        expected = true;
+        actual = soln.areSentencesSimilar(sentence1, sentence2);
+        assert(expected == actual);
+
         printf("[testAreSentencesSimilar] All test cases passed\n");
     }
 
-    void testSwallowTillWord() {
+    void testSwallowFromLeftTillMatching() {
         Solution soln = Solution();
-        vector<string> sentenceVec;
-        string word;
-        int startIdx, endIdx;
+        vector<string> sentenceVec1, sentenceVec2;
+        int idx;
 
-        sentenceVec = {"practice", "makes", "perfect", "coding", "makes"};
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"A", "lot", "of", "words"};
+        idx = soln.swallowFromLeftTillMatching(sentenceVec1, sentenceVec2);
+        assert(idx == 4);
 
-        word = "makes";
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"A", "lot", "of", "things"};
+        idx = soln.swallowFromLeftTillMatching(sentenceVec1, sentenceVec2);
+        assert(idx == 3);
 
-        startIdx = 0;
-        endIdx = soln.swallowTillWord(sentenceVec, word, startIdx);
-        assert(endIdx == 1);
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"A", "lot"};
+        idx = soln.swallowFromLeftTillMatching(sentenceVec1, sentenceVec2);
+        assert(idx == 2);
 
-        startIdx = 1;
-        endIdx = soln.swallowTillWord(sentenceVec, word, startIdx);
-        assert(endIdx == 1);
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"A"};
+        idx = soln.swallowFromLeftTillMatching(sentenceVec1, sentenceVec2);
+        assert(idx == 1);
 
-        startIdx = 2;
-        endIdx = soln.swallowTillWord(sentenceVec, word, startIdx);
-        assert(endIdx == 4);
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"B"};
+        idx = soln.swallowFromLeftTillMatching(sentenceVec1, sentenceVec2);
+        assert(idx == 0);
 
-        word = "perfect";
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {};
+        idx = soln.swallowFromLeftTillMatching(sentenceVec1, sentenceVec2);
+        assert(idx == 0);
 
-        startIdx = 0;
-        endIdx = soln.swallowTillWord(sentenceVec, word, startIdx);
-        assert(endIdx == 2);
+        sentenceVec1 = {"A"};
+        sentenceVec2 = {"A"};
+        idx = soln.swallowFromLeftTillMatching(sentenceVec1, sentenceVec2);
+        assert(idx == 1);
 
-        startIdx = 1;
-        endIdx = soln.swallowTillWord(sentenceVec, word, startIdx);
-        assert(endIdx == 2);
+        printf("[testSwallowFromLeftTillMatching] All test cases passed\n");
+    }
 
-        startIdx = 2;
-        endIdx = soln.swallowTillWord(sentenceVec, word, startIdx);
-        assert(endIdx == 2);
+    void testSwallowFromRightTillMatching() {
+        Solution soln = Solution();
+        vector<string> sentenceVec1, sentenceVec2;
+        pair<int, int> idxPair;
 
-        startIdx = 3;
-        endIdx = soln.swallowTillWord(sentenceVec, word, startIdx);
-        assert(endIdx == 5);
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"A", "lot", "of", "words"};
+        idxPair = soln.swallowFromRightTillMatching(sentenceVec1, sentenceVec2);
+        assert(idxPair.first == -1 && idxPair.second == -1);
 
-        printf("[testSwallowTillWord] All test cases passed\n");
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"A", "lot", "of", "things"};
+        idxPair = soln.swallowFromRightTillMatching(sentenceVec1, sentenceVec2);
+        assert(idxPair.first == 3 && idxPair.second == 3);
+
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"A", "war", "of", "words"};
+        idxPair = soln.swallowFromRightTillMatching(sentenceVec1, sentenceVec2);
+        assert(idxPair.first == 1 && idxPair.second == 1);
+
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {"of", "words"};
+        idxPair = soln.swallowFromRightTillMatching(sentenceVec1, sentenceVec2);
+        assert(idxPair.first == 1 && idxPair.second == -1);
+
+        sentenceVec1 = {"A", "lot", "of", "words"};
+        sentenceVec2 = {};
+        idxPair = soln.swallowFromRightTillMatching(sentenceVec1, sentenceVec2);
+        assert(idxPair.first == 3 && idxPair.second == -1);
+
+        printf("[testSwallowFromRightTillMatching] All test cases passed\n");
     }
 
     void testTokenizeSentence() {
@@ -245,7 +329,8 @@ int main() {
     SolutionTest solnTest = SolutionTest();
 
     solnTest.testAreSentencesSimilar();
-    solnTest.testSwallowTillWord();
+    solnTest.testSwallowFromLeftTillMatching();
+    solnTest.testSwallowFromRightTillMatching();
     solnTest.testTokenizeSentence();
 
     return 0;
