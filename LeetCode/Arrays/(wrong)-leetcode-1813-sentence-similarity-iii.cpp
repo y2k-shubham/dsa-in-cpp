@@ -1,6 +1,11 @@
 // LeetCode-1813: https://leetcode.com/problems/sentence-similarity-iii
 // wrong: appear to have misunderstood the problem
 
+/**
+ * we have implemented the solution such that one sentence can be subsequence of other sentence
+ * (that is any no of word insertions allowed at any position)
+ */
+
 #include <vector>
 #include <string>
 #include <cassert>
