@@ -548,7 +548,7 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-849-maximize-distance-to-closest-person.cpp
         LeetCode/Arrays/leetcode-908-smallest-range-i.cpp
         LeetCode/Arrays/leetcode-915-partition-array-into-disjoint-intervals.cpp
-        LeetCode/Arrays/leetcode-918-maximum-sum-circular-subarray.cpp
+        LeetCode/CircularArrays/leetcode-918-maximum-sum-circular-subarray.cpp
         LeetCode/Arrays/leetcode-941-valid-mountain-array.cpp
         "LeetCode/BFS&DFS/(incomplete)-leetcode-126-word-ladder-ii.cpp"
         LeetCode/BFS&DFS/leetcode-1091-shortest-path-in-binary-matrix.cpp
@@ -1059,5 +1059,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-1813-sentence-similarity-iii.cpp
         "LeetCode/Hashing/(wrong)-leetcode-373-find-k-pairs-with-smallest-sums.cpp"
         LeetCode/BrainTeasers/leetcode-3227-vowels-game-in-a-string.cpp
-        LeetCode/Arrays/leetcode-2515-shortest-distance-to-target-string-in-a-circular-array.cpp
+        LeetCode/CircularArrays/leetcode-2515-shortest-distance-to-target-string-in-a-circular-array.cpp
         LeetCode/CircularArrays/leetcode-1652-defuse-the-bomb.cpp)
