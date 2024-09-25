@@ -1059,4 +1059,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-1813-sentence-similarity-iii.cpp
         "LeetCode/Hashing/(wrong)-leetcode-373-find-k-pairs-with-smallest-sums.cpp"
         LeetCode/BrainTeasers/leetcode-3227-vowels-game-in-a-string.cpp
-        LeetCode/Arrays/leetcode-2515-shortest-distance-to-target-string-in-a-circular-array.cpp)
+        LeetCode/Arrays/leetcode-2515-shortest-distance-to-target-string-in-a-circular-array.cpp
+        LeetCode/CircularArrays/leetcode-1652-defuse-the-bomb.cpp)
