@@ -1060,4 +1060,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Hashing/(wrong)-leetcode-373-find-k-pairs-with-smallest-sums.cpp"
         LeetCode/BrainTeasers/leetcode-3227-vowels-game-in-a-string.cpp
         LeetCode/CircularArrays/leetcode-2515-shortest-distance-to-target-string-in-a-circular-array.cpp
-        LeetCode/CircularArrays/leetcode-1652-defuse-the-bomb.cpp)
+        LeetCode/CircularArrays/leetcode-1652-defuse-the-bomb.cpp
+        LeetCode/TwoPointers/leetcode-2516-take-k-of-each-character-from-left-and-right.cpp)
