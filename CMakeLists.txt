@@ -1062,4 +1062,5 @@ add_executable(dsa_in_cpp
         LeetCode/CircularArrays/leetcode-2515-shortest-distance-to-target-string-in-a-circular-array.cpp
         LeetCode/CircularArrays/leetcode-1652-defuse-the-bomb.cpp
         LeetCode/TwoPointers/leetcode-2516-take-k-of-each-character-from-left-and-right.cpp
-        LeetCode/Arbitrary/leetcode-860-lemonade-change.cpp)
+        LeetCode/Arbitrary/leetcode-860-lemonade-change.cpp
+        LeetCode/DynamicProgramming/leetcode-1139-largest-1-bordered-square.cpp)
