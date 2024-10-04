@@ -1063,4 +1063,5 @@ add_executable(dsa_in_cpp
         LeetCode/CircularArrays/leetcode-1652-defuse-the-bomb.cpp
         LeetCode/TwoPointers/leetcode-2516-take-k-of-each-character-from-left-and-right.cpp
         LeetCode/Arbitrary/leetcode-860-lemonade-change.cpp
-        LeetCode/DynamicProgramming/leetcode-1139-largest-1-bordered-square.cpp)
+        LeetCode/DynamicProgramming/leetcode-1139-largest-1-bordered-square.cpp
+        LeetCode/Sorting&Searching/leetcode-2491-divide-players-into-teams-of-equal-skill.cpp)
