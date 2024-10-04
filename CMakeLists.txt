@@ -1064,4 +1064,5 @@ add_executable(dsa_in_cpp
         LeetCode/TwoPointers/leetcode-2516-take-k-of-each-character-from-left-and-right.cpp
         LeetCode/Arbitrary/leetcode-860-lemonade-change.cpp
         LeetCode/DynamicProgramming/leetcode-1139-largest-1-bordered-square.cpp
-        LeetCode/Sorting&Searching/leetcode-2491-divide-players-into-teams-of-equal-skill.cpp)
+        LeetCode/Sorting&Searching/leetcode-2491-divide-players-into-teams-of-equal-skill.cpp
+        LeetCode/Maths/leetcode-3190-find-minimum-operations-to-make-all-elements-divisible-by-three.cpp)
