@@ -1066,4 +1066,5 @@ add_executable(dsa_in_cpp
         LeetCode/DynamicProgramming/leetcode-1139-largest-1-bordered-square.cpp
         LeetCode/Sorting&Searching/leetcode-2491-divide-players-into-teams-of-equal-skill.cpp
         LeetCode/Maths/leetcode-3190-find-minimum-operations-to-make-all-elements-divisible-by-three.cpp
-        LeetCode/Sorting&Searching/leetcode-2932-maximum-strong-pair-xor-i.cpp)
+        LeetCode/Sorting&Searching/leetcode-2932-maximum-strong-pair-xor-i.cpp
+        "LeetCode/Tries/(incomplete)-leetcode-421-maximum-xor-of-two-numbers-in-an-array.cpp")
