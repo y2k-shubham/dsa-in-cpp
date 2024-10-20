@@ -1069,4 +1069,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-2932-maximum-strong-pair-xor-i.cpp
         "LeetCode/Tries/(incomplete)-leetcode-421-maximum-xor-of-two-numbers-in-an-array.cpp"
         LeetCode/Sorting&Searching/leetcode-2602-minimum-operations-to-make-all-array-elements-equal.cpp
-        LeetCode/PrefixSum/leetcode-2121-intervals-between-identical-elements.cpp)
+        LeetCode/PrefixSum/leetcode-2121-intervals-between-identical-elements.cpp
+        LeetCode/Maths/leetcode-523-continuous-subarray-sum.cpp)
