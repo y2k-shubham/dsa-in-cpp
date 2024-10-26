@@ -1,7 +1,11 @@
 // LeetCode-1343: https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold
+// straightforward do-as-directed question; dont bother looking
 
-// a micro-optimization would be that for each subarray (sliding-window) we only calculate and compare the required 'sum' instead of average.
-// that ways we would save on n-k division operations
+/**
+ * A micro-optimization would be that for each subarray (sliding-window)
+ * we only calculate and compare the required 'sum' instead of average.
+ * That ways we would save on n-k division operations.
+ */
 
 #include <vector>
 #include <cassert>
