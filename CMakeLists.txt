@@ -1074,4 +1074,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-2772-apply-operations-to-make-all-array-elements-equal-to-zero.cpp
         LeetCode/SlidingWindow/leetcode-1343-number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold.cpp
         LeetCode/SlidingWindow/leetcode-2090-k-radius-subarray-averages.cpp
-        LeetCode/SlidingWindow/leetcode-643-maximum-average-subarray-i.cpp)
+        LeetCode/SlidingWindow/leetcode-643-maximum-average-subarray-i.cpp
+        LeetCode/Matrices/leetcode-3030-find-the-grid-of-region-average.cpp)
