@@ -1076,4 +1076,5 @@ add_executable(dsa_in_cpp
         LeetCode/SlidingWindow/leetcode-2090-k-radius-subarray-averages.cpp
         LeetCode/SlidingWindow/leetcode-643-maximum-average-subarray-i.cpp
         LeetCode/Matrices/leetcode-3030-find-the-grid-of-region-average.cpp
-        "LeetCode/DynamicProgramming/(incomplete)-leetcode-1594-maximum-non-negative-product-in-a-matrix.cpp")
+        "LeetCode/DynamicProgramming/(incomplete)-leetcode-1594-maximum-non-negative-product-in-a-matrix.cpp"
+        LeetCode/BinarySearch/leetcode-1011-capacity-to-ship-packages-within-d-days.cpp)
