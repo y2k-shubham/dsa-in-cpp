@@ -1078,4 +1078,5 @@ add_executable(dsa_in_cpp
         LeetCode/Matrices/leetcode-3030-find-the-grid-of-region-average.cpp
         "LeetCode/DynamicProgramming/(incomplete)-leetcode-1594-maximum-non-negative-product-in-a-matrix.cpp"
         LeetCode/BinarySearch/leetcode-1011-capacity-to-ship-packages-within-d-days.cpp
-        LeetCode/Greedy/leetcode-2279-maximum-bags-with-full-capacity-of-rocks.cpp)
+        LeetCode/Greedy/leetcode-2279-maximum-bags-with-full-capacity-of-rocks.cpp
+        LeetCode/Greedy/leetcode-1710-maximum-units-on-a-truck.cpp)
