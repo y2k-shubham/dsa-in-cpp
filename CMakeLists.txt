@@ -1081,4 +1081,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-2279-maximum-bags-with-full-capacity-of-rocks.cpp
         LeetCode/Greedy/leetcode-1710-maximum-units-on-a-truck.cpp
         LeetCode/Sorting&Searching/leetcode-2070-most-beautiful-item-for-each-query.cpp
-        LeetCode/Arrays/leetcode-2640-find-the-score-of-all-prefixes-of-an-array.cpp)
+        LeetCode/Arrays/leetcode-2640-find-the-score-of-all-prefixes-of-an-array.cpp
+        LeetCode/Greedy/leetcode-2971-find-polygon-with-the-largest-perimeter.cpp)
