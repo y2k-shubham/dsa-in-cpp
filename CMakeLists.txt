@@ -1084,4 +1084,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-2640-find-the-score-of-all-prefixes-of-an-array.cpp
         LeetCode/Greedy/leetcode-2971-find-polygon-with-the-largest-perimeter.cpp
         LeetCode/Strings/leetcode-3163-string-compression-iii.cpp
-        LeetCode/Greedy/leetcode-2914-minimum-number-of-changes-to-make-binary-string-beautiful.cpp)
+        LeetCode/Greedy/leetcode-2914-minimum-number-of-changes-to-make-binary-string-beautiful.cpp
+        LeetCode/Greedy/leetcode-2833-furthest-point-from-origin.cpp)
