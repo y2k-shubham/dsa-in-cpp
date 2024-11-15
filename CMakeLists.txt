@@ -1087,4 +1087,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-2914-minimum-number-of-changes-to-make-binary-string-beautiful.cpp
         LeetCode/Greedy/leetcode-2833-furthest-point-from-origin.cpp
         LeetCode/Strings/leetcode-551-student-attendance-record-i.cpp
-        LeetCode/Bitwise/leetcode-3097-shortest-subarray-with-or-at-least-k-ii.cpp)
+        LeetCode/Bitwise/leetcode-3097-shortest-subarray-with-or-at-least-k-ii.cpp
+        "LeetCode/Arrays/(incomplete)-leetcode-2601-prime-subtraction-operation.cpp")
