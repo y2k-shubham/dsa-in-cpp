@@ -1091,4 +1091,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Arrays/(incomplete)-leetcode-2601-prime-subtraction-operation.cpp"
         "LeetCode/Greedy/(wrong)-leetcode-1574-shortest-subarray-to-be-removed-to-make-array-sorted.cpp"
         "LeetCode/Arrays/(wrong)-leetcode-1574-shortest-subarray-to-be-removed-to-make-array-sorted_reattempt-1.cpp"
-        LeetCode/Trees/leetcode-965-univalued-binary-tree.cpp)
+        LeetCode/Trees/leetcode-965-univalued-binary-tree.cpp
+        LeetCode/Trees/leetcode-2236-root-equals-sum-of-children.cpp)
