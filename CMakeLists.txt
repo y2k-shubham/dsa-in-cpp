@@ -1093,4 +1093,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Arrays/(wrong)-leetcode-1574-shortest-subarray-to-be-removed-to-make-array-sorted_reattempt-1.cpp"
         LeetCode/Trees/leetcode-965-univalued-binary-tree.cpp
         LeetCode/Trees/leetcode-2236-root-equals-sum-of-children.cpp
-        LeetCode/Trees/leetcode-2331-evaluate-boolean-binary-tree.cpp)
+        LeetCode/Trees/leetcode-2331-evaluate-boolean-binary-tree.cpp
+        LeetCode/Hashing/leetcode-2053-kth-distinct-string-in-an-array.cpp)
