@@ -1098,4 +1098,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-2540-minimum-common-value.cpp
         "LeetCode/SlidingWindow/(incomplete)-leetcode-2762-continuous-subarrays.cpp"
         LeetCode/Trees/leetcode-107-binary-tree-level-order-traversal-ii.cpp
-        LeetCode/Trees/leetcode-865-smallest-subtree-with-all-the-deepest-nodes.cpp)
+        LeetCode/Trees/leetcode-865-smallest-subtree-with-all-the-deepest-nodes.cpp
+        LeetCode/Greedy/leetcode-2471-minimum-number-of-operations-to-sort-a-binary-tree-by-level.cpp)
