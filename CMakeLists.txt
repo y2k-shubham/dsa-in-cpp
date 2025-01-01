@@ -1100,4 +1100,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-107-binary-tree-level-order-traversal-ii.cpp
         LeetCode/Trees/leetcode-865-smallest-subtree-with-all-the-deepest-nodes.cpp
         LeetCode/Greedy/leetcode-2471-minimum-number-of-operations-to-sort-a-binary-tree-by-level.cpp
-        LeetCode/Trees/leetcode-1372-longest-zigzag-path-in-a-binary-tree.cpp)
+        LeetCode/Trees/leetcode-1372-longest-zigzag-path-in-a-binary-tree.cpp
+        LeetCode/Greedy/leetcode-1024-video-stitching.cpp)
