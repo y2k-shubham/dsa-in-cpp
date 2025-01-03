@@ -1102,4 +1102,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-2471-minimum-number-of-operations-to-sort-a-binary-tree-by-level.cpp
         LeetCode/Trees/leetcode-1372-longest-zigzag-path-in-a-binary-tree.cpp
         LeetCode/Greedy/leetcode-1024-video-stitching.cpp
-        LeetCode/Greedy/leetcode-2606-find-the-substring-with-maximum-cost.cpp)
+        LeetCode/Greedy/leetcode-2606-find-the-substring-with-maximum-cost.cpp
+        LeetCode/Greedy/leetcode-1090-largest-values-from-labels.cpp)
