@@ -1104,4 +1104,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-1024-video-stitching.cpp
         LeetCode/Greedy/leetcode-2606-find-the-substring-with-maximum-cost.cpp
         LeetCode/Greedy/leetcode-1090-largest-values-from-labels.cpp
-        LeetCode/Greedy/leetcode-1144-decrease-elements-to-make-array-zigzag.cpp)
+        LeetCode/Greedy/leetcode-1144-decrease-elements-to-make-array-zigzag.cpp
+        LeetCode/BinarySearch/leetcode-852-peak-index-in-a-mountain-array.cpp)
