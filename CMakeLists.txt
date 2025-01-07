@@ -1106,4 +1106,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-1090-largest-values-from-labels.cpp
         LeetCode/Greedy/leetcode-1144-decrease-elements-to-make-array-zigzag.cpp
         LeetCode/BinarySearch/leetcode-852-peak-index-in-a-mountain-array.cpp
-        LeetCode/PrefixSum/leetcode-3096-minimum-levels-to-gain-more-points.cpp)
+        LeetCode/PrefixSum/leetcode-3096-minimum-levels-to-gain-more-points.cpp
+        "LeetCode/Heap-PriorityQueue/(incomplete)-leetcode-37-sudoku-solver.cpp")
