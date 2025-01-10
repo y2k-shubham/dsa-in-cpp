@@ -1108,4 +1108,5 @@ add_executable(dsa_in_cpp
         LeetCode/BinarySearch/leetcode-852-peak-index-in-a-mountain-array.cpp
         LeetCode/PrefixSum/leetcode-3096-minimum-levels-to-gain-more-points.cpp
         "LeetCode/Heap-PriorityQueue/(incomplete)-leetcode-37-sudoku-solver.cpp"
-        LeetCode/Greedy/leetcode-781-rabbits-in-forest.cpp)
+        LeetCode/Greedy/leetcode-781-rabbits-in-forest.cpp
+        LeetCode/Greedy/leetcode-1014-best-sightseeing-pair.cpp)
