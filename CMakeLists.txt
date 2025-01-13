@@ -1112,4 +1112,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-1014-best-sightseeing-pair.cpp
         LeetCode/PrefixSum/leetcode-848-shifting-letters.cpp
         LeetCode/Intervals/leetcode-2381-shifting-letters-ii.cpp
-        LeetCode/Strings/leetcode-2451-odd-string-difference.cpp)
+        LeetCode/Strings/leetcode-2451-odd-string-difference.cpp
+        LeetCode/Greedy/leetcode-624-maximum-distance-in-arrays.cpp)
