@@ -1113,4 +1113,5 @@ add_executable(dsa_in_cpp
         LeetCode/PrefixSum/leetcode-848-shifting-letters.cpp
         LeetCode/Intervals/leetcode-2381-shifting-letters-ii.cpp
         LeetCode/Strings/leetcode-2451-odd-string-difference.cpp
-        LeetCode/Greedy/leetcode-624-maximum-distance-in-arrays.cpp)
+        LeetCode/Greedy/leetcode-624-maximum-distance-in-arrays.cpp
+        LeetCode/Greedy/leetcode-3192-minimum-operations-to-make-binary-array-elements-equal-to-one-ii.cpp)
