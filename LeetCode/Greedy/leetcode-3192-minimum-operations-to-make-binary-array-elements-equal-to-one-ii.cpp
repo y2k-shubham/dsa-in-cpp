@@ -1,5 +1,48 @@
 // LeetCode-3192: https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-ii/
 
+/**
+ *
+* [1, 1, 1, 1]
+0
+
+[0, 0, 0, 0]
+1
+
+
+[1, 1, 1, 0, 0, 0]
+1
+
+
+[0, 0, 0, 1, 1, 1]
+2
+
+
+[0, 0, 0, 1, 1, 1, 0, 0, 0]
+3
+
+
+[1, 1, 1, 0, 0, 0, 1, 1, 1]
+2
+
+
+-----------
+
+starting from right
+
+0. it doesn't matter whether we see single 0 or 100 0s
+  - no of flips needed to make them 1 remains same
+
+1. if we see a continuous sequence of 0s
+  - then it will take 1 flip to convert them all to 1s
+
+2. if we see leading (Extreme left) continuous sequence of 1s
+  - then it will NOT change our result
+
+3. if we see a continuous sequence of 0s, followed by continuous sequence of 1s
+  - then it will take 2 flips to convert them all to 1s
+ *
+ */
+
 #include <vector>
 #include <cassert>
 #include <cstdio>
