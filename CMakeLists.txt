@@ -1115,4 +1115,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-2451-odd-string-difference.cpp
         LeetCode/Greedy/leetcode-624-maximum-distance-in-arrays.cpp
         LeetCode/Greedy/leetcode-3192-minimum-operations-to-make-binary-array-elements-equal-to-one-ii.cpp
-        LeetCode/Intervals/leetcode-2406-divide-intervals-into-minimum-number-of-groups.cpp)
+        LeetCode/Intervals/leetcode-2406-divide-intervals-into-minimum-number-of-groups.cpp
+        "LeetCode/Intervals/(wrong)-leetcode-1419-minimum-number-of-frogs-croaking.cpp")
