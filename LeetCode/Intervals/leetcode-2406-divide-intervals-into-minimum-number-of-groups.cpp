@@ -6,8 +6,12 @@
 
 using namespace std;
 
+#define MAX_LEN 1000002
+
 class Solution {
 private:
+    // ---------- Solution-1: using Map : 262 ms ------------
+
     map <int, int> createRangeMap(vector <vector <int>>& intervals) {
         map <int, int> rangeMap;
 
@@ -34,9 +38,47 @@ private:
         return maxOverlap;
     }
 
-public:
-    int minGroups(vector <vector <int>>& intervals) {
+    int solution1Map(vector <vector <int>>& intervals) {
         map <int, int> rangeMap = createRangeMap(intervals);
         return findMaxOverlap(rangeMap);
+    }
+
+    // ---------- Solution-2: using Vector : 144 ms ------------
+
+    vector <int> createRangeVec(vector <vector <int>>& intervals) {
+        vector <int> rangeVec(MAX_LEN, 0);
+
+        for (auto vec : intervals) {
+            int rangeStart = vec[0];
+            int rangeEnd = vec[1];
+
+            rangeVec[rangeStart]++;
+            rangeVec[rangeEnd + 1]--;
+        }
+
+        return rangeVec;
+    }
+
+    int findMaxOverlap(vector <int>& rangeVec) {
+        int maxOverlap = 0;
+
+        int crrOverlap = 0;
+        for (auto it = rangeVec.begin(); it != rangeVec.end(); it++) {
+            crrOverlap += *it;
+            maxOverlap = max(maxOverlap, crrOverlap);
+        }
+
+        return maxOverlap;
+    }
+
+    int solution2Vector(vector <vector <int>>& intervals) {
+        vector <int> rangeVec = createRangeVec(intervals);
+        return findMaxOverlap(rangeVec);
+    }
+
+public:
+    int minGroups(vector <vector <int>>& intervals) {
+        // return solution1Map(intervals);
+        return solution2Vector(intervals);
     }
 };
