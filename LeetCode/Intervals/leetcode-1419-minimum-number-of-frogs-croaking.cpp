@@ -1,15 +1,20 @@
 // LeetCode-1419: https://leetcode.com/problems/minimum-number-of-frogs-croaking/
-// wrong answer
+// goot question
 
 /**
- * failing on this test case (could have more failing cases): "ccroroakcrcroacrokaoakkak"
- * expected answer = 4
- * calculated answer = 5
+ * if the input string is "(croak)(cro(croak)(cro(croak)ak)ak)"
+ * then the answer is 3 and not 4
+ * - even though "(cro(croak)(cro(croak)ak)ak)" contains 4 croaks overlapping
+ * - yet one "(croak)" finishes before other 2 overlapping with the 'containing' croak starts
+ *   - hence we say at a time the max croaks were 3 only
  */
 
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <cassert>
+#include <cstdio>
+#include <iostream>
 
 using namespace std;
 
@@ -20,10 +25,19 @@ using namespace std;
 
 class Solution {
 private:
+    bool debug = false;
     int numCharsWithNonZeroFreq;
     vector <int> freqVec;
     vector <bool> croakChars;
     unordered_map <char, char> prevCroakChars;
+
+    void enableDebug() {
+        debug = true;
+    }
+
+    void disableDebug() {
+        debug = false;
+    }
 
     void init() {
         vector <bool> croakChars(MAX_ALPHABET + 1, false);
@@ -93,6 +107,8 @@ private:
     }
 
 public:
+    friend class SolutionTest;
+
     int minNumberOfFrogs(string croakOfFrogs) {
         init();
 
@@ -103,23 +119,56 @@ public:
             //     return -1;
             // }
 
-            int freq = increaseFrequency(ch);
+            increaseFrequency(ch);
             if (!isValidFrequency(ch)) {
                 return -1;
             }
 
-            if (ch == LAST_CROAK_CHAR) {
-                consumeCroak();
-
+            if (ch == FIRST_CROAK_CHAR) {
                 ++crrFrogs;
                 maxFrogs = max(maxFrogs, crrFrogs);
-
-                if (isEndingOfWindow()) {
-                    crrFrogs = 0;
-                }
             }
+
+            if (ch == LAST_CROAK_CHAR) {
+                consumeCroak();
+                --crrFrogs;
+
+                // maxFrogs = max(maxFrogs, crrFrogs);
+
+                // if (isEndingOfWindow()) {
+                //     crrFrogs = 0;
+                // }
+            }
+        }
+
+        if (!isEndingOfWindow()) {
+            return -1;
         }
 
         return maxFrogs;
     }
 };
+
+class SolutionTest {
+public:
+    void testMinNumberOfFrogs() {
+        Solution soln = Solution();
+
+        assert(soln.minNumberOfFrogs("croakcroak") == 1);
+        assert(soln.minNumberOfFrogs("crcoakroak") == 2);
+        assert(soln.minNumberOfFrogs("croakcrook") == -1);
+        assert(soln.minNumberOfFrogs("croakcroa") == -1);
+        // soln.enableDebug();
+        assert(soln.minNumberOfFrogs("ccroroakcrcroacrokaoakkak") == 4);
+        assert(soln.minNumberOfFrogs("croakcrcrocroakakocroakakcroakcroak") == 3);
+        // soln.disableDebug();
+    }
+};
+
+int main() {
+    SolutionTest test = SolutionTest();
+
+    test.testMinNumberOfFrogs();
+
+    return 0;
+}
