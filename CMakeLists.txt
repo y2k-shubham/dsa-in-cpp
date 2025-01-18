@@ -1120,4 +1120,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-1609-find-the-longest-balanced-substring-of-a-binary-string.cpp
         LeetCode/Strings/leetcode-1768-merge-strings-alternately.cpp
         "LeetCode/Hashing/(incomplete)-leetcode-955-delete-columns-to-make-sorted-ii.cpp"
-        LeetCode/Greedy/leetcode-2645-minimum-additions-to-make-valid-string.cpp)
+        LeetCode/Greedy/leetcode-2645-minimum-additions-to-make-valid-string.cpp
+        LeetCode/Strings/leetcode-3136-valid-word.cpp)
