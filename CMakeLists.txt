@@ -1123,4 +1123,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-2645-minimum-additions-to-make-valid-string.cpp
         LeetCode/Strings/leetcode-3136-valid-word.cpp
         "LeetCode/Stack-Queue/leetcode-1541-minimum-insertions-to-balance-a-parentheses-string.cpp"
-        LeetCode/Dumb/leetcode-944-delete-columns-to-make-sorted.cpp)
+        LeetCode/Dumb/leetcode-944-delete-columns-to-make-sorted.cpp
+        LeetCode/Strings/leetcode-415-add-strings.cpp)
