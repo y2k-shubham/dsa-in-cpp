@@ -1,4 +1,5 @@
 // LeetCode-415: https://leetcode.com/problems/add-strings/
+// takes more time to implement than one would initially think
 
 #include <string>
 #include <vector>
@@ -8,6 +9,7 @@
 using namespace std;
 
 #define ZERO_CHAR '0'
+#define ZERO_STR "0"
 
 class Solution {
 private:
@@ -74,9 +76,10 @@ private:
 
 public:
     string addStrings(string num1, string num2) {
-        if (num1 == "0") {
+        if (num1 == ZERO_STR) {
             return num2;
-        } else if (num2 == "0") {
+        }
+        if (num2 == ZERO_STR) {
             return num1;
         }
 
