@@ -7,7 +7,7 @@ using namespace std;
 
 class Solution {
 private:
-    vector <int> readColumn(vector<vector<int>>& matrix, int colIdx) {
+    vector <int> readColumn(vector <vector <int>>& matrix, int colIdx) {
         int numRows = matrix.size();
         vector <int> columnVec(numRows);
 
@@ -23,8 +23,8 @@ private:
             return false;
         }
 
-        unordered_set<int> valueSet;
-        for (int value: valueVec) {
+        unordered_set <int> valueSet;
+        for (int value : valueVec) {
             if ((value < 1) || (n < value)) {
                 return false;
             }
@@ -38,7 +38,7 @@ private:
         return valueSet.size() == n;
     }
 
-    bool hasAllValuesFrom1toNInAllRows(vector<vector<int>>& matrix, int n) {
+    bool hasAllValuesFrom1toNInAllRows(vector <vector <int>>& matrix, int n) {
         for (int i = 0; i < matrix.size(); i++) {
             if (!hasAllValuesFrom1toN(matrix[i], n)) {
                 return false;
@@ -48,7 +48,7 @@ private:
         return true;
     }
 
-    bool hasAllValuesFrom1toNInAllColumns(vector<vector<int>>& matrix, int n) {
+    bool hasAllValuesFrom1toNInAllColumns(vector <vector <int>>& matrix, int n) {
         for (int i = 0; i < matrix.size(); i++) {
             vector <int> columnVec = readColumn(matrix, i);
 
@@ -61,7 +61,7 @@ private:
     }
 
 public:
-    bool checkValid(vector<vector<int>>& matrix) {
+    bool checkValid(vector <vector <int>>& matrix) {
         int n = matrix.size();
 
         return hasAllValuesFrom1toNInAllRows(matrix, n)
