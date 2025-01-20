@@ -1126,4 +1126,5 @@ add_executable(dsa_in_cpp
         LeetCode/Dumb/leetcode-944-delete-columns-to-make-sorted.cpp
         LeetCode/Strings/leetcode-415-add-strings.cpp
         LeetCode/LinkedList/leetcode-2816-double-a-number-represented-as-a-linked-list.cpp
+        LeetCode/Matrices/leetcode-2661-first-completely-painted-row-or-column.cpp
         LeetCode/Hashing/leetcode-2133-check-if-every-row-and-column-contains-all-numbers.cpp)
