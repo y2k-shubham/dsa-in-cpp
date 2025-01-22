@@ -1129,4 +1129,5 @@ add_executable(dsa_in_cpp
         LeetCode/Matrices/leetcode-2661-first-completely-painted-row-or-column.cpp
         LeetCode/Hashing/leetcode-2133-check-if-every-row-and-column-contains-all-numbers.cpp
         LeetCode/Matrices/leetcode-1572-matrix-diagonal-sum.cpp
-        "LeetCode/Heap-PriorityQueue/(incomplete)-leetcode-1882-process-tasks-using-servers.cpp")
+        "LeetCode/Heap-PriorityQueue/(incomplete)-leetcode-1882-process-tasks-using-servers.cpp"
+        LeetCode/Heap-PriorityQueue/leetcode-2342-max-sum-of-a-pair-with-equal-sum-of-digits.cpp)
