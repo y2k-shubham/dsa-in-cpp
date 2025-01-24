@@ -1132,4 +1132,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Heap-PriorityQueue/(incomplete)-leetcode-1882-process-tasks-using-servers.cpp"
         LeetCode/Heap-PriorityQueue/leetcode-2342-max-sum-of-a-pair-with-equal-sum-of-digits.cpp
         LeetCode/Dumb/leetcode-2923-find-champion-i.cpp
-        LeetCode/Greedy/leetcode-1953-maximum-number-of-weeks-for-which-you-can-work.cpp)
+        LeetCode/Greedy/leetcode-1953-maximum-number-of-weeks-for-which-you-can-work.cpp
+        LeetCode/Simulation/leetcode-2365-task-scheduler-ii.cpp)
