@@ -1135,4 +1135,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-1953-maximum-number-of-weeks-for-which-you-can-work.cpp
         LeetCode/Simulation/leetcode-2365-task-scheduler-ii.cpp
         LeetCode/Greedy/leetcode-2966-divide-array-into-arrays-with-max-difference.cpp
-        LeetCode/Arrays/leetcode-1191-k-concatenation-maximum-sum.cpp)
+        LeetCode/Arrays/leetcode-1191-k-concatenation-maximum-sum.cpp
+        LeetCode/PrefixSum/leetocode-1413-minimum-value-to-get-positive-step-by-step-sum.cpp)
