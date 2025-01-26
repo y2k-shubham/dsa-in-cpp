@@ -1137,4 +1137,5 @@ add_executable(dsa_in_cpp
         LeetCode/Greedy/leetcode-2966-divide-array-into-arrays-with-max-difference.cpp
         LeetCode/Arrays/leetcode-1191-k-concatenation-maximum-sum.cpp
         LeetCode/PrefixSum/leetocode-1413-minimum-value-to-get-positive-step-by-step-sum.cpp
-        LeetCode/Hashing/leetcode-3365-rearrange-k-substrings-to-form-target-string.cpp)
+        LeetCode/Hashing/leetcode-3365-rearrange-k-substrings-to-form-target-string.cpp
+        LeetCode/SlidingWindow/leetcode-2958-length-of-longest-subarray-with-at-most-k-frequency.cpp)
