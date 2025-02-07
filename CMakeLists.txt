@@ -1146,4 +1146,5 @@ add_executable(dsa_in_cpp
         "LeetCode/SlidingWindow/(incomplete)-leetcode-2401-longest-nice-subarray.cpp"
         LeetCode/Hashing/leetcode-2032-two-out-of-three.cpp
         LeetCode/Hashing/leetcode-2068-check-whether-two-strings-are-almost-equivalent.cpp
-        LeetCode/Hashing/leetcode-2190-most-frequent-number-following-key-in-an-array.cpp)
+        LeetCode/Hashing/leetcode-2190-most-frequent-number-following-key-in-an-array.cpp
+        LeetCode/Hashing/leetcode-1636-sort-array-by-increasing-frequency.cpp)
