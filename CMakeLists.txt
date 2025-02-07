@@ -1142,4 +1142,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-1909-remove-one-element-to-make-the-array-strictly-increasing.cpp
         LeetCode/PrefixSum/leetcode-3334-find-the-maximum-factor-score-of-array.cpp
         LeetCode/CircularArrays/leetcode-3206-alternating-groups-i.cpp
-        LeetCode/Greedy/leetcode-2224-minimum-number-of-operations-to-convert-time.cpp)
+        LeetCode/Greedy/leetcode-2224-minimum-number-of-operations-to-convert-time.cpp
+        "LeetCode/SlidingWindow/(incomplete)-leetcode-2401-longest-nice-subarray.cpp")
