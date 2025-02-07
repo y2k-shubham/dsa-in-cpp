@@ -1144,4 +1144,5 @@ add_executable(dsa_in_cpp
         LeetCode/CircularArrays/leetcode-3206-alternating-groups-i.cpp
         LeetCode/Greedy/leetcode-2224-minimum-number-of-operations-to-convert-time.cpp
         "LeetCode/SlidingWindow/(incomplete)-leetcode-2401-longest-nice-subarray.cpp"
-        LeetCode/Hashing/leetcode-2032-two-out-of-three.cpp)
+        LeetCode/Hashing/leetcode-2032-two-out-of-three.cpp
+        LeetCode/Hashing/leetcode-2068-check-whether-two-strings-are-almost-equivalent.cpp)
