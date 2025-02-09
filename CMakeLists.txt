@@ -1150,4 +1150,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-1636-sort-array-by-increasing-frequency.cpp
         LeetCode/Hashing/leetcode-2341-maximum-number-of-pairs-in-array.cpp
         LeetCode/Sorting&Searching/leetcode-2418-sort-the-people.cpp
-        LeetCode/Dumb/leetcode-3069-distribute-elements-into-two-arrays-i.cpp)
+        LeetCode/Dumb/leetcode-3069-distribute-elements-into-two-arrays-i.cpp
+        LeetCode/Sorting&Searching/leetcode-692-top-k-frequent-words.cpp)
