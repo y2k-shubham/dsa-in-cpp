@@ -1152,4 +1152,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-2418-sort-the-people.cpp
         LeetCode/Dumb/leetcode-3069-distribute-elements-into-two-arrays-i.cpp
         LeetCode/Sorting&Searching/leetcode-692-top-k-frequent-words.cpp
-        LeetCode/Sorting&Searching/leetcode-973-k-closest-points-to-origin.cpp)
+        LeetCode/Sorting&Searching/leetcode-973-k-closest-points-to-origin.cpp
+        LeetCode/Greedy/leetcode-3111-minimum-rectangles-to-cover-points.cpp)
