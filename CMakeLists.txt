@@ -1155,4 +1155,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-973-k-closest-points-to-origin.cpp
         LeetCode/Greedy/leetcode-3111-minimum-rectangles-to-cover-points.cpp
         LeetCode/Sorting&Searching/leetcode-2545-sort-the-students-by-their-kth-score.cpp
-        LeetCode/Arrays/leetcode-2221-find-triangular-sum-of-an-array.cpp)
+        LeetCode/Arrays/leetcode-2221-find-triangular-sum-of-an-array.cpp
+        LeetCode/TwoPointers/leetcode-475-heaters.cpp)
