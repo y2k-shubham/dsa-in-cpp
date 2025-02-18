@@ -1158,4 +1158,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-2221-find-triangular-sum-of-an-array.cpp
         LeetCode/TwoPointers/leetcode-475-heaters.cpp
         LeetCode/Simulation/leetcode-806-number-of-lines-to-write-string.cpp
-        LeetCode/Trees/leetcode-2096-step-by-step-directions-from-a-binary-tree-node-to-another.cpp)
+        LeetCode/Trees/leetcode-2096-step-by-step-directions-from-a-binary-tree-node-to-another.cpp
+        "LeetCode/Greedy/(incomplete)-leetcode-870-advantage-shuffle.cpp")
