@@ -1,6 +1,11 @@
 // LeetCode-870: https://leetcode.com/problems/advantage-shuffle
 
 /**
+ * Wrong solution
+ * Correct solution https://github.com/y2k-shubham/dsa-in-cpp/blob/main/LeetCode/TwoPointers/leetcode-870-advantage-shuffle.cpp
+ */
+
+/**
  * Wrong answer for following test-case
  * nums1 = [2,0,4,1,2]
  * nums2 = [1,3,0,0,2]

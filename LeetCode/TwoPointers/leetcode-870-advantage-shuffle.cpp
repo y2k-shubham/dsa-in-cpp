@@ -2,20 +2,17 @@
 
 /**
  * good question
- *  - got it wrong the first time; see file "LeetCode/Greedy/(wrong)-leetcode-870-advantage-shuffle.cpp"
+ *  - got it wrong the first time; see file https://github.com/y2k-shubham/dsa-in-cpp/blob/main/LeetCode/Greedy/(wrong)-leetcode-870-advantage-shuffle.cpp
  *  - implemented after seeing solution given in Editorial: https://leetcode.com/problems/advantage-shuffle/editorial/
  */
 
 #include <vector>
-#include <map>
 #include <cstdio>
 #include <iostream>
 #include <sstream>
 #include <cassert>
 #include <algorithm>
-#include <utility>
 #include <unordered_map>
-#include <cassert>
 
 using namespace std;
 
