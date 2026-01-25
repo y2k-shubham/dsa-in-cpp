@@ -46,3 +46,5 @@ a.out
 
 # CMake (used by CLion)
 cmake-build-debug/
+
+.multiq/
