@@ -1162,4 +1162,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Greedy/(wrong)-leetcode-870-advantage-shuffle.cpp"
         LeetCode/TwoPointers/leetcode-870-advantage-shuffle.cpp
         "LeetCode/Greedy/(incomplete)-leetcode-368-largest-divisible-subset-reattempt_1.cpp"
-        LeetCode/Hashing/leetocode-128-longest-consecutive-sequence.cpp)
+        LeetCode/Hashing/leetocode-128-longest-consecutive-sequence.cpp
+        LeetCode/Arrays/leetcode-169-majority-element-attempt_2.cpp)
