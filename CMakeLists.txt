@@ -1164,4 +1164,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Greedy/(incomplete)-leetcode-368-largest-divisible-subset-reattempt_1.cpp"
         LeetCode/Hashing/leetocode-128-longest-consecutive-sequence.cpp
         LeetCode/Arrays/leetcode-169-majority-element-attempt_2.cpp
-        LeetCode/Arrays/leetcode-229-majority-element-ii.cpp)
+        LeetCode/Arrays/leetcode-229-majority-element-ii.cpp
+        LeetCode/Arrays/leetcode-1150-check-if-a-number-is-majority-element-in-a-sorted-array.cpp)
