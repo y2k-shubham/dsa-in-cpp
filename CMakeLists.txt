@@ -1161,4 +1161,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-2096-step-by-step-directions-from-a-binary-tree-node-to-another.cpp
         "LeetCode/Greedy/(wrong)-leetcode-870-advantage-shuffle.cpp"
         LeetCode/TwoPointers/leetcode-870-advantage-shuffle.cpp
-        "LeetCode/Greedy/(incomplete)-leetcode-368-largest-divisible-subset-reattempt_1.cpp")
+        "LeetCode/Greedy/(incomplete)-leetcode-368-largest-divisible-subset-reattempt_1.cpp"
+        LeetCode/Hashing/leetocode-128-longest-consecutive-sequence.cpp)
