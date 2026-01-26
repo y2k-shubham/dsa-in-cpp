@@ -1166,4 +1166,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-169-majority-element-attempt_2.cpp
         LeetCode/Arrays/leetcode-229-majority-element-ii.cpp
         LeetCode/Arrays/leetcode-1150-check-if-a-number-is-majority-element-in-a-sorted-array.cpp
-        LeetCode/Arrays/leetcode-41-first-missing-positive-reattempt_1.cpp)
+        LeetCode/Arrays/leetcode-41-first-missing-positive-reattempt_1.cpp
+        LeetCode/Strings/leetcode-2414-length-of-the-longest-alphabetical-continuous-substring.cpp)
