@@ -1169,4 +1169,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-41-first-missing-positive-reattempt_1.cpp
         LeetCode/Strings/leetcode-2414-length-of-the-longest-alphabetical-continuous-substring.cpp
         LeetCode/Maths/leetcode-2348-umber-of-zero-filled-subarrays.cpp
-        LeetCode/Design/leetcode-2526-find-consecutive-integers-from-a-data-stream.cpp)
+        LeetCode/Design/leetcode-2526-find-consecutive-integers-from-a-data-stream.cpp
+        LeetCode/Arbitrary/leetcode-2657-find-the-prefix-common-array-of-two-arrays.cpp)
