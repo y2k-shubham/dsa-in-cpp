@@ -1173,4 +1173,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arbitrary/leetcode-2657-find-the-prefix-common-array-of-two-arrays.cpp
         LeetCode/Hashing/leetcode-3005-count-elements-with-maximum-frequency.cpp
         "LeetCode/Sorting&Searching/(incomplete)-leetcode-3346-maximum-frequency-of-an-element-after-performing-operations-i.cpp"
-        LeetCode/Sorting&Searching/leetcode-658-find-k-closest-elements_reattempt-1.cpp)
+        LeetCode/Sorting&Searching/leetcode-658-find-k-closest-elements_reattempt-1.cpp
+        "LeetCode/TwoPointers/(incomplete)-leetcode-76-minimum-window-substring_reattempt-1.cpp")
