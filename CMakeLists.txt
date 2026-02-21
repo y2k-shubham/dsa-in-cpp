@@ -1171,4 +1171,5 @@ add_executable(dsa_in_cpp
         LeetCode/Maths/leetcode-2348-umber-of-zero-filled-subarrays.cpp
         LeetCode/Design/leetcode-2526-find-consecutive-integers-from-a-data-stream.cpp
         LeetCode/Arbitrary/leetcode-2657-find-the-prefix-common-array-of-two-arrays.cpp
-        LeetCode/Hashing/leetcode-3005-count-elements-with-maximum-frequency.cpp)
+        LeetCode/Hashing/leetcode-3005-count-elements-with-maximum-frequency.cpp
+        "LeetCode/Sorting&Searching/(incomplete)-leetcode-3346-maximum-frequency-of-an-element-after-performing-operations-i.cpp")
