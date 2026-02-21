@@ -26,16 +26,16 @@
 *.a
 *.lib
 
+# no-extension files (binaries)
+*
+!/**/
+!*.*
+
 # Executables
 *.exe
 *.out
 *.app
 a.out
-
-# no-extension files (binaries)
-*
-!/**/
-!*.*
 
 # IntelliJ IDEA / CLion
 .idea
