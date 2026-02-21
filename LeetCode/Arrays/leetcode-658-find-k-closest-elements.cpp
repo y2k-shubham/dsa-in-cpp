@@ -1,5 +1,6 @@
 // LeetCode-658: https://leetcode.com/problems/find-k-closest-elements/
 // LC July 2021 challenge: https://leetcode.com/explore/challenge/card/july-leetcoding-challenge-2021/608/week-1-july-1st-july-7th/3800/
+// Clever approach using sliding window and prefix sum
 
 /*
 Approach: Sliding Window with Prefix Sum
