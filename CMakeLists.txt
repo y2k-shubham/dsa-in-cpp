@@ -1176,4 +1176,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-658-find-k-closest-elements_reattempt-1.cpp
         "LeetCode/TwoPointers/(incomplete)-leetcode-76-minimum-window-substring_reattempt-1.cpp"
         LeetCode/Strings/leetcode-1784-check-if-binary-string-has-at-most-one-segment-of-ones.cpp
-        LeetCode/Strings/leetcode-1869-longer-contiguous-segments-of-ones-than-zeros.cpp)
+        LeetCode/Strings/leetcode-1869-longer-contiguous-segments-of-ones-than-zeros.cpp
+        LeetCode/Arrays/leetcode-485-max-consecutive-ones.cpp)
