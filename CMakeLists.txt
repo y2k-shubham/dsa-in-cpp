@@ -1180,4 +1180,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-485-max-consecutive-ones.cpp
         LeetCode/PrefixSum/leetocde-487-max-consecutive-ones-ii.cpp
         LeetCode/Matrices/leetcode-3070-count-submatrices-with-top-left-element-and-sum-less-than-k.cpp
-        LeetCode/Arrays/leetcode-2270-number-of-ways-to-split-array.cpp)
+        LeetCode/Arrays/leetcode-2270-number-of-ways-to-split-array.cpp
+        LeetCode/Arrays/leetcode-1991-find-the-middle-index-in-array.cpp)
