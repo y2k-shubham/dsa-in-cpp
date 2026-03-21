@@ -1182,4 +1182,5 @@ add_executable(dsa_in_cpp
         LeetCode/Matrices/leetcode-3070-count-submatrices-with-top-left-element-and-sum-less-than-k.cpp
         LeetCode/Arrays/leetcode-2270-number-of-ways-to-split-array.cpp
         LeetCode/Arrays/leetcode-1991-find-the-middle-index-in-array.cpp
-        LeetCode/Arrays/leetcode-724-find-pivot-index.cpp)
+        LeetCode/Arrays/leetcode-724-find-pivot-index.cpp
+        LeetCode/Arrays/leetcode-2574-left-and-right-sum-differences.cpp)
