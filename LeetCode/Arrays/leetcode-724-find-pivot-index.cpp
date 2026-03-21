@@ -1,5 +1,5 @@
-// LeetCode-1991: https://leetcode.com/problems/find-the-middle-index-in-array/
-// Identical to LeetCode-724: https://leetcode.com/problems/find-pivot-index/
+// LeetCode-724: https://leetcode.com/problems/find-pivot-index/
+// Identical to LeetCode-1991: https://leetcode.com/problems/find-the-middle-index-in-array/
 
 #include <numeric>
 #include <vector>
@@ -8,7 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-    int findMiddleIndex(vector<int>& nums) {
+    int pivotIndex(vector<int>& nums) {
         int len = nums.size();
         if (len <= 0) {
             return -1;
