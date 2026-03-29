@@ -1186,4 +1186,5 @@ add_executable(dsa_in_cpp
         LeetCode/Arrays/leetcode-2574-left-and-right-sum-differences.cpp
         LeetCode/Hashing/leetcode-2670-find-the-distinct-difference-array.cpp
         LeetCode/Matrices/leetcode-3643-flip-square-submatrix-vertically.cpp
-        LeetCode/Strings/leetcode-2839-check-if-strings-can-be-made-equal-with-operations-i.cpp)
+        LeetCode/Strings/leetcode-2839-check-if-strings-can-be-made-equal-with-operations-i.cpp
+        LeetCode/Strings/leetcode-2840-check-if-strings-can-be-made-equal-with-operations-ii.cpp)
