@@ -5,13 +5,15 @@
 
 using namespace std;
 
+#define MAX_ALPHABET_CHAR 128
+
 class Solution {
     vector<bool> symmetricDigits;
     vector<char> reflectionDigits;
 
 private:
     void initSymmetricDigits() {
-        symmetricDigits = vector<bool>(128, false);
+        symmetricDigits = vector<bool>(MAX_ALPHABET_CHAR, false);
         symmetricDigits[0] = true;
         symmetricDigits[1] = true;
         symmetricDigits[8] = true;
@@ -21,7 +23,7 @@ private:
     }
 
     void initReflectionDigits() {
-        reflectionDigits = vector<char>(128, -1);
+        reflectionDigits = vector<char>(MAX_ALPHABET_CHAR, -1);
         reflectionDigits[6] = 9;
         reflectionDigits[9] = 6;
         reflectionDigits['6'] = '9';
