@@ -1189,4 +1189,5 @@ add_executable(dsa_in_cpp
         LeetCode/Strings/leetcode-2839-check-if-strings-can-be-made-equal-with-operations-i.cpp
         LeetCode/Strings/leetcode-2840-check-if-strings-can-be-made-equal-with-operations-ii.cpp
         LeetCode/Arbitrary/leetcode-246-strobogrammatic-number.cpp
-        "LeetCode/Maths/(incomplete)-leetcode-247-strobogrammatic-number-ii.cpp")
+        "LeetCode/Maths/(incomplete)-leetcode-247-strobogrammatic-number-ii.cpp"
+        "LeetCode/TwoPointers/(incomplete)-leetcode-159-longest-substring-with-at-most-two-distinct-characters.cpp")
