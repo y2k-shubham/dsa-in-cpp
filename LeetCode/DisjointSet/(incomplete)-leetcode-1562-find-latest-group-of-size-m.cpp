@@ -1,4 +1,5 @@
 // LeetCode-1562: https://leetcode.com/problems/find-latest-group-of-size-m/
+// incomplete
 
 #include <set>
 #include <vector>
@@ -37,28 +38,26 @@ private:
 
     pair<int, int> insertRange(set<pair<int, int>>& allRanges, unordered_map<int, int>& rangeSizeFreq, pair<int, int> rangeNew) {
         bool canMergeLowerRange = false;
-        auto itLower = allRanges.lower_bound(rangeNew);
-        pair<int, int> rangeLower = {-1, -1};
-        if ((itLower != allRanges.end()) && (itLower != allRanges.begin())) {
-            itLower--;
-            if ((itLower->second + 1) == rangeNew.first) {
-                if (debug) {
-                    printf("found mergeability of lowerBound=(%d,%d) with newRange=(%d)\n",itLower->first, itLower->second, rangeNew.first);
-                }
-                canMergeLowerRange = true;
-                rangeLower = {itLower->first, itLower->second};
-            }
-        }
-
         bool canMergeUpperRange = false;
-        auto itUpper = allRanges.upper_bound(rangeNew);
+        pair<int, int> rangeLower = {-1, -1};
         pair<int, int> rangeUpper = {-1, -1};
-        if ((itUpper != allRanges.end()) && ((rangeNew.second + 1) == itUpper->first)) {
-            if (debug) {
-                printf("found mergeability newRange=(%d) with upperBound=(%d,%d)\n", rangeNew.first, itUpper->first, itUpper->second);
+
+        auto itLower = allRanges.lower_bound(rangeNew);
+        if (!allRanges.empty()) {
+            if (itLower == allRanges.begin()) {
+                rangeUpper = *itLower;
             }
-            canMergeUpperRange = true;
-            rangeUpper = {itUpper->first, itUpper->second};
+            if (itLower == allRanges.end()) {
+                itLower--;
+                rangeLower = *itLower;
+            }
+
+            if ((rangeLower.second + 1) == rangeNew.first) {
+                canMergeLowerRange = true;
+            }
+            if ((rangeNew.second + 1) == rangeUpper.first) {
+                canMergeUpperRange = true;
+            }
         }
 
         pair<int, int> updatedNewRange;
