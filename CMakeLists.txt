@@ -1194,4 +1194,5 @@ add_executable(dsa_in_cpp
         LeetCode/Dumb/leetcode-1848-minimum-distance-to-the-target-element.cpp
         LeetCode/Strings/leetcode-811-subdomain-visit-count.cpp
         "LeetCode/DisjointSet/(incomplete)-leetcode-1562-find-latest-group-of-size-m.cpp"
-        LeetCode/Strings/leetcode-293-flip-game.cpp)
+        LeetCode/Strings/leetcode-293-flip-game.cpp
+        "LeetCode/BackTracking/(incomplete)-leetcode-294-flip-game-ii.cpp")
