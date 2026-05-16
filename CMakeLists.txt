@@ -1192,4 +1192,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Maths/(incomplete)-leetcode-247-strobogrammatic-number-ii.cpp"
         "LeetCode/TwoPointers/(incomplete)-leetcode-159-longest-substring-with-at-most-two-distinct-characters.cpp"
         LeetCode/Dumb/leetcode-1848-minimum-distance-to-the-target-element.cpp
-        LeetCode/Strings/leetcode-811-subdomain-visit-count.cpp)
+        LeetCode/Strings/leetcode-811-subdomain-visit-count.cpp
+        "LeetCode/DisjointSet/(incomplete)-leetcode-1562-find-latest-group-of-size-m.cpp")
