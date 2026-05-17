@@ -1199,4 +1199,5 @@ add_executable(dsa_in_cpp
         LeetCode/BackTracking/leetcode-294-flip-game-ii-reattempt_1.cpp
         LeetCode/DynamicProgramming/leetcode-276-paint-fence.cpp
         LeetCode/DynamicProgramming/leetcode-256-paint-house.cpp
-        LeetCode/DynamicProgramming/leetcode-265-paint-house-ii.cpp)
+        LeetCode/DynamicProgramming/leetcode-265-paint-house-ii.cpp
+        LeetCode/BFS&DFS/leetcode-2814-minimum-time-takes-to-reach-destination-without-drowning.cpp)
