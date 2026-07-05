@@ -1201,4 +1201,5 @@ add_executable(dsa_in_cpp
         LeetCode/DynamicProgramming/leetcode-256-paint-house.cpp
         LeetCode/DynamicProgramming/leetcode-265-paint-house-ii.cpp
         LeetCode/BFS&DFS/leetcode-2814-minimum-time-takes-to-reach-destination-without-drowning.cpp
-        LeetCode/Hashing/leetcode-760-find-anagram-mappings.cpp)
+        LeetCode/Hashing/leetcode-760-find-anagram-mappings.cpp
+        LeetCode/DynamicProgramming/leetcode-651-4-keys-keyboard.cpp)
