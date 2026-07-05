@@ -1204,4 +1204,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-760-find-anagram-mappings.cpp
         LeetCode/DynamicProgramming/leetcode-651-4-keys-keyboard.cpp
         LeetCode/Design/leetcode-604-design-compressed-string-iterator.cpp
-        LeetCode/Matrices/leetcode-531-lonely-pixel-i.cpp)
+        LeetCode/Matrices/leetcode-531-lonely-pixel-i.cpp
+        LeetCode/Matrices/leetcode-533-lonely-pixel-ii.cpp)
