@@ -25,7 +25,7 @@ private:
         printf("\n");
     }
 
-    vector <int> calcPerRowBlackPixelsVec(vector<vector<char>>& picture) {
+    vector <int> createNumBlackPixelsPerRowVec(vector<vector<char>>& picture) {
         int numRows = picture.size();
         int numCols = picture[0].size();
 
@@ -46,7 +46,7 @@ private:
         return numBlackPixelsVec;
     }
 
-    vector <int> calcPerColBlackPixelsVec(vector<vector<char>>& picture) {
+    vector <int> createNumBlackPixelsPerColVec(vector<vector<char>>& picture) {
         int numRows = picture.size();
         int numCols = picture[0].size();
 
@@ -88,8 +88,8 @@ private:
 
 public:
     int findLonelyPixel(vector<vector<char>>& picture) {
-        vector <int> numBlackPixelsPerRow = calcPerRowBlackPixelsVec(picture);
-        vector <int> numBlackPixelsPerCol = calcPerColBlackPixelsVec(picture);
+        vector <int> numBlackPixelsPerRow = createNumBlackPixelsPerRowVec(picture);
+        vector <int> numBlackPixelsPerCol = createNumBlackPixelsPerColVec(picture);
 
         return calcNumLonelyPixels(picture, numBlackPixelsPerRow, numBlackPixelsPerCol);
     }
