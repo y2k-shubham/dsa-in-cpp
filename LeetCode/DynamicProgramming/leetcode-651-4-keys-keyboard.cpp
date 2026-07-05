@@ -52,8 +52,9 @@ private:
 
     void fillMemoVec(vector<int>& memoVec) {
         int len = memoVec.size();
+        int n = len - 1;
 
-        for (int i = MAX_N_TILL_NO_GAIN + 1; i <= len; i++) {
+        for (int i = MAX_N_TILL_NO_GAIN + 1; i <= n; i++) {
             if (debug) {
                 printf("\n-----------\n");
                 printf("Before i=%d, memoVec:-\n", i);
