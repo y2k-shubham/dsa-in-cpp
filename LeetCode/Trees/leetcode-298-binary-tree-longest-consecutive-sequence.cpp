@@ -19,7 +19,7 @@ private:
     pair<int, int> EMPTY_RES = {0, 0};
     pair<int, int> UNIT_RES = {1, 1};
 
-    pair<int, int> longestConsecutiveRec(TreeNode* root) {
+    pair<int, int> longestConsecRec(TreeNode* root) {
         if (root == nullptr) {
             return EMPTY_RES;
         }
@@ -31,8 +31,8 @@ private:
             return UNIT_RES;
         }
 
-        pair<int, int> lRes = hasLChild ? longestConsecutiveRec(root->left) : EMPTY_RES;
-        pair<int, int> rRes = hasRChild ? longestConsecutiveRec(root->right) : EMPTY_RES;
+        pair<int, int> lRes = hasLChild ? longestConsecRec(root->left) : EMPTY_RES;
+        pair<int, int> rRes = hasRChild ? longestConsecRec(root->right) : EMPTY_RES;
 
         bool isLChildConsecutive = hasLChild ? (root->left->val == (root->val + 1)) : false;
         bool isRChildConsecutive = hasRChild ? (root->right->val == (root->val + 1)) : false;
@@ -51,7 +51,7 @@ private:
 
 public:
     int longestConsecutive(TreeNode* root) {
-        pair<int, int> res = longestConsecutiveRec(root);
+        pair<int, int> res = longestConsecRec(root);
         return res.second;
     }
 };
