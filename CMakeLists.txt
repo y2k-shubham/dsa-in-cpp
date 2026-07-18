@@ -1208,4 +1208,5 @@ add_executable(dsa_in_cpp
         LeetCode/Matrices/leetcode-533-lonely-pixel-ii.cpp
         LeetCode/Intervals/leetcode-370-range-addition.cpp
         LeetCode/Trees/leetcode-298-binary-tree-longest-consecutive-sequence.cpp
-        LeetCode/Trees/leetcode-549-binary-tree-longest-consecutive-sequence-ii.cpp)
+        LeetCode/Trees/leetcode-549-binary-tree-longest-consecutive-sequence-ii.cpp
+        "LeetCode/Intervals/(incomplete)-leetcode-598-range-addition-ii.cpp")
