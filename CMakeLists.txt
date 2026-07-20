@@ -1213,4 +1213,5 @@ add_executable(dsa_in_cpp
         LeetCode/Tries/leetcode-1196-design-file-system.cpp
         LeetCode/Trees/leetcode-285-inorder-successor-in-bst.cpp
         LeetCode/Trees/leetcode-510-inorder-successor-in-bst-ii.cpp
-        LeetCode/Intervals/leetcode-252-meeting-rooms.cpp)
+        LeetCode/Intervals/leetcode-252-meeting-rooms.cpp
+        LeetCode/Intervals/leetcode-253-meeting-rooms-ii.cpp)
