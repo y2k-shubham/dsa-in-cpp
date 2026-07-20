@@ -1211,4 +1211,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-549-binary-tree-longest-consecutive-sequence-ii.cpp
         "LeetCode/Intervals/(incomplete)-leetcode-598-range-addition-ii.cpp"
         LeetCode/Tries/leetcode-1196-design-file-system.cpp
-        LeetCode/Trees/leetcode-285-inorder-successor-in-bst.cpp)
+        LeetCode/Trees/leetcode-285-inorder-successor-in-bst.cpp
+        LeetCode/Trees/leetcode-510-inorder-successor-in-bst-ii.cpp)
