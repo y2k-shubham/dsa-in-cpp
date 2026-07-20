@@ -1,5 +1,9 @@
 // LeetCode-285: https://leetcode.com/problems/inorder-successor-in-bst/
+
 // certainly harder than medium
+
+// optimizations (1 & 2) [search 'optimization' in comments] :
+// just those 2nd expressions use BST sorted-order property and improves submission speed %-tile from 19% to 80%
 
 #include <utility>
 #include <vector>
@@ -31,7 +35,8 @@ private:
         }
 
         // in-order traversal: first go left if left-subtree is non-empty
-        if (crrNode->left != nullptr) {
+        // optimization-1
+        if ((crrNode->left != nullptr) && (targetNode->val <= crrNode->val)) {
             pair <TreeNode*, TreeNode*> lRes = inOrderSuccessorRec(targetNode, crrNode->left, prevNode);
 
             if (lRes.second != nullptr) {
@@ -53,7 +58,7 @@ private:
         }
 
         // in-order traversal: finally go right if right-subtree is non-empty
-        if (crrNode->right != nullptr) {
+        if ((crrNode->right != nullptr) && (targetNode->val >= crrNode->val)) {
             // printf("at crrNode=%d, returning result from right subtree\n", crrNode->val);
             return inOrderSuccessorRec(targetNode, crrNode->right, crrNode);
         }
