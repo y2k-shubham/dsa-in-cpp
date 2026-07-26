@@ -91,7 +91,6 @@ public:
 
     int top(int K) {
         // create a new copy of heap
-        priority_queue<PlayerScore, vector<PlayerScore>, CompareScore> playerScoresPQue = this->playerScoresPQue;
         list <PlayerScore> poppedScores;
 
         int scoresCount = 0;
