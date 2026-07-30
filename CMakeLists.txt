@@ -1218,4 +1218,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-288-unique-word-abbreviation.cpp
         LeetCode/Design/leetcode-281-zigzag-iterator.cpp
         LeetCode/Heap-PriorityQueue/leetcode-1244-design-a-leaderboard.cpp
-        LeetCode/Bitwise/leetcode-3032-count-numbers-with-unique-digits-ii.cpp)
+        LeetCode/Bitwise/leetcode-3032-count-numbers-with-unique-digits-ii.cpp
+        LeetCode/Maths/leetcode-3014-minimum-number-of-pushes-to-type-word-i.cpp)
