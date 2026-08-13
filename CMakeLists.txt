@@ -1222,4 +1222,5 @@ add_executable(dsa_in_cpp
         LeetCode/Maths/leetcode-3014-minimum-number-of-pushes-to-type-word-i.cpp
         "LeetCode/Logic/(incomplete)-leetcode-949-largest-time-for-given-digits.cpp"
         LeetCode/Hashing/leetcode-277-find-the-celebrity.cpp
-        "LeetCode/Design/(incomplete)-leetcode-251-flatten-2d-vector.cpp")
+        "LeetCode/Design/(incomplete)-leetcode-251-flatten-2d-vector.cpp"
+        LeetCode/Trees/leetcode-270-closest-binary-search-tree-value.cpp)
