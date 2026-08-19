@@ -1224,4 +1224,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-277-find-the-celebrity.cpp
         "LeetCode/Design/(incomplete)-leetcode-251-flatten-2d-vector.cpp"
         LeetCode/Trees/leetcode-270-closest-binary-search-tree-value.cpp
-        LeetCode/Trees/leetcode-2476-closest-nodes-queries-in-a-binary-search-tree.cpp)
+        LeetCode/Trees/leetcode-2476-closest-nodes-queries-in-a-binary-search-tree.cpp
+        "LeetCode/Design/(incomplete)-leetcode-362-design-hit-counter.cpp")
