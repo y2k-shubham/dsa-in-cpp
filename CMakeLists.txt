@@ -1225,4 +1225,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Design/(incomplete)-leetcode-251-flatten-2d-vector.cpp"
         LeetCode/Trees/leetcode-270-closest-binary-search-tree-value.cpp
         LeetCode/Trees/leetcode-2476-closest-nodes-queries-in-a-binary-search-tree.cpp
-        "LeetCode/Design/(incomplete)-leetcode-362-design-hit-counter.cpp")
+        "LeetCode/Design/(incomplete)-leetcode-362-design-hit-counter.cpp"
+        LeetCode/Hashing/leetcode-274-h-index.cpp)
