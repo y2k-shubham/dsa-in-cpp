@@ -1227,4 +1227,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-2476-closest-nodes-queries-in-a-binary-search-tree.cpp
         "LeetCode/Design/(incomplete)-leetcode-362-design-hit-counter.cpp"
         LeetCode/Hashing/leetcode-274-h-index.cpp
-        "LeetCode/BinarySearch/(incomplete)-leetcode-275-h-index-ii.cpp")
+        "LeetCode/BinarySearch/(incomplete)-leetcode-275-h-index-ii.cpp"
+        LeetCode/Trees/leetcode-965-univalued-binary-tree_reattempt-1.cpp)
