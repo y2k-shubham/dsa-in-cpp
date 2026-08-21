@@ -1228,4 +1228,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Design/(incomplete)-leetcode-362-design-hit-counter.cpp"
         LeetCode/Hashing/leetcode-274-h-index.cpp
         "LeetCode/BinarySearch/(incomplete)-leetcode-275-h-index-ii.cpp"
-        LeetCode/Trees/leetcode-965-univalued-binary-tree_reattempt-1.cpp)
+        LeetCode/Trees/leetcode-965-univalued-binary-tree_reattempt-1.cpp
+        LeetCode/Trees/leetcode-1469-find-all-the-lonely-nodes.cpp)
