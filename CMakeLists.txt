@@ -1230,4 +1230,5 @@ add_executable(dsa_in_cpp
         "LeetCode/BinarySearch/(incomplete)-leetcode-275-h-index-ii.cpp"
         LeetCode/Trees/leetcode-965-univalued-binary-tree_reattempt-1.cpp
         LeetCode/Trees/leetcode-1469-find-all-the-lonely-nodes.cpp
-        LeetCode/Trees/leetcode-250-count-univalue-subtrees.cpp)
+        LeetCode/Trees/leetcode-250-count-univalue-subtrees.cpp
+        LeetCode/Trees/leetcode-366-find-leaves-of-binary-tree.cpp)
