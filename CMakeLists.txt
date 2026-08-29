@@ -1233,4 +1233,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-250-count-univalue-subtrees.cpp
         LeetCode/Trees/leetcode-366-find-leaves-of-binary-tree.cpp
         LeetCode/Hashing/leetcode-170-two-sum-iii-data-structure-design.cpp
-        LeetCode/Dumb/leetcode-1085-sum-of-digits-in-the-minimum-number.cpp)
+        LeetCode/Dumb/leetcode-1085-sum-of-digits-in-the-minimum-number.cpp
+        LeetCode/DoAsDirected/leetcode-762-prime-number-of-set-bits-in-binary-representation.cpp)
