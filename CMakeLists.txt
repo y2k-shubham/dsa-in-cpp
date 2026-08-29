@@ -1237,4 +1237,5 @@ add_executable(dsa_in_cpp
         LeetCode/DoAsDirected/leetcode-762-prime-number-of-set-bits-in-binary-representation.cpp
         LeetCode/DoAsDirected/leetcode-2240-number-of-ways-to-buy-pens-and-pencils.cpp
         LeetCode/Maths/leetcode-2177-find-three-consecutive-integers-that-sum-to-a-given-number.cpp
-        LeetCode/Dumb/leetcode-1295-find-numbers-with-even-number-of-digits.cpp)
+        LeetCode/Dumb/leetcode-1295-find-numbers-with-even-number-of-digits.cpp
+        LeetCode/Intervals/leetcode-1701-average-waiting-time.cpp)
