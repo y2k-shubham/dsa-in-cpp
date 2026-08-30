@@ -1240,4 +1240,5 @@ add_executable(dsa_in_cpp
         LeetCode/Dumb/leetcode-1295-find-numbers-with-even-number-of-digits.cpp
         LeetCode/Intervals/leetcode-1701-average-waiting-time.cpp
         LeetCode/Intervals/leetcode-2015-average-height-of-buildings-in-each-segment.cpp
-        LeetCode/Intervals/leetcode-1943-describe-the-painting.cpp)
+        LeetCode/Intervals/leetcode-1943-describe-the-painting.cpp
+        LeetCode/Arrays/leetcode-2091-removing-minimum-and-maximum-from-array.cpp)
