@@ -1239,4 +1239,5 @@ add_executable(dsa_in_cpp
         LeetCode/Maths/leetcode-2177-find-three-consecutive-integers-that-sum-to-a-given-number.cpp
         LeetCode/Dumb/leetcode-1295-find-numbers-with-even-number-of-digits.cpp
         LeetCode/Intervals/leetcode-1701-average-waiting-time.cpp
-        LeetCode/Intervals/leetcode-2015-average-height-of-buildings-in-each-segment.cpp)
+        LeetCode/Intervals/leetcode-2015-average-height-of-buildings-in-each-segment.cpp
+        LeetCode/Intervals/leetcode-1943-describe-the-painting.cpp)

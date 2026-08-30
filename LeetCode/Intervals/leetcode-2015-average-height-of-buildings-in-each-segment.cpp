@@ -1,6 +1,7 @@
 // LeetCode-2015: https://leetcode.com/problems/average-height-of-buildings-in-each-segment/
 // Premium
 // Medium difficulty, but time consuming to implement
+// Almost identical to, though slightly more difficult (requires merging of segments), than LeetCode-1943: https://leetcode.com/problems/describe-the-painting/
 
 #include <vector>
 #include <map>
