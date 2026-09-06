@@ -1241,4 +1241,5 @@ add_executable(dsa_in_cpp
         LeetCode/Intervals/leetcode-1701-average-waiting-time.cpp
         LeetCode/Intervals/leetcode-2015-average-height-of-buildings-in-each-segment.cpp
         LeetCode/Intervals/leetcode-1943-describe-the-painting.cpp
-        LeetCode/Arrays/leetcode-2091-removing-minimum-and-maximum-from-array.cpp)
+        LeetCode/Arrays/leetcode-2091-removing-minimum-and-maximum-from-array.cpp
+        LeetCode/Hashing/leetcode-1647-minimum-deletions-to-make-character-frequencies-unique.cpp)
