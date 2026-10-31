@@ -1247,4 +1247,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-220-contains-duplicate-iii.cpp
         LeetCode/Hashing/leetcode-36-valid-sudoku.cpp
         LeetCode/Heap-PriorityQueue/leetcode-128-longest-consecutive-sequence_reattempt-1.cpp
-        LeetCode/Heap-PriorityQueue/leetcode-128-longest-consecutive-sequence_reattempt-2.cpp)
+        LeetCode/Heap-PriorityQueue/leetcode-128-longest-consecutive-sequence_reattempt-2.cpp
+        LeetCode/Heap-PriorityQueue/leetcode-2274-maximum-consecutive-floors-without-special-floors.cpp)
