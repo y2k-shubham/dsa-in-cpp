@@ -1,6 +1,6 @@
 // LeetCode-220: https://leetcode.com/problems/contains-duplicate-iii/
 // Companies: [Google][Netflix][Microsoft][Amazon][Bloomberg][Meta]
-// Incomplete
+// Hard
 
 #include <vector>
 #include <map>
@@ -68,7 +68,7 @@ private:
         if (crrNumVals >= (windowSize - 1)) {
             if (debug) {
                 showSingleSeparator();
-                printf("before dropping");
+                printf("before dropping oldest val=%d\n", mQue.front());
                 showSingleSeparator();
 
                 cout << endl;
@@ -80,6 +80,15 @@ private:
             int droppedVal = dropOldestVal();
             if (debug) {
                 printf("dropped val:%d\n", droppedVal);
+
+                showSingleSeparator();
+                printf("after dropping oldest val=%d\n", droppedVal);
+                showSingleSeparator();
+
+                cout << endl;
+                showQue();
+                cout << endl;
+                showMap();
             }
         }
 
@@ -182,7 +191,7 @@ private:
         }
 
         map<int, int>::iterator itLower = mFreqMap.lower_bound(val - valDiffSize);
-        if (itLower != mFreqMap.end()) {
+        if ((itLower != mFreqMap.end()) && (abs(itLower->first - val) <= valDiffSize)) {
             if (debug) {
                 printf("\nMatched at lower_bound = %d when searching for (val=%d + diff=%d) = %d\n", itLower->first, val, valDiffSize, (val - valDiffSize));
             }
@@ -218,7 +227,8 @@ public:
         this->mQue = queue<int>();
 
         // assign globals
-        this->windowSize = (2 * indexDiff);
+        int len = nums.size();
+        this->windowSize = indexDiff;
         this->valDiffSize = valueDiff;
 
         // fill initial window vals
@@ -242,31 +252,24 @@ public:
             showDoubleSeparator();
         }
 
-        int len = nums.size();
-        int iMaxExc = len - indexDiff;
-        int jMinInc = (2 * indexDiff);
-
-        for (int i = indexDiff, j = jMinInc; (i < iMaxExc) && (j < len); i++, j++) {
-            // add new incoming val
+        for (int j = indexDiff; (j < len); j++) {
+            // new incoming val
             int jVal = nums[j];
-            addVal(jVal);
+            //addVal(jVal);
 
-            // read current value
-            int iVal = nums[i];
-
-            // remove current value from map
-            dropValFromMap(iVal);
+            if (debug) {
+                showSingleSeparator();
+                printf("about to check for new incoming val=%d\n", jVal);
+                showSingleSeparator();
+            }
 
             // check if map contains near-duplicates
-            if (containsAlmostDuplicate(iVal)) {
+            if (containsAlmostDuplicate(jVal)) {
                 return true;
             }
 
-            // re-add current value to map
-            addValToMap(iVal);
-
             // advance window by dropping oldest value
-            dropOldestVal();
+            replaceOldestValWith(jVal);
         }
 
         return false;
@@ -288,15 +291,55 @@ public:
         outExpected = true;
         assert(outExpected == outComputed);
 
-        printf("\n/////////////////\n\n");
-
-        soln.enableDebug();
-
         numsIn = {1,5,9,1,5,9};
         indexDiffIn = 2;
         valueDiffIn = 3;
         outComputed = soln.containsNearbyAlmostDuplicate(numsIn, indexDiffIn, valueDiffIn);
         outExpected = false;
+        assert(outExpected == outComputed);
+
+        numsIn = {8,1,3,7,4,2,9};
+        indexDiffIn = 2;
+        valueDiffIn = 1;
+        outComputed = soln.containsNearbyAlmostDuplicate(numsIn, indexDiffIn, valueDiffIn);
+        outExpected = true;
+        assert(outExpected == outComputed);
+
+        numsIn = {8,1,3,7,4,2,9};
+        indexDiffIn = 1;
+        valueDiffIn = 1;
+        outComputed = soln.containsNearbyAlmostDuplicate(numsIn, indexDiffIn, valueDiffIn);
+        outExpected = false;
+        assert(outExpected == outComputed);
+
+        numsIn = {8,1,3,7,4,2,9};
+        indexDiffIn = 1;
+        valueDiffIn = 2;
+        outComputed = soln.containsNearbyAlmostDuplicate(numsIn, indexDiffIn, valueDiffIn);
+        outExpected = true;
+        assert(outExpected == outComputed);
+
+        numsIn = {8,1};
+        indexDiffIn = 1;
+        valueDiffIn = 6;
+        outComputed = soln.containsNearbyAlmostDuplicate(numsIn, indexDiffIn, valueDiffIn);
+        outExpected = false;
+        assert(outExpected == outComputed);
+
+        numsIn = {8,1};
+        indexDiffIn = 1;
+        valueDiffIn = 7;
+        outComputed = soln.containsNearbyAlmostDuplicate(numsIn, indexDiffIn, valueDiffIn);
+        outExpected = true;
+        assert(outExpected == outComputed);
+
+        // soln.enableDebug();
+
+        numsIn = {-2,3};
+        indexDiffIn = 2;
+        valueDiffIn = 5;
+        outComputed = soln.containsNearbyAlmostDuplicate(numsIn, indexDiffIn, valueDiffIn);
+        outExpected = true;
         assert(outExpected == outComputed);
     }
 };
