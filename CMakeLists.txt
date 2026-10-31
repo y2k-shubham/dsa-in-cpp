@@ -1245,4 +1245,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-1647-minimum-deletions-to-make-character-frequencies-unique.cpp
         "LeetCode/Hashing/(incomplete)-leetcode-2423-remove-letter-to-equalize-frequency.cpp"
         LeetCode/Hashing/leetcode-220-contains-duplicate-iii.cpp
-        LeetCode/Hashing/leetcode-36-valid-sudoku.cpp)
+        LeetCode/Hashing/leetcode-36-valid-sudoku.cpp
+        LeetCode/Heap-PriorityQueue/leetcode-128-longest-consecutive-sequence_reattempt-1.cpp)
