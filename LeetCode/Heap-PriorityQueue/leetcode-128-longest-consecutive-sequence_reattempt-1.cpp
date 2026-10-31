@@ -1,6 +1,8 @@
 // LeetCode-128: https://leetcode.com/problems/longest-consecutive-sequence/
 // Companies: [Google][Amazon][Microsoft][Bloomberg][Infosys][Meta][tcs][Apple][TikTok][Oracle][Walmart Labs][Goldman Sachs][IBM][Uber][Okta][Nvidia][PayPal][Wissen Technology]
+
 // good question when solved purely with heap (has an edge case around duplicates)
+// LC runtime: 65 ms
 
 #include <vector>
 #include <queue>
@@ -46,6 +48,7 @@ private:
             }
         } while (!minHeap.empty() && (isConsec(prevEle, crrEle) || isEqual(prevEle, crrEle)));
 
+        // not super-clear why + 1 is needed here, unlike in the deduped variant where its not required
         return numConsecElesPopped + 1;
     }
 
