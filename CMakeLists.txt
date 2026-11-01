@@ -1251,4 +1251,5 @@ add_executable(dsa_in_cpp
         LeetCode/Heap-PriorityQueue/leetcode-2274-maximum-consecutive-floors-without-special-floors.cpp
         LeetCode/Heap-PriorityQueue/leetcode-164-maximum-gap.cpp
         LeetCode/Stack-Queue/leetcode-155-min-stack_reattempt-1.cpp
-        LeetCode/Stack-Queue/leetcode-716-max-stack.cpp)
+        LeetCode/Stack-Queue/leetcode-716-max-stack.cpp
+        "LeetCode/Stack-Queue/(incomplete)-leetcode-716-max-stack_reattempt-1.cpp")
