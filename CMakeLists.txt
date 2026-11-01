@@ -1253,4 +1253,5 @@ add_executable(dsa_in_cpp
         LeetCode/Stack-Queue/leetcode-155-min-stack_reattempt-1.cpp
         "LeetCode/Stack-Queue/(incomplete)-leetcode-716-max-stack.cpp"
         "LeetCode/Stack-Queue/(incomplete)-leetcode-716-max-stack_reattempt-1.cpp"
-        LeetCode/Hashing/leetcode-716-max-stack_reatttempt-2.cpp)
+        LeetCode/Hashing/leetcode-716-max-stack_reatttempt-2.cpp
+        LeetCode/Stack-Queue/leetcode-150-evaluate-reverse-polish-notation.cpp)
