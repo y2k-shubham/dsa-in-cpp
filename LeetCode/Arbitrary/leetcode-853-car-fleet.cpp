@@ -79,7 +79,7 @@ class Solution {
         return divFract(dist, speed);
     }
 
-    vector<pair<int, int> > findSortedPosSpeed(vector<int>& position, vector<int>& speed) {
+    vector<pair<int, int> > createZippedSortedPosnSpeedVec(vector<int>& position, vector<int>& speed) {
         int len = position.size();
         vector<pair<int, int> > zippedVec(len);
 
@@ -102,7 +102,7 @@ class Solution {
         vector<pair<int, int> > reachTimesVec(len, this->infFract);
 
         // zip together positions & speeds and sort by positions
-        vector<pair<int, int> > zippedVec = findSortedPosSpeed(position, speed);
+        vector<pair<int, int> > zippedVec = createZippedSortedPosnSpeedVec(position, speed);
 
         // determine reach time of last car (having highest posn + speed)
         pair<int, int> lastCarReachTime = findPrecTime(zippedVec[len - 1].first, zippedVec[len - 1].second);
