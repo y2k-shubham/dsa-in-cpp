@@ -1256,4 +1256,5 @@ add_executable(dsa_in_cpp
         LeetCode/Hashing/leetcode-716-max-stack_reatttempt-2.cpp
         LeetCode/Stack-Queue/leetcode-150-evaluate-reverse-polish-notation.cpp
         LeetCode/Stack-Queue/leetcode-739-daily-temperatures_reattempt-1.cpp
-        LeetCode/Stack-Queue/leetcode-853-car-fleet_reattempt-1.cpp)
+        LeetCode/Stack-Queue/leetcode-853-car-fleet_reattempt-1.cpp
+        LeetCode/Arbitrary/leetcode-2211-count-collisions-on-a-road.cpp)
