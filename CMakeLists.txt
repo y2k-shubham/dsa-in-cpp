@@ -1258,4 +1258,5 @@ add_executable(dsa_in_cpp
         LeetCode/Stack-Queue/leetcode-739-daily-temperatures_reattempt-1.cpp
         LeetCode/Stack-Queue/leetcode-853-car-fleet_reattempt-1.cpp
         LeetCode/Arbitrary/leetcode-2211-count-collisions-on-a-road.cpp
-        LeetCode/Recursion/leetcode-255-verify-preorder-sequence-in-binary-search-tree.cpp)
+        LeetCode/Recursion/leetcode-255-verify-preorder-sequence-in-binary-search-tree.cpp
+        LeetCode/Trees/leetcode-3997-count-dominant-nodes-in-a-binary-tree.cpp)
