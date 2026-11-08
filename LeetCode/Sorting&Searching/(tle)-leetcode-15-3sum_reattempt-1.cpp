@@ -1,6 +1,10 @@
 // LeetCode-15: https://leetcode.com/problems/3sum/
+// Companies: [Google][Amazon][Meta][Microsoft][Bloomberg][tcs][Infosys][Apple][Quince][Accenture][Visa][TikTok]
 
-// TLE (likely correct but slow)
+// https://www.geeksforgeeks.org/find-triplets-array-whose-sum-equal-zero/
+// https://practice.geeksforgeeks.org/problems/find-triplets-with-zero-sum/1
+
+// TLE (correct but slow)
 // MetaAI discussion: https://www.meta.ai/share/c/RlThKGCXnN
 
 #include <vector>
