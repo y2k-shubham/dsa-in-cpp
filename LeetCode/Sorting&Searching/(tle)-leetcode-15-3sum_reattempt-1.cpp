@@ -1,5 +1,7 @@
 // LeetCode-15: https://leetcode.com/problems/3sum/
+
 // TLE (likely correct but slow)
+// MetaAI discussion: https://www.meta.ai/share/c/RlThKGCXnN
 
 #include <vector>
 #include <unordered_set>
