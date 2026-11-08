@@ -2,6 +2,8 @@
 // Premium
 // Companies: [Expedia]
 
+// Meta-AI discussion: https://www.meta.ai/share/c/MxElr5vLZE
+
 #include <vector>
 #include <stack>
 
