@@ -1262,4 +1262,5 @@ add_executable(dsa_in_cpp
         LeetCode/Trees/leetcode-3997-count-dominant-nodes-in-a-binary-tree.cpp
         "LeetCode/Sorting&Searching/(tle)-leetcode-15-3sum_reattempt-1.cpp"
         LeetCode/Sorting&Searching/leetcode-259-3sum-smaller.cpp
-        LeetCode/Sorting&Searching/leetcode-1099-two-sum-less-than-k.cpp)
+        LeetCode/Sorting&Searching/leetcode-1099-two-sum-less-than-k.cpp
+        LeetCode/DynamicProgramming/leetcode-3693-climbing-stairs-ii.cpp)
