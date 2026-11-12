@@ -499,7 +499,7 @@ add_executable(dsa_in_cpp
         LeetCode/Arbitrary/leetcode-284-peeking-iterator.cpp
         LeetCode/Arbitrary/leetcode-38-count-and-say.cpp
         LeetCode/Arbitrary/leetcode-42-trapping-rain-water.cpp
-        LeetCode/Arbitrary/leetcode-42-trapping-rain-water_reattempt.cpp
+        LeetCode/Arbitrary/leetcode-42-trapping-rain-water_reattempt-1.cpp
         LeetCode/Arbitrary/leetcode-6-zigzag-conversion.cpp
         LeetCode/Arbitrary/leetcode-763-partition-labels.cpp
         LeetCode/Arbitrary/leetcode-816-ambiguous-coordinates.cpp
@@ -1263,4 +1263,5 @@ add_executable(dsa_in_cpp
         "LeetCode/Sorting&Searching/(tle)-leetcode-15-3sum_reattempt-1.cpp"
         LeetCode/Sorting&Searching/leetcode-259-3sum-smaller.cpp
         LeetCode/Sorting&Searching/leetcode-1099-two-sum-less-than-k.cpp
-        LeetCode/DynamicProgramming/leetcode-3693-climbing-stairs-ii.cpp)
+        LeetCode/DynamicProgramming/leetcode-3693-climbing-stairs-ii.cpp
+        LeetCode/TwoPointers/leetcode-42-trapping-rain-water_reattempt-2.cpp)
