@@ -1264,4 +1264,5 @@ add_executable(dsa_in_cpp
         LeetCode/Sorting&Searching/leetcode-259-3sum-smaller.cpp
         LeetCode/Sorting&Searching/leetcode-1099-two-sum-less-than-k.cpp
         LeetCode/DynamicProgramming/leetcode-3693-climbing-stairs-ii.cpp
-        LeetCode/TwoPointers/leetcode-42-trapping-rain-water_reattempt-2.cpp)
+        LeetCode/TwoPointers/leetcode-42-trapping-rain-water_reattempt-2.cpp
+        LeetCode/BinarySearch/leetcode-875-koko-eating-bananas.cpp)
