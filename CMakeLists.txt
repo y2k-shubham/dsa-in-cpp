@@ -1269,4 +1269,5 @@ add_executable(dsa_in_cpp
         LeetCode/PrefixSum/leetcode-3364-minimum-positive-sum-subarray.cpp
         LeetCode/Stack-Queue/leetcode-239-sliding-window-maximum_reattempt-1.cpp
         LeetCode/Contest/weekly-contest-528/wc-528-count-consistent-subarrays-i.cpp
-        LeetCode/Contest/weekly-contest-528/wc-528-game-of-divisible-sums.cpp)
+        LeetCode/Contest/weekly-contest-528/wc-528-game-of-divisible-sums.cpp
+        LeetCode/Arbitrary/leetcode-2073-time-needed-to-buy-tickets.cpp)
