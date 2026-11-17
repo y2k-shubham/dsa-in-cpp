@@ -1,5 +1,7 @@
 // LeetCode-2073: https://leetcode.com/problems/time-needed-to-buy-tickets/
-// if done the right (optimal way : single pass), this question isn't that easy
+// Companies: [Amazon][Bloomberg][Google][Meta][Microsoft][Innovacer]
+
+// if done the right (optimal way : single pass), this question isn't easy
 
 #include <vector>
 
