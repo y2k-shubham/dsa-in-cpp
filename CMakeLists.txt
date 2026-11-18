@@ -1271,4 +1271,5 @@ add_executable(dsa_in_cpp
         LeetCode/Contest/weekly-contest-528/wc-528-count-consistent-subarrays-i.cpp
         LeetCode/Contest/weekly-contest-528/wc-528-game-of-divisible-sums.cpp
         LeetCode/Logic/leetcode-2073-time-needed-to-buy-tickets.cpp
-        LeetCode/Logic/leetcode-1700-number-of-students-unable-to-eat-lunch.cpp)
+        LeetCode/Logic/leetcode-1700-number-of-students-unable-to-eat-lunch.cpp
+        LeetCode/Simulation/leetcode-950-reveal-cards-in-increasing-order.cpp)
