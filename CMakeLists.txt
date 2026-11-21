@@ -1273,4 +1273,5 @@ add_executable(dsa_in_cpp
         LeetCode/Logic/leetcode-2073-time-needed-to-buy-tickets.cpp
         LeetCode/Logic/leetcode-1700-number-of-students-unable-to-eat-lunch.cpp
         LeetCode/Simulation/leetcode-950-reveal-cards-in-increasing-order.cpp
-        LeetCode/Contest/biweekly-contest-196/assign-umbrella-on-rainy-days.cpp)
+        LeetCode/Contest/biweekly-contest-196/assign-umbrella-on-rainy-days.cpp
+        LeetCode/Contest/biweekly-contest-196/minimum-range-after-sum-operations.cpp)
